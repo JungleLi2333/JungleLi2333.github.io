@@ -68,10 +68,12 @@
 
 
 
-  <meta name="keywords" content="排序算法,">
+  <meta name="keywords" content="jvm内存相关,">
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
@@ -81,23 +83,20 @@
 
 
 
-<meta name="description" content="基本排序算法的学习选择排序 (selection sort)基本思想首先找出最小的元素，放在开头，然后再在剩下的里面找出第二小的元素，放在第二位置，一直重复，直到数组有序，正是因为不停的需要“选择”出最小的元素，所以才会被叫做“选择排序” 实现12345678 int n = a.length; for (int i = 0; i &amp;lt; n; i++) &amp;#123;     int min =">
-<meta name="keywords" content="排序算法">
+<meta name="description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
+<meta name="keywords" content="jvm内存相关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三种基本排序的总结（选择，插入，希尔）">
-<meta property="og:url" content="https://www.junglezero.top/2018/02/07/基本排序的总结/index.html">
+<meta property="og:title" content="jvm学习笔记（内存）">
+<meta property="og:url" content="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="基本排序算法的学习选择排序 (selection sort)基本思想首先找出最小的元素，放在开头，然后再在剩下的里面找出第二小的元素，放在第二位置，一直重复，直到数组有序，正是因为不停的需要“选择”出最小的元素，所以才会被叫做“选择排序” 实现12345678 int n = a.length; for (int i = 0; i &amp;lt; n; i++) &amp;#123;     int min =">
+<meta property="og:description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/1.gif">
-<meta property="og:image" content="https://www.junglezero.top/upload/2.gif">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-78.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/3.gif">
-<meta property="og:updated_time" content="2019-03-19T10:17:26.179Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-209.png">
+<meta property="og:updated_time" content="2019-03-20T14:24:01.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="三种基本排序的总结（选择，插入，希尔）">
-<meta name="twitter:description" content="基本排序算法的学习选择排序 (selection sort)基本思想首先找出最小的元素，放在开头，然后再在剩下的里面找出第二小的元素，放在第二位置，一直重复，直到数组有序，正是因为不停的需要“选择”出最小的元素，所以才会被叫做“选择排序” 实现12345678 int n = a.length; for (int i = 0; i &amp;lt; n; i++) &amp;#123;     int min =">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/1.gif">
+<meta name="twitter:title" content="jvm学习笔记（内存）">
+<meta name="twitter:description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-209.png">
 
 
 
@@ -127,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2018/02/07/基本排序的总结/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/">
 
 
 
@@ -135,7 +134,7 @@
 
 
 
-  <title>三种基本排序的总结（选择，插入，希尔） | 淋中之虹</title>
+  <title>jvm学习笔记（内存） | 淋中之虹</title>
   
 
 
@@ -272,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2018/02/07/基本排序的总结/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -289,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">三种基本排序的总结（选择，插入，希尔）</h1>
+          <h1 class="post-title" itemprop="name headline">jvm学习笔记（内存）</h1>
         
 
         <div class="post-meta">
@@ -301,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T20:32:00+08:00">
-                2018-02-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T15:13:00+08:00">
+                2019-03-20
               </time>
             
 
@@ -324,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/从零开始的算法征程/" itemprop="url" rel="index">
-                    <span itemprop="name">从零开始的算法征程</span>
+                  <a href="/categories/jvm学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm学习笔记</span>
                   </a>
                 </span>
 
@@ -342,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/07/基本排序的总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/07/基本排序的总结/" itemprop="commentCount"></span>
+                <a href="/2019/03/20/vm学习笔记（内存）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/vm学习笔记（内存）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  792字
+                  1,163字
                 </span>
               
 
@@ -386,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3分钟
+                  4分钟
                 </span>
               
             </div>
@@ -407,25 +406,23 @@
       
 
       
-        <h1 id="基本排序算法的学习"><a href="#基本排序算法的学习" class="headerlink" title="基本排序算法的学习"></a>基本排序算法的学习</h1><h2 id="选择排序-selection-sort"><a href="#选择排序-selection-sort" class="headerlink" title="选择排序 (selection sort)"></a>选择排序 (selection sort)</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>首先找出最小的元素，放在开头，然后再在剩下的里面找出第二小的元素，放在第二位置，一直重复，直到数组有序，正是因为不停的需要“选择”出最小的元素，所以才会被叫做“选择排序”</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> int n = a.length;</span><br><span class="line"> for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">     int min = i;//首先把当前位置的元素记做最小</span><br><span class="line">     for (int j = i+1; j &lt; n; j++) &#123;//在后续的数中“选择”出最小</span><br><span class="line">         if (a[j]&lt;a[min]) min = j;</span><br><span class="line">     &#125;</span><br><span class="line">     swap(a[i], a[min])//将实际最小元素换到当前位置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="图形演示"><a href="#图形演示" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/1.gif" alt="upload successful"></p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>时间：需要比较n^2/2次（累加和）以及n次交换,需要平方级时间</li>
-<li>与输入序列有序程度无关</li>
+        <h1 id="JVM的内存管理"><a href="#JVM的内存管理" class="headerlink" title="JVM的内存管理"></a>JVM的内存管理</h1><h2 id="基本五大区"><a href="#基本五大区" class="headerlink" title="基本五大区"></a>基本五大区</h2><p><img src="/upload/pasted-209.png" alt="upload successful"></p>
+<h3 id="线程共享区和线程独占区"><a href="#线程共享区和线程独占区" class="headerlink" title="线程共享区和线程独占区"></a>线程共享区和线程独占区</h3><p>线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域</p>
+<h3 id="程序计数器（Program-Counter-Register）"><a href="#程序计数器（Program-Counter-Register）" class="headerlink" title="程序计数器（Program Counter Register）"></a>程序计数器（Program Counter Register）</h3><p>是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的<strong>行号</strong>指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的<strong>地址</strong>； 如果是Native方法，计数器为空（undefined），程序计数器是唯一一个在java虚拟机规范中没有规定任何OutOfMemoryError情况的区域</p>
+<h3 id="Java虚拟机栈（Java-Virtual-Machine-Stacks）"><a href="#Java虚拟机栈（Java-Virtual-Machine-Stacks）" class="headerlink" title="Java虚拟机栈（Java Virtual Machine Stacks）"></a>Java虚拟机栈（Java Virtual Machine Stacks）</h3><p>虚拟机栈描述的是java方法执行的内存模型<br>栈帧（Stack Frame）：每个方法在执行完成时，都会创建一个栈帧，伴随着方法从创建到执行的完成，用于储存局部变量表【存放编译器可知道的各种基本类型，引用类型，returnAddress（一条字节码指令的地址）类型，在编译器完成分配，在方法运行期间大小不会改变】，操作数栈，动态链接，方法出口等<br>【结合栈的先进先出特性理解】<br>异常状况：线程请求的栈的深度大于虚拟机所允许的最大深度，则发生StackOverflowError【一个没有结束的递归函数】】如果虚拟机栈可以动态扩展，而扩展到无法申请到足够内存时，抛出OutOfMemoryError</p>
+<h3 id="本地方法栈（Native-Method-Stack）"><a href="#本地方法栈（Native-Method-Stack）" class="headerlink" title="本地方法栈（Native Method Stack）"></a>本地方法栈（Native Method Stack）</h3><p>和虚拟机栈类似，区别是虚拟机栈为虚拟机执行java方法而服务，本地方法栈则为使用到的Native方法服务，在hot spot 中，两者是一体的</p>
+<h3 id="java堆（Java-Heap）"><a href="#java堆（Java-Heap）" class="headerlink" title="java堆（Java Heap）"></a>java堆（Java Heap）</h3><p>用来存储对象的<strong>实例</strong>，是java虚拟机所管理的最大的内存区域</p>
+<ul>
+<li>大部分对象实例在此分配内存</li>
+<li>垃圾收集器管理的主要区域</li>
+<li>内存不够时，会抛出OutOfMemoryError异常</li>
+<li>可以通过-Xmx和-XMS控制动态控制<h3 id="方法区（Method-Area）"><a href="#方法区（Method-Area）" class="headerlink" title="方法区（Method Area）"></a>方法区（Method Area）</h3>用以储存已被虚拟机加载的<strong>类信息【版本，字段，方法，接口】，常量，静态变量</strong>，即时编译器编译后的代码等数据<br>称作“永久代”（Permanent Generation）:在hot spot中GC分代收集扩展到了方法区，或者说使用了永久代而已，两者并不等价<br>会抛出OutOfMemoryError</li>
 </ul>
-<h2 id="插入排序-insertion-sort"><a href="#插入排序-insertion-sort" class="headerlink" title="插入排序(insertion sort)"></a>插入排序(insertion sort)</h2><h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>插入排序，顾名思义就是不断的向上插入置合适位置，当前位置的元素不断的和前一个比若是小了，就交换位置，直到到了前一个数小于等于当前数的时候</p>
-<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> int n = a.length;</span><br><span class="line"> for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">//对于j，只是要求其不断的和前一个比，若是小了就交换位置，直到到达目标位置</span><br><span class="line">     for (int j = i; j &gt; 0 &amp;&amp; a[j]&lt;a[j-1]; j--) &#123;</span><br><span class="line">         swap(a[j], a[j-1]);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="图形演示-1"><a href="#图形演示-1" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/2.gif" alt="upload successful"></p>
-<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>对于插入排序，平均需要N^2/4次比较和N^2/4次交换，最坏情况下是N^2/2次比较和N^2/2次交换，最好情况是N-1次比较和0次交换</li>
-<li>交换次数和逆序数对一致，比较次数大于等于逆序数对数量，小于等于逆序数对数量+数组大小-1<h3 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h3>只需将内循环中将较大的元素都向右移动而不是交换两个元素，这样能使访问数组的次数减半</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int N = a.length;</span><br><span class="line">for (int i = 1; i &lt; N; i++) &#123;</span><br><span class="line">	int t = a[i];</span><br><span class="line">	for (int j = i; j &gt; 0 &amp;&amp; t&lt;a[j-1]; j--) &#123;</span><br><span class="line">		a[j] = a[j-1]; //大的右移</span><br><span class="line">	&#125;</span><br><span class="line">	a[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序（shell-sort）"><a href="#希尔排序（shell-sort）" class="headerlink" title="希尔排序（shell sort）"></a>希尔排序（shell sort）</h2><h3 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h3><p>由于插入排序是相邻元素进行交换的，如果遇上最坏情况，需要移动n-1次。希尔排序则是弥补这种缺陷，交换不相邻的元素以对数组的局部进行排序，并最终用插入排序将局部有序的数组进行排序<br>希尔排序的思想是使任意间隔h的元素都是有序的，h有序到1有序（插入排序）递减<br>通常用Kruth的3K+1作为递减的依据</p>
-<h3 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int n = a.length;</span><br><span class="line">// 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ... </span><br><span class="line">int h = 1;</span><br><span class="line">while (h &lt; n/3) h = 3*h + 1; </span><br><span class="line"></span><br><span class="line">while (h &gt;= 1) &#123;</span><br><span class="line">    // h-sort the array</span><br><span class="line">    for (int i = h; i &lt; n; i++) &#123;</span><br><span class="line">        for (int j = i; j &gt;= h &amp;&amp; a[j]&lt;a[j-h]; j -= h) &#123;</span><br><span class="line">            swap(a[j],a[j-h]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    h /= 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="图形演示-2"><a href="#图形演示-2" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/pasted-78.png" alt="upload successful"><br><img src="/upload/3.gif" alt="upload successful"></p>
-<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p>3x+1的希尔排序的最坏情况是O(N^(3/2))</p>
+<h2 id="重点区域"><a href="#重点区域" class="headerlink" title="重点区域"></a>重点区域</h2><h3 id="运行时常量池（Runtime-Constant-Pool）"><a href="#运行时常量池（Runtime-Constant-Pool）" class="headerlink" title="运行时常量池（Runtime Constant Pool）"></a>运行时常量池（Runtime Constant Pool）</h3><p>位于方法区，用来存放编译期生成的各种字面量和符号引用<br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1=&quot;abc&quot;;</span><br><span class="line">String s2=&quot;abc&quot;;</span><br><span class="line">System.out.println(s1==s2)</span><br></pre></td></tr></table></figure></p>
+<p>要按照上面的说法，虚拟机在创建s1时，会先将在虚拟机栈中的局部变量表中创建引用s1，然后再在堆中创建实例“abc”，同理s2也是，这样来看，判定s1==s2的话，由于string是引用类型，因此会比较两个的地址，则创建的两个实例虽然内容相同，但是地址是不同的，所以应当是false，但是实际操作中，却是true。答案就在于“abc”属于可以在编译器直接翻译出的字面量，会存在运行常量池中，而在运行常量池中，实际上维持的是一个Stingtable（对于string来说），而其底层是HashSet(无序性，不重复性的集合)，因此，两个引用实际上指向的是同一个“abc”，故地址相同，判定为true<br>而对于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s3=new String(&quot;abc&quot;)；</span><br><span class="line">System.out.println(s1==s3)</span><br></pre></td></tr></table></figure></p>
+<p>其结果为false<br>关键在于关键字“new”,通过这种方式，就需要按照上面说的那样，引用在栈，实例在堆，因此地址是不相等<br>但是如果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(s1==s3.intern())</span><br></pre></td></tr></table></figure></p>
+<p>结果为true，这是因为运行时常量池的另一个特性：动态性，它可以在运行期把常量放入常量池中，而intern()主要做的事情就是对于一个string，它会查看在栈（局部常量表）中查找是否有值相等的值，若没有，则创建并返回其在栈中的地址，若有则直接返回栈中地址</p>
+<h3 id="直接内存（Direct-Memory）"><a href="#直接内存（Direct-Memory）" class="headerlink" title="直接内存（Direct Memory）"></a>直接内存（Direct Memory）</h3><p>实际上它不属于虚拟机运行时数据的一部分，也不是java虚拟机规范中定义的内存区域，但是还是用的到，既然是内存，会受到本机总内存影响，也会抛出OutOfMemoryError</p>
 
       
     </div>
@@ -443,7 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/排序算法/" rel="tag"># 排序算法</a>
+            <a href="/tags/jvm内存相关/" rel="tag"># jvm内存相关</a>
           
         </div>
       
@@ -456,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/02/hello-world/" rel="next" title="第一篇博文——关于博客的博文">
-                <i class="fa fa-chevron-left"></i> 第一篇博文——关于博客的博文
+              <a href="/2019/03/20/jvm学习总结/" rel="next" title="jvm学习笔记（入门）">
+                <i class="fa fa-chevron-left"></i> jvm学习笔记（入门）
               </a>
             
           </div>
@@ -465,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/08/的排序算法（归并，快排，堆排）/" rel="prev" title="进阶的排序算法（归并，快排，堆排）">
-                进阶的排序算法（归并，快排，堆排） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -677,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本排序算法的学习"><span class="nav-number">1.</span> <span class="nav-text">基本排序算法的学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序-selection-sort"><span class="nav-number">1.1.</span> <span class="nav-text">选择排序 (selection sort)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思想"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形演示"><span class="nav-number">1.1.3.</span> <span class="nav-text">图形演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点"><span class="nav-number">1.1.4.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序-insertion-sort"><span class="nav-number">1.2.</span> <span class="nav-text">插入排序(insertion sort)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思想-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形演示-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">图形演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-1"><span class="nav-number">1.2.4.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法改进"><span class="nav-number">1.2.5.</span> <span class="nav-text">算法改进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序（shell-sort）"><span class="nav-number">1.3.</span> <span class="nav-text">希尔排序（shell sort）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思想-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形演示-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">图形演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特点-2"><span class="nav-number">1.3.4.</span> <span class="nav-text">特点</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM的内存管理"><span class="nav-number">1.</span> <span class="nav-text">JVM的内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本五大区"><span class="nav-number">1.1.</span> <span class="nav-text">基本五大区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程共享区和线程独占区"><span class="nav-number">1.1.1.</span> <span class="nav-text">线程共享区和线程独占区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器（Program-Counter-Register）"><span class="nav-number">1.1.2.</span> <span class="nav-text">程序计数器（Program Counter Register）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java虚拟机栈（Java-Virtual-Machine-Stacks）"><span class="nav-number">1.1.3.</span> <span class="nav-text">Java虚拟机栈（Java Virtual Machine Stacks）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地方法栈（Native-Method-Stack）"><span class="nav-number">1.1.4.</span> <span class="nav-text">本地方法栈（Native Method Stack）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java堆（Java-Heap）"><span class="nav-number">1.1.5.</span> <span class="nav-text">java堆（Java Heap）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区（Method-Area）"><span class="nav-number">1.1.6.</span> <span class="nav-text">方法区（Method Area）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重点区域"><span class="nav-number">1.2.</span> <span class="nav-text">重点区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时常量池（Runtime-Constant-Pool）"><span class="nav-number">1.2.1.</span> <span class="nav-text">运行时常量池（Runtime Constant Pool）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接内存（Direct-Memory）"><span class="nav-number">1.2.2.</span> <span class="nav-text">直接内存（Direct Memory）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
