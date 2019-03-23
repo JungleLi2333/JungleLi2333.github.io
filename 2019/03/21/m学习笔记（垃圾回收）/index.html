@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="垃圾回收如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，引用计数器的数值+1，引用失效时，计数器的值-1虽然效率很高，但是存在较大弊端，如果有两个潜在垃圾相互引用，那么他们的计数器不为1，不会被标记为垃圾  可达分析法（根搜索法）以根对象集合为起始点，按照从上到下的方式搜索被根对象集合所连接的目标对象是否可达（根搜索后，内存中存活的对象都会和根对象集合直接或者间接的连">
+<meta name="description" content="垃圾回收GC的评估 吞吐量：程序的运行时间/（程序的运行时间+内存的回收时间） 垃圾回收开销：吞吐量的补数，垃圾收集时间和总时间的比例 暂停时间：执行垃圾收集时，程序的工作线程被暂停的时间 收集频率：相对于应用程序的执行，收集操作的发生频率 堆空间：java堆区所占的内存大小 快速：一个对象从诞生到被回收所经历的时间  如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，">
 <meta name="keywords" content="垃圾回收">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jvm学习笔记（垃圾回收）">
 <meta property="og:url" content="https://www.junglezero.top/2019/03/21/m学习笔记（垃圾回收）/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="垃圾回收如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，引用计数器的数值+1，引用失效时，计数器的值-1虽然效率很高，但是存在较大弊端，如果有两个潜在垃圾相互引用，那么他们的计数器不为1，不会被标记为垃圾  可达分析法（根搜索法）以根对象集合为起始点，按照从上到下的方式搜索被根对象集合所连接的目标对象是否可达（根搜索后，内存中存活的对象都会和根对象集合直接或者间接的连">
+<meta property="og:description" content="垃圾回收GC的评估 吞吐量：程序的运行时间/（程序的运行时间+内存的回收时间） 垃圾回收开销：吞吐量的补数，垃圾收集时间和总时间的比例 暂停时间：执行垃圾收集时，程序的工作线程被暂停的时间 收集频率：相对于应用程序的执行，收集操作的发生频率 堆空间：java堆区所占的内存大小 快速：一个对象从诞生到被回收所经历的时间  如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-215.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-218.png">
@@ -95,10 +95,13 @@
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-217.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-219.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-220.png">
-<meta property="og:updated_time" content="2019-03-22T06:43:48.057Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-226.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-227.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-228.png">
+<meta property="og:updated_time" content="2019-03-23T11:44:14.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm学习笔记（垃圾回收）">
-<meta name="twitter:description" content="垃圾回收如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，引用计数器的数值+1，引用失效时，计数器的值-1虽然效率很高，但是存在较大弊端，如果有两个潜在垃圾相互引用，那么他们的计数器不为1，不会被标记为垃圾  可达分析法（根搜索法）以根对象集合为起始点，按照从上到下的方式搜索被根对象集合所连接的目标对象是否可达（根搜索后，内存中存活的对象都会和根对象集合直接或者间接的连">
+<meta name="twitter:description" content="垃圾回收GC的评估 吞吐量：程序的运行时间/（程序的运行时间+内存的回收时间） 垃圾回收开销：吞吐量的补数，垃圾收集时间和总时间的比例 暂停时间：执行垃圾收集时，程序的工作线程被暂停的时间 收集频率：相对于应用程序的执行，收集操作的发生频率 堆空间：java堆区所占的内存大小 快速：一个对象从诞生到被回收所经历的时间  如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，">
 <meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-215.png">
 
 
@@ -372,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,082字
+                  2,431字
                 </span>
               
 
@@ -388,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  9分钟
                 </span>
               
             </div>
@@ -409,7 +412,15 @@
       
 
       
-        <h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><h2 id="如何判定垃圾对象"><a href="#如何判定垃圾对象" class="headerlink" title="如何判定垃圾对象"></a>如何判定垃圾对象</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>在对象中添加一个引用计数器，当有地方引用这个对象时，引用计数器的数值+1，引用失效时，计数器的值-1<br>虽然效率很高，但是存在较大弊端，如果有两个潜在垃圾相互引用，那么他们的计数器不为1，不会被标记为垃圾 </p>
+        <h1 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h1><h2 id="GC的评估"><a href="#GC的评估" class="headerlink" title="GC的评估"></a>GC的评估</h2><ul>
+<li>吞吐量：程序的运行时间/（程序的运行时间+内存的回收时间）</li>
+<li>垃圾回收开销：吞吐量的补数，垃圾收集时间和总时间的比例</li>
+<li>暂停时间：执行垃圾收集时，程序的工作线程被暂停的时间</li>
+<li>收集频率：相对于应用程序的执行，收集操作的发生频率</li>
+<li>堆空间：java堆区所占的内存大小</li>
+<li>快速：一个对象从诞生到被回收所经历的时间</li>
+</ul>
+<h2 id="如何判定垃圾对象"><a href="#如何判定垃圾对象" class="headerlink" title="如何判定垃圾对象"></a>如何判定垃圾对象</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>在对象中添加一个引用计数器，当有地方引用这个对象时，引用计数器的数值+1，引用失效时，计数器的值-1<br>虽然效率很高，但是存在较大弊端，如果有两个潜在垃圾相互引用，那么他们的计数器不为1，不会被标记为垃圾 </p>
 <h3 id="可达分析法（根搜索法）"><a href="#可达分析法（根搜索法）" class="headerlink" title="可达分析法（根搜索法）"></a>可达分析法（根搜索法）</h3><p><img src="/upload/pasted-215.png" alt="upload successful"><br>以根对象集合为起始点，按照从上到下的方式搜索被根对象集合所连接的目标对象是否可达（根搜索后，内存中存活的对象都会和根对象集合直接或者间接的连接着），若不可达，则意味着目标对象已经死亡，会被标记为垃圾对象<br>跟对象集合中包括：</p>
 <ul>
 <li>Java栈中对象的引用</li>
@@ -437,7 +448,61 @@
 <li>算法和机制与Serial相同</li>
 <li>适合多个cpu的环境</li>
 </ul>
-<h4 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h4><h4 id="G1"><a href="#G1" class="headerlink" title="G1"></a>G1</h4><h2 id="回收时间"><a href="#回收时间" class="headerlink" title="回收时间"></a>回收时间</h2>
+<h4 id="Parallel"><a href="#Parallel" class="headerlink" title="Parallel"></a>Parallel</h4><ul>
+<li>采用复制算法，并行回收和“stop the world”机制</li>
+<li>可以控制程序的吞吐量（-XX GCTimeRatio）,提高吞吐量，可以降低内存回收的执行频率，但是会增加每次执行的时间</li>
+<li>老年代采用Parallel old收集器，采用标记压缩，并行收集</li>
+<li>Parallel 和Parallel Old适合Server下的内存回收</li>
+</ul>
+<h4 id="CMS（Concurrent-Mark-Sweep）"><a href="#CMS（Concurrent-Mark-Sweep）" class="headerlink" title="CMS（Concurrent-Mark-Sweep）"></a>CMS（Concurrent-Mark-Sweep）</h4><p>特点</p>
+<ul>
+<li>+为并发而生</li>
+<li>+低延迟（每次执行时间较短）</li>
+<li>-占用cpu内存较大</li>
+<li>-会出现浮动垃圾</li>
+<li>-产生内存碎片</li>
+</ul>
+<p><img src="/upload/pasted-226.png" alt="upload successful"><br>过程：</p>
+<ul>
+<li>初始标记（Initial-Mark）：程序中所有工作进程会暂停，并根据根搜素法标记对不可达对象进行标记，标记完毕后恢复暂停进程</li>
+<li>并发标记（Concurrent-Marking）：将之前不可达对象标记为垃圾对象</li>
+<li>再次标记（Remark）：并发标记并不能保证所有垃圾对象都已经被标记，因此该过程将进入“stop the world”再次进行标记</li>
+<li>并发清除（Concurrent-Sweep）：清除标记垃圾对象</li>
+</ul>
+<h4 id="G1（Garbage-First）"><a href="#G1（Garbage-First）" class="headerlink" title="G1（Garbage First）"></a>G1（Garbage First）</h4><p>特点：</p>
+<ul>
+<li><p>并行于并发：G1能充分利用CPU、多核环境下的硬件优势，使用多个CPU（CPU或者CPU核心）来缩短stop-The-World停顿时间。部分其他收集器原本需要停顿Java线程执行的GC动作，G1收集器仍然可以通过并发的方式让java程序继续执行。</p>
+</li>
+<li><p>分代收集：分代概念在G1中依然得以保留。虽然G1可以不需要其它收集器配合就能独立管理整个GC堆，但它能够采用不同的方式去处理新创建的对象和已经存活了一段时间、熬过多次GC的旧对象以获取更好的收集效果。也就是说G1可以自己管理新生代和老年代了。</p>
+</li>
+<li><p>空间整合：由于G1使用了独立区域（Region）概念，将java堆区划分为2048块大小相同的独立Region块,这样 可以更好的提升GC的回收效率和缩短线程暂停时间以换取更大的程序吞吐量，因而能更好的控制暂停时间G1从整体来看是基于“标记-整理”算法实现收集，从局部（两个Region）上来看是基于“复制”算法实现的，但无论如何，这两种算法都意味着G1运作期间不会产生内存空间碎片。</p>
+</li>
+<li><p>可预测的停顿：这是G1相对于CMS的另一大优势，降低停顿时间是G1和CMS共同的关注点，但G1除了追求低停顿外，还能建立可预测的停顿时间模型，能让使用这明确指定一个长度为M毫秒的时间片段内，消耗在垃圾收集上的时间不得超过N毫秒。</p>
+</li>
+</ul>
+<p><img src="/upload/pasted-227.png" alt="upload successful"></p>
+<ul>
+<li>为了避免全堆扫描，G1使用了Remembered Set来管理相关的对象引用信息。当进行内存回收时，在GC根节点的枚举范围中加入Remembered Set即可保证不对全堆扫描也不会有遗漏了。</li>
+</ul>
+<p>过程：</p>
+<p><img src="/upload/pasted-228.png" alt="upload successful"></p>
+<ul>
+<li><p>初始标记（Initial Making）：标记一下GC Roots能直接关联到的对象，并且修改TAMS（Next Top Mark Start）的值，让下一阶段用户程序并发运行时，能在正确可以用的Region中创建新对象，这个阶段需要停顿线程，但耗时很短</p>
+</li>
+<li><p>并发标记（Concurrent Marking）：并发标记阶段是从GC Roots开始对堆中对象进行可达性分析，找出存活对象，这一阶段耗时较长但能与用户线程并发运行。而最终标记阶段需要吧Remembered Set Logs的数据合并到Remembered Set中，这阶段需要停顿线程，但可并行执行</p>
+</li>
+<li><p>最终标记（Final Marking）：最后筛选回收阶段首先对各个Region的回收价值和成本进行排序，根据用户所期望的GC停顿时间来制定回收计划，这一过程同样是需要停顿线程</p>
+</li>
+<li><p>筛选回收（Live Data Counting and Evacuation）</p>
+</li>
+</ul>
+<p>GC模式</p>
+<ul>
+<li>youngGC:发生在年轻代的GC算法，一般对象（除了巨型对象）都是在eden region中分配内存，当所有eden region被耗尽无法申请内存时，就会触发一次young gc，这种触发机制和之前的young gc差不多，执行完一次young gc，活跃对象会被拷贝到survivor region或者晋升到old region中，空闲的region会被放入空闲列表中，等待下次被使用。</li>
+<li>mixGC:就是上面的标准过程</li>
+<li>FullGC:如果对象内存分配速度过快，mixed gc来不及回收，导致老年代被填满，就会触发一次full gc，G1的full gc算法就是单线程执行的serial old gc，会导致异常长时间的暂停时间，需要进行不断的调优，尽可能的避免full gc.</li>
+</ul>
+<h2 id="回收时间"><a href="#回收时间" class="headerlink" title="回收时间"></a>回收时间</h2>
       
     </div>
     
@@ -684,7 +749,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何判定垃圾对象"><span class="nav-number">1.1.</span> <span class="nav-text">如何判定垃圾对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数法"><span class="nav-number">1.1.1.</span> <span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可达分析法（根搜索法）"><span class="nav-number">1.1.2.</span> <span class="nav-text">可达分析法（根搜索法）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收方式"><span class="nav-number">1.2.</span> <span class="nav-text">回收方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回收策略"><span class="nav-number">1.2.1.</span> <span class="nav-text">回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-清除算法（Mark-Sweep）"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">标记-清除算法（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制算法"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">复制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#堆的具体分区"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">堆的具体分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复制算法过程"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">复制算法过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记整理算法（标记-压缩算存法）"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">标记整理算法（标记-压缩算存法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分代收集算法"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">分代收集算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收器"><span class="nav-number">1.2.2.</span> <span class="nav-text">垃圾回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#串行回收与并行回收"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">串行回收与并行回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发和“Stop-the-World”"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">并发和“Stop the World”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">Serial</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ParNew"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">ParNew</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">CMS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">G1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收时间"><span class="nav-number">1.3.</span> <span class="nav-text">回收时间</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC的评估"><span class="nav-number">1.1.</span> <span class="nav-text">GC的评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何判定垃圾对象"><span class="nav-number">1.2.</span> <span class="nav-text">如何判定垃圾对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数法"><span class="nav-number">1.2.1.</span> <span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可达分析法（根搜索法）"><span class="nav-number">1.2.2.</span> <span class="nav-text">可达分析法（根搜索法）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收方式"><span class="nav-number">1.3.</span> <span class="nav-text">回收方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回收策略"><span class="nav-number">1.3.1.</span> <span class="nav-text">回收策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标记-清除算法（Mark-Sweep）"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">标记-清除算法（Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制算法"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">复制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#堆的具体分区"><span class="nav-number">1.3.1.2.1.</span> <span class="nav-text">堆的具体分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复制算法过程"><span class="nav-number">1.3.1.2.2.</span> <span class="nav-text">复制算法过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标记整理算法（标记-压缩算存法）"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">标记整理算法（标记-压缩算存法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分代收集算法"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">分代收集算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收器"><span class="nav-number">1.3.2.</span> <span class="nav-text">垃圾回收器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#串行回收与并行回收"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">串行回收与并行回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发和“Stop-the-World”"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">并发和“Stop the World”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">Serial</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ParNew"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">ParNew</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">Parallel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMS（Concurrent-Mark-Sweep）"><span class="nav-number">1.3.2.6.</span> <span class="nav-text">CMS（Concurrent-Mark-Sweep）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1（Garbage-First）"><span class="nav-number">1.3.2.7.</span> <span class="nav-text">G1（Garbage First）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回收时间"><span class="nav-number">1.4.</span> <span class="nav-text">回收时间</span></a></li></ol></li></ol></div>
             
 
           </div>
