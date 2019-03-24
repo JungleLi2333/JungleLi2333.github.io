@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-226.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-227.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-228.png">
-<meta property="og:updated_time" content="2019-03-24T03:02:43.763Z">
+<meta property="og:updated_time" content="2019-03-24T08:37:22.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm学习笔记（垃圾回收）">
 <meta name="twitter:description" content="垃圾回收GC的评估 吞吐量：程序的运行时间/（程序的运行时间+内存的回收时间） 垃圾回收开销：吞吐量的补数，垃圾收集时间和总时间的比例 暂停时间：执行垃圾收集时，程序的工作线程被暂停的时间 收集频率：相对于应用程序的执行，收集操作的发生频率 堆空间：java堆区所占的内存大小 快速：一个对象从诞生到被回收所经历的时间  如何判定垃圾对象引用计数法在对象中添加一个引用计数器，当有地方引用这个对象时，">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,820字
+                  2,952字
                 </span>
               
 
@@ -508,6 +508,7 @@
 <li>长期存活的对象会进入老年代：虚拟机实际上为每个对象设置了一个Age计数器，如果对象在Eden出生且经过第一次垃圾回收仍存活的话，并且能被Survivor容纳的话，就会进入Survivor，将对象年龄设为1，对象在Survivor存活过一次垃圾回收，年龄就+1，年龄增加到一定程度时，就会进入老年区,可以通过“-XX:MaxTeburingThreshold”设置老年区年龄</li>
 <li>动态对象的年龄判定：如果在Survivor中相同年龄对象大小总和大于survivor空间的一半，年龄大于或者等于该年龄的对象直接进入老年代</li>
 <li>空间分配担保：当新生代的大部分对象都存活时，就需要老年代进行担保，把survivor无法容纳的对象直接分入老年代</li>
+<li>逃逸分析和栈上分配：逃逸分析（Escape Analysis）是jvm在执行性能优化之前的一种分析技术，它的具体目标是分析出对象的作用域，当一个对象被定义在方法体内部之后，它的受访权限仅限于方法体内，一旦被外部成员引用后，这个对象就发生了逃逸，反之，如果方法体内的对象并没有被外部成员引用，jvm就会为其在栈帧中分配空间</li>
 </ul>
 
       
