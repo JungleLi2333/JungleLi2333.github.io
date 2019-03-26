@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,">
+  <meta name="keywords" content="jvm类的加载机制,">
 
 
 
@@ -81,36 +81,22 @@
 
 
 
-<meta name="description" content="花了一下午时间，终于搞好了这个基于hexo的博客系统，也搞了自己的域名，现在终于可以愉快的玩耍了搭建这个博客，也是参考了许多地方，现在稍微总结一下这个博客的搭建过程，只要肯用心，还是能够做出很高（hua）雅（shao）的博客的 1.环境搭建（Windows）1.node.js官网直接下载即可 2. Git bash也是直接下载即可 3.hexo首先创建一个文件夹，用以装载博客的内容，以后所有关于博">
-<meta name="keywords" content="Hexo">
+<meta name="description" content="类加载机制一般概念虚拟机把描述类的数据从文件加载到内存，并对数据进行解析，校验和初始化，最终形成可以被虚拟机使用的java类型，这就是虚拟机类的加载的一般过程类加载器：根据一个类的全限定名来读取此类二进制字节流到jvm内部，然后转换为一个与目标类对应的java.lang.Class对象实例，Java 虚拟机支持两种类加载器： Java 虚拟机提供的引导类加载器（Bootstrap Class Lo">
+<meta name="keywords" content="jvm类的加载机制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇博文——关于博客的博文">
-<meta property="og:url" content="https://www.junglezero.top/2018/01/02/hello-world/index.html">
+<meta property="og:title" content="jvm学习（类的加载机制）">
+<meta property="og:url" content="https://www.junglezero.top/2019/03/26/vm学习（类的加载机制）/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="花了一下午时间，终于搞好了这个基于hexo的博客系统，也搞了自己的域名，现在终于可以愉快的玩耍了搭建这个博客，也是参考了许多地方，现在稍微总结一下这个博客的搭建过程，只要肯用心，还是能够做出很高（hua）雅（shao）的博客的 1.环境搭建（Windows）1.node.js官网直接下载即可 2. Git bash也是直接下载即可 3.hexo首先创建一个文件夹，用以装载博客的内容，以后所有关于博">
+<meta property="og:description" content="类加载机制一般概念虚拟机把描述类的数据从文件加载到内存，并对数据进行解析，校验和初始化，最终形成可以被虚拟机使用的java类型，这就是虚拟机类的加载的一般过程类加载器：根据一个类的全限定名来读取此类二进制字节流到jvm内部，然后转换为一个与目标类对应的java.lang.Class对象实例，Java 虚拟机支持两种类加载器： Java 虚拟机提供的引导类加载器（Bootstrap Class Lo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-2.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-3.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-4.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-5.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-6.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-7.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-8.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-9.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-10.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-11.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-12.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-13.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-14.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-15.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-16.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-17.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-19.png">
-<meta property="og:updated_time" content="2019-03-14T01:26:23.487Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-253.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-254.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-255.png">
+<meta property="og:updated_time" content="2019-03-26T14:13:20.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一篇博文——关于博客的博文">
-<meta name="twitter:description" content="花了一下午时间，终于搞好了这个基于hexo的博客系统，也搞了自己的域名，现在终于可以愉快的玩耍了搭建这个博客，也是参考了许多地方，现在稍微总结一下这个博客的搭建过程，只要肯用心，还是能够做出很高（hua）雅（shao）的博客的 1.环境搭建（Windows）1.node.js官网直接下载即可 2. Git bash也是直接下载即可 3.hexo首先创建一个文件夹，用以装载博客的内容，以后所有关于博">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-2.png">
+<meta name="twitter:title" content="jvm学习（类的加载机制）">
+<meta name="twitter:description" content="类加载机制一般概念虚拟机把描述类的数据从文件加载到内存，并对数据进行解析，校验和初始化，最终形成可以被虚拟机使用的java类型，这就是虚拟机类的加载的一般过程类加载器：根据一个类的全限定名来读取此类二进制字节流到jvm内部，然后转换为一个与目标类对应的java.lang.Class对象实例，Java 虚拟机支持两种类加载器： Java 虚拟机提供的引导类加载器（Bootstrap Class Lo">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-253.png">
 
 
 
@@ -140,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2018/01/02/hello-world/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/03/26/vm学习（类的加载机制）/">
 
 
 
@@ -148,7 +134,7 @@
 
 
 
-  <title>第一篇博文——关于博客的博文 | 淋中之虹</title>
+  <title>jvm学习（类的加载机制） | 淋中之虹</title>
   
 
 
@@ -285,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2018/01/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/26/vm学习（类的加载机制）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -302,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第一篇博文——关于博客的博文</h1>
+          <h1 class="post-title" itemprop="name headline">jvm学习（类的加载机制）</h1>
         
 
         <div class="post-meta">
@@ -314,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T13:47:00+08:00">
-                2018-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T13:32:00+08:00">
+                2019-03-26
               </time>
             
 
@@ -337,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/攻略技巧/" itemprop="url" rel="index">
-                    <span itemprop="name">攻略技巧</span>
+                  <a href="/categories/jvm学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm学习笔记</span>
                   </a>
                 </span>
 
@@ -355,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/02/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/02/hello-world/" itemprop="commentCount"></span>
+                <a href="/2019/03/26/vm学习（类的加载机制）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/26/vm学习（类的加载机制）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  931字
+                  1,578字
                 </span>
               
 
@@ -399,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  6分钟
                 </span>
               
             </div>
@@ -420,33 +406,37 @@
       
 
       
-        <p>花了一下午时间，终于搞好了这个基于hexo的博客系统，也搞了自己的域名，现在终于可以愉快的玩耍了<br>搭建这个博客，也是参考了许多地方，现在稍微总结一下这个博客的搭建过程，只要肯用心，还是能够做出很高（hua）雅（shao）的博客的</p>
-<h2 id="1-环境搭建（Windows）"><a href="#1-环境搭建（Windows）" class="headerlink" title="1.环境搭建（Windows）"></a>1.环境搭建（Windows）</h2><h3 id="1-node-js"><a href="#1-node-js" class="headerlink" title="1.node.js"></a>1.node.js</h3><p>官网直接下载即可<br><img src="/upload/pasted-2.png" alt="upload successful"></p>
-<h3 id="2-Git-bash"><a href="#2-Git-bash" class="headerlink" title="2. Git bash"></a>2. Git bash</h3><p>也是直接下载即可<br><img src="/upload/pasted-3.png" alt="upload successful"></p>
-<h3 id="3-hexo"><a href="#3-hexo" class="headerlink" title="3.hexo"></a>3.hexo</h3><p>首先创建一个文件夹，用以装载博客的内容，以后所有关于博客的操作都将基于这个这个文件夹下，然后把gitbash开到当前目录下，比如我是D:/blogContent 输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:/blogContent</span><br></pre></td></tr></table></figure></p>
-<p>打开如图<br><img src="/upload/pasted-4.png" alt="upload successful"><br>然后输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g hexo</span><br></pre></td></tr></table></figure></p>
-<p>再输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
-<p>进行初始化</p>
-<h2 id="2-GItHub准备"><a href="#2-GItHub准备" class="headerlink" title="2.GItHub准备"></a>2.GItHub准备</h2><p>这里讲的是以GitHub作为博客所在的服务器的设置方式</p>
-<h3 id="1-申请账号"><a href="#1-申请账号" class="headerlink" title="1.申请账号"></a>1.申请账号</h3><p>跟别的申请账号区别不大</p>
-<h3 id="2-创建一个新的repo"><a href="#2-创建一个新的repo" class="headerlink" title="2.创建一个新的repo"></a>2.创建一个新的repo</h3><p><img src="/upload/pasted-5.png" alt="upload successful"><br>点击New<br>注意命名，要按照图上的要求<br><img src="/upload/pasted-6.png" alt="upload successful"></p>
-<h3 id="3-设置ssh"><a href="#3-设置ssh" class="headerlink" title="3.设置ssh"></a>3.设置ssh</h3><p>在git bash中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com</span></span><br></pre></td></tr></table></figure></p>
-<p>会在本地生成一个ssh文件，然后在本地找到id_rsa.pub（一般是在c盘用户文件夹下），用记事本打开，Ctrl+A,Cthl+C<br><img src="/upload/pasted-7.png" alt="upload successful"><br>然后打开登录的github，点右上角的头像,点击setting<br><img src="/upload/pasted-8.png" alt="upload successful"><br>点击ssh的设置，创建新的ssh<br><img src="/upload/pasted-9.png" alt="upload successful"></p>
-<p><img src="/upload\pasted-10.png" alt="upload successful"></p>
-<h2 id="3-博客文件内容和git-repo绑定"><a href="#3-博客文件内容和git-repo绑定" class="headerlink" title="3.博客文件内容和git repo绑定"></a>3.博客文件内容和git repo绑定</h2><p>打开本地博客地址下的设置文件,用记事本打开，如果有sublime更好，如图</p>
-<p><img src="/upload/pasted-11.png" alt="upload successful"><br>在这个文件的最下面加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/YourGithubName/YourgitgubName.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">server:</span><br><span class="line">  port: 5000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure></p>
-<p>本来hexo的博客默认端口是4000的，但是如果安装了福晰阅读器的话那个端口就被占了所以这里改成5000</p>
-<h2 id="4-本地预览和上传"><a href="#4-本地预览和上传" class="headerlink" title="4.本地预览和上传"></a>4.本地预览和上传</h2><h3 id="1-本地预览"><a href="#1-本地预览" class="headerlink" title="1. 本地预览"></a>1. 本地预览</h3><p>在git bash上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate(可简写为 g)</span><br><span class="line">hexo server(可简写为 s)</span><br></pre></td></tr></table></figure></p>
-<p>然后在浏览器上输入localhost：5000（也可以是上面自己设置的其他端口）。就可以看见博客的基本形态，默认有一篇博文hello world，如果没有出现，可能的原因是端口被占了，改下端口号</p>
-<h3 id="2-上传github"><a href="#2-上传github" class="headerlink" title="2.上传github"></a>2.上传github</h3><p>先进行安装在bash上输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<p>然后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy(可简写为d)</span><br></pre></td></tr></table></figure></p>
-<p>第一次上传会需要输入GitHub的账号密码</p>
-<h3 id="3-网络预览"><a href="#3-网络预览" class="headerlink" title="3.网络预览"></a>3.网络预览</h3><p>浏览器输入<a href="http://yourgithubname.github.io" target="_blank" rel="noopener">http://yourgithubname.github.io</a> 就可以看见了</p>
-<h2 id="5-绑定个人域名"><a href="#5-绑定个人域名" class="headerlink" title="5.绑定个人域名"></a>5.绑定个人域名</h2><p>如果觉得上面那个名字太low（比如我）,那么就可以自己买个域名改上<br>首先在阿里云或者别的地方买个域名，但是在这之前一定要把要求的信息弄好（实名制，邮箱）<br>买域名的话，挑便宜的买就好了，有人说要是买cn,com的除了实名制意外还需要备案，据说要花上几天，但是我买的top，实名制很快，不需要备案，很快就搞定了<br>假设已经买了个人域名</p>
-<h3 id="1-获取博客的IP（就是git上的ip）"><a href="#1-获取博客的IP（就是git上的ip）" class="headerlink" title="1.获取博客的IP（就是git上的ip）"></a>1.获取博客的IP（就是git上的ip）</h3><p>打开控制台（win+r输入cmd）<br><img src="/upload/pasted-12.png" alt="upload successful"><br>输入ping yourgithubname.github.io 可以获得IP地址</p>
-<p><img src="/upload/pasted-13.png" alt="upload successful"></p>
-<h3 id="2-域名解析设置"><a href="#2-域名解析设置" class="headerlink" title="2.域名解析设置"></a>2.域名解析设置</h3><p>点击解析<br><img src="/upload/pasted-14.png" alt="upload successful"><br>点击新手引导<br><img src="/upload/pasted-15.png" alt="upload successful"><br>把刚才的ip地址输上去<br><img src="/upload/pasted-16.png" alt="upload successful"></p>
-<h3 id="3-github设置"><a href="#3-github设置" class="headerlink" title="3.github设置"></a>3.github设置</h3><p>点击设置为博客的repo,进入以后点击settings<br><img src="/upload/pasted-17.png" alt="upload successful"><br>进入以后直接往下翻找到Custom domain<br><img src="/upload/pasted-19.png" alt="upload successful"><br>点击save<br>至此你就可以通过自己的域名访问博客了</p>
+        <h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><h2 id="一般概念"><a href="#一般概念" class="headerlink" title="一般概念"></a>一般概念</h2><p>虚拟机把描述类的数据从文件加载到内存，并对数据进行解析，校验和初始化，最终形成可以被虚拟机使用的java类型，这就是虚拟机类的加载的一般过程<br>类加载器：根据一个类的全限定名来读取此类二进制字节流到jvm内部，然后转换为一个与目标类对应的java.lang.Class对象实例，Java 虚拟机支持两种类加载器： Java 虚拟机提供的引导类加载器（Bootstrap Class Loader）和用户自定义类加载器（User-Defined Class Loader）。每个用户自定义的类加载器应该是抽象类 ClassLoader 的某个子类的实例。应用程序使用用户自定义类加载器是为了便于扩展 Java 虚拟机的功能，支持动态加载并创建类。当然，它也可以从用户自定义的数据来源来获取类的二进制表示并创建类。例如，用户自定义类加载器可以通过网络下载、动态产生或是从一个加密文件中提取类的信息</p>
+<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><p><img src="/upload/pasted-253.png" alt="upload successful"></p>
+<h3 id="加载（Loading）"><a href="#加载（Loading）" class="headerlink" title="加载（Loading）"></a>加载（Loading）</h3><p>类加载阶段就是由类加载器负责根据一个类的全限定名来读取此类的二进制字节流到JVM内部，并存储在运行时内存区的方法区，然后将其转换为一个与目标类型对应的java.lang.Class对象实例,这个Class对象在日后就会作为方法区中该类的各种数据的访问入口。</p>
+<p><img src="/upload/pasted-254.png" alt="upload successful"></p>
+<h3 id="连接（Linking）"><a href="#连接（Linking）" class="headerlink" title="连接（Linking）"></a>连接（Linking）</h3><p>1.验证过程<br><img src="/upload/pasted-255.png" alt="upload successful"></p>
+<p>2.准备过程<br>为类中的所有静态变量(static)分配内存空间，并为其设置一个初始值（由于还没有产生对象，实例变量不在此操作范围内）<br>被final修饰的静态变量，会直接赋予原值；类字段的字段属性表中存在ConstantValue属性，则在准备阶段，其值就是ConstantValue的值</p>
+<p>3.解析过程<br>解析过程是虚拟机将常量池内的符号引用替换为直接引用的过程</p>
+<ul>
+<li><p>符号引用（Symbolic References）：<br>符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能够无歧义的定位到目标即可。例如，在Class文件中它以CONSTANT_Class_info、CONSTANT_Fieldref_info、CONSTANT_Methodref_info等类型的常量出现。符号引用与虚拟机的内存布局无关，引用的目标并不一定加载到内存中。在Java中，一个java类将会编译成一个class文件。在编译时，java类并不知道所引用的类的实际地址，因此只能使用符号引用来代替。比如org.simple.People类引用了org.simple.Language类，在编译时People类并不知道Language类的实际内存地址，因此只能使用符号org.simple.Language（假设是这个，当然实际中是由类似于CONSTANT_Class_info的常量来表示的）来表示Language类的地址。各种虚拟机实现的内存布局可能有所不同，但是它们能接受的符号引用都是一致的，因为符号引用的字面量形式明确定义在Java虚拟机规范的Class文件格式中。</p>
+</li>
+<li><p>直接引用：<br>直接引用可以是<br>（1）直接指向目标的指针（比如，指向“类型”【Class对象】、类变量、类方法的直接引用可能是指向方法区的指针）<br>（2）相对偏移量（比如，指向实例变量、实例方法的直接引用都是偏移量）<br>（3）一个能间接定位到目标的句柄<br>直接引用是和虚拟机的布局相关的，同一个符号引用在不同的虚拟机实例上翻译出来的直接引用一般不会相同。如果有了直接引用，那引用的目标必定已经被加载入内存中了。</p>
+</li>
+</ul>
+<h3 id="初始化（Initialzation）"><a href="#初始化（Initialzation）" class="headerlink" title="初始化（Initialzation）"></a>初始化（Initialzation）</h3><p>即执行类构造器”clinit”()方法的过程。类加载过程最后一步，前面的过程完全由虚拟机主导和控制（除了通过自定义加载器参与外），初始化阶段才真正开始执行类中定义的Java代码（或者说是字节码）</p>
+<h4 id="类构造器”clinit”-方法"><a href="#类构造器”clinit”-方法" class="headerlink" title="类构造器”clinit”()方法"></a>类构造器”clinit”()方法</h4><ul>
+<li>“clinit”()方法是由编译器自动收集类中所有类变量的赋值动作和静态语句块（Static｛｝块）中的的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的顺序所决定的，静态语句只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在静态语句块可以赋值，但是不能访问。</li>
+<li>“clinit”()方法对于类和接口不是必需的，如果没有static修饰的方法、代码块、变量。编译器可以不为其生成”clinit”方法</li>
+</ul>
+<h4 id="类构造器”clinit”-方法与实例构造器”init”-方法"><a href="#类构造器”clinit”-方法与实例构造器”init”-方法" class="headerlink" title="类构造器”clinit”()方法与实例构造器”init”()方法"></a>类构造器”clinit”()方法与实例构造器”init”()方法</h4><ul>
+<li>无需显式的调用父类构造器，虚拟机会保证在子类”clinit”()方法执行前，父类的”clinit”方法已经执行完。</li>
+<li>虚拟机中第一个执行”clinit”()方法的肯定是java.lang.Object，父类中定义的静态语句块先于子类的变量赋值操作</li>
+</ul>
+<h4 id="初始化的条件"><a href="#初始化的条件" class="headerlink" title="初始化的条件"></a>初始化的条件</h4><ul>
+<li>在执行下列需要引用类或接口的 Java 虚拟机指令时： new， getstatic， putstatic或 invokestatic。这些指令通过字段或方法引用来直接或间接地引用其它类。执行上面所述的 new 指令，在类或接口没有被初始化过时就初始化它。执行上面的 getstatic，putstatic 或 invokestatic 指令时，那些解析好的字段或方法中的类或接口如果还没有被初始化那就初始化它。</li>
+<li><p>在初次调用 java.lang.invoke.MethodHandle 实例时，它的执行结果为通过 Java虚拟机解析出类型是 2（REF_getStatic）、 4（REF_putStatic）或者 6（REF_invokeStatic）的方法句柄。</p>
+</li>
+<li><p>在调用 JDK 核心类库中的反射方法时，例如， Class 类或 java.lang.reflect 包。</p>
+</li>
+<li>在对于类的某个子类的初始化时。</li>
+<li>在它被选定为 Java 虚拟机启动时的初始类时</li>
+</ul>
 
       
     </div>
@@ -464,7 +454,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/jvm类的加载机制/" rel="tag"># jvm类的加载机制</a>
           
         </div>
       
@@ -477,15 +467,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/24/jvm学习笔记（字节码文件）/" rel="next" title="jvm学习笔记（字节码文件）">
+                <i class="fa fa-chevron-left"></i> jvm学习笔记（字节码文件）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/07/基本排序的总结/" rel="prev" title="三种基本排序的总结（选择，插入，希尔）">
-                三种基本排序的总结（选择，插入，希尔） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -694,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-环境搭建（Windows）"><span class="nav-number">1.</span> <span class="nav-text">1.环境搭建（Windows）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-node-js"><span class="nav-number">1.1.</span> <span class="nav-text">1.node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Git-bash"><span class="nav-number">1.2.</span> <span class="nav-text">2. Git bash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-hexo"><span class="nav-number">1.3.</span> <span class="nav-text">3.hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-GItHub准备"><span class="nav-number">2.</span> <span class="nav-text">2.GItHub准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-申请账号"><span class="nav-number">2.1.</span> <span class="nav-text">1.申请账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建一个新的repo"><span class="nav-number">2.2.</span> <span class="nav-text">2.创建一个新的repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-设置ssh"><span class="nav-number">2.3.</span> <span class="nav-text">3.设置ssh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-博客文件内容和git-repo绑定"><span class="nav-number">3.</span> <span class="nav-text">3.博客文件内容和git repo绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-本地预览和上传"><span class="nav-number">4.</span> <span class="nav-text">4.本地预览和上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-本地预览"><span class="nav-number">4.1.</span> <span class="nav-text">1. 本地预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-上传github"><span class="nav-number">4.2.</span> <span class="nav-text">2.上传github</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-网络预览"><span class="nav-number">4.3.</span> <span class="nav-text">3.网络预览</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-绑定个人域名"><span class="nav-number">5.</span> <span class="nav-text">5.绑定个人域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取博客的IP（就是git上的ip）"><span class="nav-number">5.1.</span> <span class="nav-text">1.获取博客的IP（就是git上的ip）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-域名解析设置"><span class="nav-number">5.2.</span> <span class="nav-text">2.域名解析设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-github设置"><span class="nav-number">5.3.</span> <span class="nav-text">3.github设置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">1.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般概念"><span class="nav-number">1.1.</span> <span class="nav-text">一般概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载过程"><span class="nav-number">1.2.</span> <span class="nav-text">类加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载（Loading）"><span class="nav-number">1.2.1.</span> <span class="nav-text">加载（Loading）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接（Linking）"><span class="nav-number">1.2.2.</span> <span class="nav-text">连接（Linking）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化（Initialzation）"><span class="nav-number">1.2.3.</span> <span class="nav-text">初始化（Initialzation）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类构造器”clinit”-方法"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">类构造器”clinit”()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类构造器”clinit”-方法与实例构造器”init”-方法"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">类构造器”clinit”()方法与实例构造器”init”()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化的条件"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">初始化的条件</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
