@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.junglezero.top/"/>
-  <updated>2019-03-29T00:51:52.492Z</updated>
+  <updated>2019-03-29T01:40:20.978Z</updated>
   <id>https://www.junglezero.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java多线程学习（2）</title>
+    <link href="https://www.junglezero.top/2019/03/29/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0%EF%BC%882%EF%BC%89/"/>
+    <id>https://www.junglezero.top/2019/03/29/java多线程学习（2）/</id>
+    <published>2019-03-29T01:13:00.000Z</published>
+    <updated>2019-03-29T01:40:20.978Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="java-Thread-中涉及的函数"><a href="#java-Thread-中涉及的函数" class="headerlink" title="java Thread 中涉及的函数"></a>java Thread 中涉及的函数</h1><h2 id="Daemon相关（受保护线程）"><a href="#Daemon相关（受保护线程）" class="headerlink" title="Daemon相关（受保护线程）"></a>Daemon相关（受保护线程）</h2><p>官方文档说明：</p><blockquote><p>public final void setDaemon(boolean on)</p><p>Marks this thread as either a daemon thread or a user thread. The Java Virtual Machine exits when the only threads running are all daemon threads.</p><p>This method must be invoked before the thread is started.</p></blockquote><p>文档中有两个需要注意的地方</p><ul><li>当jvm中只有保护线程在运行时，jvm退出</li><li>不能在一个线程已经启动后再把其标记为受保护线程</li></ul><h3 id="两种线程的说明"><a href="#两种线程的说明" class="headerlink" title="两种线程的说明"></a>两种线程的说明</h3><ul><li><p>用户线程: 用户线程可以简单的理解为用户定义的线程,当然包括main线程</p></li><li><p>daemon线程: daemon线程是为我们创建的用户线程提供服务的线程,比如说jvm的GC等等,这样的线程有一个非常明显的特征: 当用户线程运行结束的时候,daemon线程将会自动退出，由于daemon线程的终止条件是当前是否存在用户线程,所以我们不能指派daemon线程来进行一些业务操作,而只能服务用户线程，daemon线程创建的子线程任然是daemon线程.</p></li></ul><h3 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DaemonThread2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            Thread innerThread = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                        System.out.println(<span class="string">"Do some thing for health check."</span>);</span><br><span class="line">                        Thread.sleep(<span class="number">100_000</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            innerThread.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">            innerThread.start();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1_000</span>);</span><br><span class="line">                System.out.println(<span class="string">"T thread finish done."</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>说明： 首先创建线程对象t，其次在线程内部创建线程对象innerThread，并且在启动之前将其设置为受保护线程，可以发现，innerThread中是一个死循环，而t只是一个休眠一秒的线程</p><p>运行结果：</p><p><img src="/upload/pasted-263.png" alt="upload successful"><br>这也就说明了当用户线程(t)执行完毕后，它的子受保护线程也会停止</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;java-Thread-中涉及的函数&quot;&gt;&lt;a href=&quot;#java-Thread-中涉及的函数&quot; class=&quot;headerlink&quot; title=&quot;java Thread 中涉及的函数&quot;&gt;&lt;/a&gt;java Thread 中涉及的函数&lt;/h1&gt;&lt;h2 id=&quot;D
+      
+    
+    </summary>
+    
+      <category term="java多线程学习笔记" scheme="https://www.junglezero.top/categories/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="java多线程" scheme="https://www.junglezero.top/tags/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>java多线程学习（1）</title>
@@ -485,31 +510,6 @@
       
         &lt;hr&gt;
 &lt;h1 id=&quot;进阶的排序算法&quot;&gt;&lt;a href=&quot;#进阶的排序算法&quot; class=&quot;headerlink&quot; title=&quot;进阶的排序算法&quot;&gt;&lt;/a&gt;进阶的排序算法&lt;/h1&gt;&lt;h2 id=&quot;归并排序&quot;&gt;&lt;a href=&quot;#归并排序&quot; class=&quot;headerlink&quot;
-      
-    
-    </summary>
-    
-      <category term="从零开始的算法征程" scheme="https://www.junglezero.top/categories/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E7%AE%97%E6%B3%95%E5%BE%81%E7%A8%8B/"/>
-    
-    
-      <category term="排序算法" scheme="https://www.junglezero.top/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>三种基本排序的总结（选择，插入，希尔）</title>
-    <link href="https://www.junglezero.top/2018/02/07/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F%E7%9A%84%E6%80%BB%E7%BB%93/"/>
-    <id>https://www.junglezero.top/2018/02/07/基本排序的总结/</id>
-    <published>2018-02-07T12:32:00.000Z</published>
-    <updated>2019-03-19T10:17:26.179Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="基本排序算法的学习"><a href="#基本排序算法的学习" class="headerlink" title="基本排序算法的学习"></a>基本排序算法的学习</h1><h2 id="选择排序-selection-sort"><a href="#选择排序-selection-sort" class="headerlink" title="选择排序 (selection sort)"></a>选择排序 (selection sort)</h2><h3 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h3><p>首先找出最小的元素，放在开头，然后再在剩下的里面找出第二小的元素，放在第二位置，一直重复，直到数组有序，正是因为不停的需要“选择”出最小的元素，所以才会被叫做“选择排序”</p><h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> int n = a.length;</span><br><span class="line"> for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">     int min = i;//首先把当前位置的元素记做最小</span><br><span class="line">     for (int j = i+1; j &lt; n; j++) &#123;//在后续的数中“选择”出最小</span><br><span class="line">         if (a[j]&lt;a[min]) min = j;</span><br><span class="line">     &#125;</span><br><span class="line">     swap(a[i], a[min])//将实际最小元素换到当前位置</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="图形演示"><a href="#图形演示" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/1.gif" alt="upload successful"></p><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul><li>时间：需要比较n^2/2次（累加和）以及n次交换,需要平方级时间</li><li>与输入序列有序程度无关</li></ul><h2 id="插入排序-insertion-sort"><a href="#插入排序-insertion-sort" class="headerlink" title="插入排序(insertion sort)"></a>插入排序(insertion sort)</h2><h3 id="基本思想-1"><a href="#基本思想-1" class="headerlink" title="基本思想"></a>基本思想</h3><p>插入排序，顾名思义就是不断的向上插入置合适位置，当前位置的元素不断的和前一个比若是小了，就交换位置，直到到了前一个数小于等于当前数的时候</p><h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> int n = a.length;</span><br><span class="line"> for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">//对于j，只是要求其不断的和前一个比，若是小了就交换位置，直到到达目标位置</span><br><span class="line">     for (int j = i; j &gt; 0 &amp;&amp; a[j]&lt;a[j-1]; j--) &#123;</span><br><span class="line">         swap(a[j], a[j-1]);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h3 id="图形演示-1"><a href="#图形演示-1" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/2.gif" alt="upload successful"></p><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul><li>对于插入排序，平均需要N^2/4次比较和N^2/4次交换，最坏情况下是N^2/2次比较和N^2/2次交换，最好情况是N-1次比较和0次交换</li><li>交换次数和逆序数对一致，比较次数大于等于逆序数对数量，小于等于逆序数对数量+数组大小-1<h3 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h3>只需将内循环中将较大的元素都向右移动而不是交换两个元素，这样能使访问数组的次数减半</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int N = a.length;</span><br><span class="line">for (int i = 1; i &lt; N; i++) &#123;</span><br><span class="line">int t = a[i];</span><br><span class="line">for (int j = i; j &gt; 0 &amp;&amp; t&lt;a[j-1]; j--) &#123;</span><br><span class="line">a[j] = a[j-1]; //大的右移</span><br><span class="line">&#125;</span><br><span class="line">a[j] = t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="希尔排序（shell-sort）"><a href="#希尔排序（shell-sort）" class="headerlink" title="希尔排序（shell sort）"></a>希尔排序（shell sort）</h2><h3 id="基本思想-2"><a href="#基本思想-2" class="headerlink" title="基本思想"></a>基本思想</h3><p>由于插入排序是相邻元素进行交换的，如果遇上最坏情况，需要移动n-1次。希尔排序则是弥补这种缺陷，交换不相邻的元素以对数组的局部进行排序，并最终用插入排序将局部有序的数组进行排序<br>希尔排序的思想是使任意间隔h的元素都是有序的，h有序到1有序（插入排序）递减<br>通常用Kruth的3K+1作为递减的依据</p><h3 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">int n = a.length;</span><br><span class="line">// 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ... </span><br><span class="line">int h = 1;</span><br><span class="line">while (h &lt; n/3) h = 3*h + 1; </span><br><span class="line"></span><br><span class="line">while (h &gt;= 1) &#123;</span><br><span class="line">    // h-sort the array</span><br><span class="line">    for (int i = h; i &lt; n; i++) &#123;</span><br><span class="line">        for (int j = i; j &gt;= h &amp;&amp; a[j]&lt;a[j-h]; j -= h) &#123;</span><br><span class="line">            swap(a[j],a[j-h]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    h /= 3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="图形演示-2"><a href="#图形演示-2" class="headerlink" title="图形演示"></a>图形演示</h3><p><img src="/upload/pasted-78.png" alt="upload successful"><br><img src="/upload/3.gif" alt="upload successful"></p><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p>3x+1的希尔排序的最坏情况是O(N^(3/2))</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;基本排序算法的学习&quot;&gt;&lt;a href=&quot;#基本排序算法的学习&quot; class=&quot;headerlink&quot; title=&quot;基本排序算法的学习&quot;&gt;&lt;/a&gt;基本排序算法的学习&lt;/h1&gt;&lt;h2 id=&quot;选择排序-selection-sort&quot;&gt;&lt;a href=&quot;#选择排序-s
       
     
     </summary>
