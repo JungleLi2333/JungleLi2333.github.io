@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-263.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-265.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-267.png">
-<meta property="og:updated_time" content="2019-03-30T02:15:17.369Z">
+<meta property="og:updated_time" content="2019-03-30T04:48:24.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习（2）">
 <meta name="twitter:description" content="java Thread 中涉及的函数Daemon相关（受保护线程）官方文档说明：  public final void setDaemon(boolean on) Marks this thread as either a daemon thread or a user thread. The Java Virtual Machine exits when the only threads run">
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,032字
+                  1,670字
                 </span>
               
 
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5分钟
+                  8分钟
                 </span>
               
             </div>
@@ -455,6 +455,45 @@
 <p>问题：若当前线程调用join<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.currentThread().join();</span><br></pre></td></tr></table></figure></p>
 <p>会陷入无限等待状态</p>
 <p>用途：利用join的特性：父线程需要等待子线程结束才可执行，就可以应用到一些有明确先后顺序的线程交互中去</p>
+<h2 id="interrupt方法"><a href="#interrupt方法" class="headerlink" title="interrupt方法"></a>interrupt方法</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><blockquote>
+<p><strong>void     interrupt()</strong><br>Interrupts this thread.<br><strong>static boolean     interrupted()</strong><br>Tests whether the current thread has been interrupted.</p>
+</blockquote>
+<blockquote>
+<p><strong>public void interrupt()</strong></p>
+<p>Interrupts this thread.</p>
+</blockquote>
+<p>Unless the current thread is interrupting itself, which is always permitted, the checkAccess method of this thread is invoked, which may cause a SecurityException to be thrown.</p>
+<blockquote>
+</blockquote>
+<p>If this thread is blocked in an invocation of the wait(), wait(long), or wait(long, int) methods of the Object class, or of the join(), join(long), join(long, int), sleep(long), or sleep(long, int), methods of this class, then its interrupt status will be cleared and it will receive an InterruptedException.</p>
+<blockquote>
+</blockquote>
+<p>If this thread is blocked in an I/O operation upon an InterruptibleChannel then the channel will be closed, the thread’s interrupt status will be set, and the thread will receive a ClosedByInterruptException.</p>
+<blockquote>
+</blockquote>
+<p>If this thread is blocked in a Selector then the thread’s interrupt status will be set and it will return immediately from the selection operation, possibly with a non-zero value, just as if the selector’s wakeup method were invoked.</p>
+<blockquote>
+</blockquote>
+<p>If none of the previous conditions hold then this thread’s interrupt status will be set.</p>
+<blockquote>
+</blockquote>
+<p>Interrupting a thread that is not alive need not have any effect.</p>
+<blockquote>
+</blockquote>
+<p><strong>Throws:</strong><br>    SecurityException - if the current thread cannot modify this thread</p>
+<p>通过文档的介绍知道几点</p>
+<ul>
+<li>运行的权限问题</li>
+<li>对于运行了sleep，wait，join(让父线程进入堵塞状态)等陷入堵塞状态的方法，若调用interrupt，会把当前的“中断标记”清除，然后抛出InterruptedException.</li>
+<li>对于io堵塞的线程，调用interrupt方法会将“中断标记”设为true，并且抛出ClosedByInterruptException</li>
+<li>如果不是处于堵塞状态，调用interrupt会将“中断标记”设为true</li>
+</ul>
+<h3 id="终止某个线程"><a href="#终止某个线程" class="headerlink" title="终止某个线程"></a>终止某个线程</h3><h4 id="设置一个标志位"><a href="#设置一个标志位" class="headerlink" title="设置一个标志位"></a>设置一个标志位</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span>  <span class="title">ThreadClose</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">        <span class="comment">//设置的标志位</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> start = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="comment">//在run中循环</span></span><br><span class="line">            <span class="keyword">while</span> (start) &#123;</span><br><span class="line">                <span class="comment">//业务逻辑</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.start = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Worker worker = <span class="keyword">new</span> Worker();</span><br><span class="line">        worker.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        worker.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用interrupt"><a href="#使用interrupt" class="headerlink" title="使用interrupt"></a>使用interrupt</h4><ul>
+<li>用isInterrupt()进行判断</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadCloseGraceful2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (!isInterrupted())&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">//业务逻辑</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">//模拟线程因为wait，sleep，join而陷入休眠</span></span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            System.out.println(<span class="string">"输出结果"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Worker worker = <span class="keyword">new</span> Worker();</span><br><span class="line">        worker.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        worker.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里存在一个问题，当把sleep移出while循环后，在进行interrupt，首先会抛异常，但是while循环不会终止，因为根据官方文档说明的，遇见这种堵塞状态，“终止标记”会被消除（重置为false），因此循环不会退出</p>
 
       
     </div>
@@ -702,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-Thread-中涉及的函数"><span class="nav-number">1.</span> <span class="nav-text">java Thread 中涉及的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Daemon相关（受保护线程）"><span class="nav-number">1.1.</span> <span class="nav-text">Daemon相关（受保护线程）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种线程的说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">两种线程的说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例演示"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程ID"><span class="nav-number">1.2.</span> <span class="nav-text">线程ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">1.3.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joint-方法"><span class="nav-number">1.4.</span> <span class="nav-text">joint 方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-Thread-中涉及的函数"><span class="nav-number">1.</span> <span class="nav-text">java Thread 中涉及的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Daemon相关（受保护线程）"><span class="nav-number">1.1.</span> <span class="nav-text">Daemon相关（受保护线程）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种线程的说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">两种线程的说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例演示"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程ID"><span class="nav-number">1.2.</span> <span class="nav-text">线程ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">1.3.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joint-方法"><span class="nav-number">1.4.</span> <span class="nav-text">joint 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interrupt方法"><span class="nav-number">1.5.</span> <span class="nav-text">interrupt方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本介绍"><span class="nav-number">1.5.1.</span> <span class="nav-text">基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止某个线程"><span class="nav-number">1.5.2.</span> <span class="nav-text">终止某个线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置一个标志位"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">设置一个标志位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用interrupt"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">使用interrupt</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
