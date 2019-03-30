@@ -85,12 +85,14 @@
 <meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程学习（2）">
-<meta property="og:url" content="https://www.junglezero.top/2019/03/29/java多线程学习（2）/index.html">
+<meta property="og:url" content="https://www.junglezero.top/2019/03/29/ava多线程学习（2）/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="java Thread 中涉及的函数Daemon相关（受保护线程）官方文档说明：  public final void setDaemon(boolean on) Marks this thread as either a daemon thread or a user thread. The Java Virtual Machine exits when the only threads run">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-263.png">
-<meta property="og:updated_time" content="2019-03-29T01:40:20.978Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-265.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-267.png">
+<meta property="og:updated_time" content="2019-03-30T02:15:17.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习（2）">
 <meta name="twitter:description" content="java Thread 中涉及的函数Daemon相关（受保护线程）官方文档说明：  public final void setDaemon(boolean on) Marks this thread as either a daemon thread or a user thread. The Java Virtual Machine exits when the only threads run">
@@ -124,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/03/29/java多线程学习（2）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/03/29/ava多线程学习（2）/">
 
 
 
@@ -269,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/29/java多线程学习（2）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/29/ava多线程学习（2）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -339,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/29/java多线程学习（2）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/java多线程学习（2）/" itemprop="commentCount"></span>
+                <a href="/2019/03/29/ava多线程学习（2）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/ava多线程学习（2）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +369,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  478字
+                  1,032字
                 </span>
               
 
@@ -383,7 +385,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  5分钟
                 </span>
               
             </div>
@@ -425,6 +427,34 @@
 <p>说明： 首先创建线程对象t，其次在线程内部创建线程对象innerThread，并且在启动之前将其设置为受保护线程，可以发现，innerThread中是一个死循环，而t只是一个休眠一秒的线程</p>
 <p>运行结果：</p>
 <p><img src="/upload/pasted-263.png" alt="upload successful"><br>这也就说明了当用户线程(t)执行完毕后，它的子受保护线程也会停止</p>
+<h2 id="线程ID"><a href="#线程ID" class="headerlink" title="线程ID"></a>线程ID</h2><p>官方文档说明：</p>
+<blockquote>
+<p><strong>public long getId()</strong></p>
+<p>Returns the identifier of this Thread. The thread ID is a positive long number generated when this thread was created. The thread ID is unique and remains unchanged during its lifetime. When a thread is terminated, this thread ID may be reused.</p>
+<p><strong>Returns</strong>:<br>    this thread’s ID.</p>
+</blockquote>
+<p>几点注意：</p>
+<ul>
+<li>ID是一个正的long形</li>
+<li>ID独一无二且保持不变</li>
+</ul>
+<p>源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">long</span> <span class="title">nextThreadID</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> ++threadSeqNumber;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可见ID在实现过程也是逐步累加</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>记住一点，优先级高不一定优先，优先级低不一定落后执行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                Optional.of(Thread.currentThread().getName() + <span class="string">"-Index"</span> + i).ifPresent(System.out::println);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        t1.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line"></span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                Optional.of(Thread.currentThread().getName() + <span class="string">"-Index"</span> + i).ifPresent(System.out::println);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        t2.setPriority(Thread.NORM_PRIORITY);</span><br><span class="line"></span><br><span class="line">        Thread t3 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                Optional.of(Thread.currentThread().getName() + <span class="string">"-Index"</span> + i).ifPresent(System.out::println);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        t3.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line"></span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：</p>
+<p><img src="/upload/pasted-265.png" alt="upload successful"></p>
+<h2 id="joint-方法"><a href="#joint-方法" class="headerlink" title="joint 方法"></a>joint 方法</h2><p>官方文档说明：</p>
+<blockquote>
+<p><strong>void     join()</strong><br>Waits for this thread to die.<br><strong>void     join(long millis)</strong><br>Waits at most millis milliseconds for this thread to die.<br><strong>void     join(long millis, int nanos)</strong><br>Waits at most millis milliseconds plus nanos nanoseconds for this thread to die.</p>
+</blockquote>
+<p>理解：应当是让当前线程（父线程）等待此线程（子线程，调用join的线程）结束，当前线程才执行</p>
+<p>实例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadJoin</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            IntStream.range(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">                    .forEach(i -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">"-&gt;"</span> + i));</span><br><span class="line">        &#125;);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            IntStream.range(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">                    .forEach(i -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">"-&gt;"</span> + i));</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        t2.join();</span><br><span class="line"></span><br><span class="line">        Optional.of(<span class="string">"All of tasks finish done."</span>).ifPresent(System.out::println);</span><br><span class="line">        IntStream.range(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">                .forEach(i -&gt; System.out.println(Thread.currentThread().getName() + <span class="string">"-&gt;"</span> + i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果：</p>
+<p><img src="/upload/pasted-267.png" alt="upload successful"></p>
+<p>分析：<br>t1t2两个子线程，在start之后调用join，就使得当前线程（主线程）需要等待两个线程的结束后才能执行</p>
+<p>问题：若当前线程调用join<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.currentThread().join();</span><br></pre></td></tr></table></figure></p>
+<p>会陷入无限等待状态</p>
+<p>用途：利用join的特性：父线程需要等待子线程结束才可执行，就可以应用到一些有明确先后顺序的线程交互中去</p>
 
       
     </div>
@@ -672,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-Thread-中涉及的函数"><span class="nav-number">1.</span> <span class="nav-text">java Thread 中涉及的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Daemon相关（受保护线程）"><span class="nav-number">1.1.</span> <span class="nav-text">Daemon相关（受保护线程）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种线程的说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">两种线程的说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例演示"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例演示</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-Thread-中涉及的函数"><span class="nav-number">1.</span> <span class="nav-text">java Thread 中涉及的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Daemon相关（受保护线程）"><span class="nav-number">1.1.</span> <span class="nav-text">Daemon相关（受保护线程）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种线程的说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">两种线程的说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例演示"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程ID"><span class="nav-number">1.2.</span> <span class="nav-text">线程ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先级"><span class="nav-number">1.3.</span> <span class="nav-text">优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joint-方法"><span class="nav-number">1.4.</span> <span class="nav-text">joint 方法</span></a></li></ol></li></ol></div>
             
 
           </div>
