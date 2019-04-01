@@ -85,12 +85,12 @@
 <meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程学习（3）">
-<meta property="og:url" content="https://www.junglezero.top/2019/03/31/va多线程学习（3）/index.html">
+<meta property="og:url" content="https://www.junglezero.top/2019/03/31/a多线程学习（3）/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="java中线程间的死锁实例：服务11234567891011121314151617181920212223public class Service_1 &amp;#123;    private Service_2 service_2;    public Service_1(Service_2 service_2) &amp;#123;        this.service_2 = service_2;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-269.png">
-<meta property="og:updated_time" content="2019-03-31T13:47:17.828Z">
+<meta property="og:updated_time" content="2019-04-01T08:07:50.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习（3）">
 <meta name="twitter:description" content="java中线程间的死锁实例：服务11234567891011121314151617181920212223public class Service_1 &amp;#123;    private Service_2 service_2;    public Service_1(Service_2 service_2) &amp;#123;        this.service_2 = service_2;">
@@ -124,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/03/31/va多线程学习（3）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/03/31/a多线程学习（3）/">
 
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/31/va多线程学习（3）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/31/a多线程学习（3）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -339,8 +339,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/31/va多线程学习（3）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/31/va多线程学习（3）/" itemprop="commentCount"></span>
+                <a href="/2019/03/31/a多线程学习（3）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/31/a多线程学习（3）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  235字
+                  1,303字
                 </span>
               
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  7分钟
                 </span>
               
             </div>
@@ -409,6 +409,57 @@
 <p>测试主函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Service_2 service_2 = <span class="keyword">new</span> Service_2();</span><br><span class="line">        Service_1 service_1 = <span class="keyword">new</span> Service_1(service_2);</span><br><span class="line">        service_2.setService_1(service_1);</span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                    service_1.m1();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">                    service_2.s2();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>结果：<br><img src="/upload/pasted-269.png" alt="upload successful"></p>
 <p>分析：两个线程已经陷入了死锁（互相等待互相结束）</p>
+<h1 id="线程间的通信"><a href="#线程间的通信" class="headerlink" title="线程间的通信"></a>线程间的通信</h1><h2 id="Object-的两个方法"><a href="#Object-的两个方法" class="headerlink" title="Object 的两个方法"></a>Object 的两个方法</h2><h3 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h3><blockquote>
+<p>public final void wait()<br>                throws InterruptedException</p>
+</blockquote>
+<p>Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object. In other words, this method behaves exactly as if it simply performs the call wait(0).</p>
+<blockquote>
+</blockquote>
+<p>The current thread must own this object’s monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object’s monitor to wake up either through a call to the notify method or the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution.</p>
+<blockquote>
+</blockquote>
+<p>As in the one argument version, interrupts and spurious wakeups are possible, and this method should always be used in a loop:</p>
+<pre><code>synchronized (obj) {
+    while (&lt;condition does not hold&gt;)
+        obj.wait();
+    ... // Perform action appropriate to condition
+}
+</code></pre><blockquote>
+<p>This method should only be called by a thread that is the owner of this object’s monitor. See the notify method for a description of the ways in which a thread can become the owner of a monitor.</p>
+</blockquote>
+<p>从上面的文档可以得知<br>当线程执行wait()时，会把当前的锁释放，然后让出CPU，进入等待状态。<br>当执行notify/notifyAll方法时，会唤醒一个处于等待该 对象锁 的线程，然后继续往下执行，直到执行完退出对象锁锁住的区域（synchronized修饰的代码块）后再释放锁。<br>并且也提供了一种建议的使用方式</p>
+<h4 id="notify-notifyAll"><a href="#notify-notifyAll" class="headerlink" title="notify/notifyAll"></a>notify/notifyAll</h4><blockquote>
+<p>public final void notify()</p>
+</blockquote>
+<p>Wakes up a single thread that is waiting on this object’s monitor. If any threads are waiting on this object, one of them is chosen to be awakened. The choice is arbitrary and occurs at the discretion of the implementation. A thread waits on an object’s monitor by calling one of the wait methods.</p>
+<blockquote>
+</blockquote>
+<p>The awakened thread will not be able to proceed until the current thread relinquishes the lock on this object. The awakened thread will compete in the usual manner with any other threads that might be actively competing to synchronize on this object; for example, the awakened thread enjoys no reliable privilege or disadvantage in being the next thread to lock this object.</p>
+<blockquote>
+</blockquote>
+<p>This method should only be called by a thread that is the owner of this object’s monitor. A thread becomes the owner of the object’s monitor in one of three ways:</p>
+<blockquote>
+</blockquote>
+<pre><code>- By executing a synchronized instance method of that object.
+- By executing the body of a synchronized statement that synchronizes on the object.
+- For objects of type Class, by executing a synchronized static method of that class. 
+</code></pre><blockquote>
+</blockquote>
+<p>Only one thread at a time can own an object’s monitor.</p>
+<p>意思很明确：唤醒某个在当前锁下wait的线程，对于notify和notifyAll的区别就是，假设有多个线程正在当前的的锁下wait，notify只会唤醒其中任意一个线程，而notifyAll则会唤醒所有正在wait的线程<br>唤醒之后，会继续接着wait执行（这就是为什么外层要用while循环而不是if）</p>
+<h2 id="生产-消费实例"><a href="#生产-消费实例" class="headerlink" title="生产/消费实例"></a>生产/消费实例</h2><p>生产者消费者是典型的线程通信的例子，只要缓冲区未充满，生产者就会一直进行生产；只要缓冲区不为空，消费者就一直消费<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProduceConsumerVersion3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对产品进行编号</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//当前缓冲池产品的数量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//监视器，同步锁</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> Object LOCK = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="comment">//缓冲池的大小</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">private</span> <span class="keyword">int</span> fullsize=<span class="number">60</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">produce</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (LOCK) &#123;</span><br><span class="line">            <span class="keyword">while</span> (number==fullsize) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    LOCK.wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            i++;</span><br><span class="line">            System.out.println(<span class="string">"P-&gt;"</span> + i);</span><br><span class="line">            number++;</span><br><span class="line">            LOCK.notifyAll();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">consume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (LOCK) &#123;</span><br><span class="line">            <span class="keyword">while</span> (number==<span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    LOCK.wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"C-&gt;"</span> +( i-number+<span class="number">1</span>));</span><br><span class="line">            number--;</span><br><span class="line">            LOCK.notifyAll();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ProduceConsumerVersion3 pc = <span class="keyword">new</span> ProduceConsumerVersion3();</span><br><span class="line">        Stream.of(<span class="string">"P1"</span>, <span class="string">"P2"</span>, <span class="string">"P3"</span>).forEach(n -&gt;</span><br><span class="line">                <span class="keyword">new</span> Thread(n) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                            pc.produce();</span><br><span class="line">                            <span class="keyword">try</span> &#123;</span><br><span class="line">                                Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                                e.printStackTrace();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start()</span><br><span class="line">        );</span><br><span class="line">        Stream.of(<span class="string">"C1"</span>, <span class="string">"C2"</span>, <span class="string">"C3"</span>, <span class="string">"C4"</span>).forEach(n -&gt;</span><br><span class="line">                <span class="keyword">new</span> Thread(n) &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                            pc.consume();</span><br><span class="line">                            <span class="keyword">try</span> &#123;</span><br><span class="line">                                Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                                e.printStackTrace();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;.start()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="sleep和wait的区别"><a href="#sleep和wait的区别" class="headerlink" title="sleep和wait的区别"></a>sleep和wait的区别</h2><ul>
+<li>sleep是Thread的方法，wait是Object的方法</li>
+<li><p>sleep不会放锁，wait会放锁<br>解释：在一个synchronized方法块中，调用sleep的话，一个进程进入该方法的sleep这部分，其他线程是进不来的，而在锁中调用wait的话，其他进程是可以进来的</p>
+</li>
+<li><p>sleep不需要依附于锁，但是wait需要</p>
+</li>
+</ul>
+<p>举例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      m2();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">              System.out.println(<span class="string">"The Thread "</span> + Thread.currentThread().getName() + <span class="string">" enter."</span>);</span><br><span class="line">              LOCK.wait();</span><br><span class="line">          &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">              e.printStackTrace();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></p>
+<p>会抛异常：java.lang.IllegalMonitorStateException</p>
+<ul>
+<li>sleep不需要唤醒操作，但是wait需要</li>
+</ul>
 
       
     </div>
@@ -656,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java中线程间的死锁"><span class="nav-number">1.</span> <span class="nav-text">java中线程间的死锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java中线程间的死锁"><span class="nav-number">1.</span> <span class="nav-text">java中线程间的死锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程间的通信"><span class="nav-number">2.</span> <span class="nav-text">线程间的通信</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-的两个方法"><span class="nav-number">2.1.</span> <span class="nav-text">Object 的两个方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wait"><span class="nav-number">2.1.1.</span> <span class="nav-text">wait()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">notify/notifyAll</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生产-消费实例"><span class="nav-number">2.2.</span> <span class="nav-text">生产/消费实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep和wait的区别"><span class="nav-number">2.3.</span> <span class="nav-text">sleep和wait的区别</span></a></li></ol></li></ol></div>
             
 
           </div>
