@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="线程组（Thread Group） public class ThreadGroupextends Objectimplements Thread.UncaughtExceptionHandler  A thread group represents a set of threads. In addition, a thread group can also include other threa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T11:29:50.605Z">
+<meta property="og:updated_time" content="2019-04-08T13:12:02.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习（4）">
 <meta name="twitter:description" content="线程组（Thread Group） public class ThreadGroupextends Objectimplements Thread.UncaughtExceptionHandler  A thread group represents a set of threads. In addition, a thread group can also include other threa">
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  100字
+                  235字
                 </span>
               
 
@@ -409,7 +409,14 @@
 <blockquote>
 </blockquote>
 <p>A thread is allowed to access information about its own thread group, but not to access information about its thread group’s parent thread group or any other thread groups.</p>
-<p>从上面的文档可以得知：<br>线程组也是一个树形</p>
+<p>从上面的文档可以得知：<br>线程组也是一个树形<br>ThreadGroup中，也有一系列的生成和销毁方法</p>
+<h1 id="线程池-（ThreadPool）"><a href="#线程池-（ThreadPool）" class="headerlink" title="线程池 （ThreadPool）"></a>线程池 （ThreadPool）</h1><h2 id="自己实现"><a href="#自己实现" class="headerlink" title="自己实现"></a>自己实现</h2><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>任务队列：把等待执行的任务储存起来</li>
+<li>拒绝策略：任务队列应该是有大小的，当有过多的任务申请提交时，应当有拒绝策略，方法有：抛出异常，直接丢弃，进入阻塞状态，放入临时队列</li>
+<li>初始化值：初始时线程池大小（最小）</li>
+<li>运行时：活跃任务多的时候的大小</li>
+<li>最大值：最多任务数</li>
+</ul>
 
       
     </div>
@@ -571,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程组（Thread-Group）"><span class="nav-number">1.</span> <span class="nav-text">线程组（Thread Group）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程组（Thread-Group）"><span class="nav-number">1.</span> <span class="nav-text">线程组（Thread Group）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池-（ThreadPool）"><span class="nav-number">2.</span> <span class="nav-text">线程池 （ThreadPool）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现"><span class="nav-number">2.1.</span> <span class="nav-text">自己实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">2.1.1.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
