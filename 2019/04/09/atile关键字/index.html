@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
 
@@ -87,12 +85,12 @@
 <meta name="keywords" content="java多线程,关键字系列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="volatile关键字">
-<meta property="og:url" content="https://www.junglezero.top/2019/04/09/latile关键字/index.html">
+<meta property="og:url" content="https://www.junglezero.top/2019/04/09/atile关键字/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="准备概念内存模型当一个变量被两个线程同时处理时，由于两个线程处在不同的CPU中（多核CPU），因此对于该变量存在缓存一致性的问题在硬件层面上，有两种解决方式：总线加锁，通过缓存一致性协议  并发编程的三个概念 原子性：即一个操作或者多个操作 要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。Java内存模型只保证了基本读取和赋值是原子性操作，如果要实现更大范围操作的原子性，可以通过sy">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-270.png">
-<meta property="og:updated_time" content="2019-04-10T04:29:23.594Z">
+<meta property="og:updated_time" content="2019-04-10T07:22:10.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="volatile关键字">
 <meta name="twitter:description" content="准备概念内存模型当一个变量被两个线程同时处理时，由于两个线程处在不同的CPU中（多核CPU），因此对于该变量存在缓存一致性的问题在硬件层面上，有两种解决方式：总线加锁，通过缓存一致性协议  并发编程的三个概念 原子性：即一个操作或者多个操作 要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。Java内存模型只保证了基本读取和赋值是原子性操作，如果要实现更大范围操作的原子性，可以通过sy">
@@ -126,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/04/09/latile关键字/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/04/09/atile关键字/">
 
 
 
@@ -271,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/09/latile关键字/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/09/atile关键字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -341,8 +339,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/09/latile关键字/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/09/latile关键字/" itemprop="commentCount"></span>
+                <a href="/2019/04/09/atile关键字/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/09/atile关键字/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -369,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,985字
+                  1,996字
                 </span>
               
 
@@ -439,6 +437,7 @@
 <p>1.状态标记量<br><figure class="highlight plain"><figcaption><span>boolean flag </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">while(!flag)&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public void setFlag() &#123;</span><br><span class="line">    flag = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">boolean</span> inited = <span class="keyword">false</span>;</span><br><span class="line"><span class="comment">//线程1:</span></span><br><span class="line">context = loadContext();  </span><br><span class="line">inited = <span class="keyword">true</span>;            </span><br><span class="line"> </span><br><span class="line"><span class="comment">//线程2:</span></span><br><span class="line"><span class="keyword">while</span>(!inited )&#123;</span><br><span class="line">sleep()</span><br><span class="line">&#125;</span><br><span class="line">doSomethingwithconfig(context);</span><br></pre></td></tr></table></figure>
 <p>2.单例模式中的doublecheck<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>参考自 <a href="https://www.cnblogs.com/dolphin0520/p/3920373.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3920373.html</a></p>
 
       
     </div>
@@ -480,6 +479,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/11/oncurrentHashMap/" rel="prev" title="HashMap和ConcurrentHashMap">
+                HashMap和ConcurrentHashMap <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -598,7 +601,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +612,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -620,7 +623,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
