@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="查找算法,">
+  <meta name="keywords" content="java多线程,">
 
 
 
@@ -81,36 +81,18 @@
 
 
 
-<meta name="description" content="平衡查找树（红黑树，2-3树，Balance Search Tree）2-3查找树基本定义一棵标准的二叉查找树的一个结点是2-结点（有两个孩子和一个键值对），现在引入3-结点，每个结点包含两个键值对和三个孩子一棵完美平衡的2-3树所有空链接到根的距离是一样的 查找和一般的二叉查找树区别不大只不过是处理3-结点时有一个分叉的问题，左中右 插入分情况讨论对于2-结点，若插入的结点的父节点是2-结点，则">
-<meta name="keywords" content="查找算法">
+<meta name="description" content="基本概念在多线程的状况下，对于某些共享资源，我们需要在使用的时候确保安全性，因此这种模式下，同一时刻只能有一个线程去访问共享资源，就像独木桥一次通过一个人一样 一个例子1234567891011121314151617181920212223242526272829303132/** * SharedResource 指代多线程下的共享资源 */public class Gate &amp;#123;">
+<meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="查找（红黑树）">
-<meta property="og:url" content="https://www.junglezero.top/2018/02/15/（红黑树）/index.html">
+<meta property="og:title" content="单线程执行设计模式（Single Thread Execution）">
+<meta property="og:url" content="https://www.junglezero.top/2019/04/15/单线程执行设计模式/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="平衡查找树（红黑树，2-3树，Balance Search Tree）2-3查找树基本定义一棵标准的二叉查找树的一个结点是2-结点（有两个孩子和一个键值对），现在引入3-结点，每个结点包含两个键值对和三个孩子一棵完美平衡的2-3树所有空链接到根的距离是一样的 查找和一般的二叉查找树区别不大只不过是处理3-结点时有一个分叉的问题，左中右 插入分情况讨论对于2-结点，若插入的结点的父节点是2-结点，则">
+<meta property="og:description" content="基本概念在多线程的状况下，对于某些共享资源，我们需要在使用的时候确保安全性，因此这种模式下，同一时刻只能有一个线程去访问共享资源，就像独木桥一次通过一个人一样 一个例子1234567891011121314151617181920212223242526272829303132/** * SharedResource 指代多线程下的共享资源 */public class Gate &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-168.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-169.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-170.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-171.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-172.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-173.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-178.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-179.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-184.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-185.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-183.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-186.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-187.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-188.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-189.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-190.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-191.png">
-<meta property="og:updated_time" content="2019-03-21T03:25:41.617Z">
+<meta property="og:updated_time" content="2019-04-15T12:53:58.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="查找（红黑树）">
-<meta name="twitter:description" content="平衡查找树（红黑树，2-3树，Balance Search Tree）2-3查找树基本定义一棵标准的二叉查找树的一个结点是2-结点（有两个孩子和一个键值对），现在引入3-结点，每个结点包含两个键值对和三个孩子一棵完美平衡的2-3树所有空链接到根的距离是一样的 查找和一般的二叉查找树区别不大只不过是处理3-结点时有一个分叉的问题，左中右 插入分情况讨论对于2-结点，若插入的结点的父节点是2-结点，则">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-168.png">
+<meta name="twitter:title" content="单线程执行设计模式（Single Thread Execution）">
+<meta name="twitter:description" content="基本概念在多线程的状况下，对于某些共享资源，我们需要在使用的时候确保安全性，因此这种模式下，同一时刻只能有一个线程去访问共享资源，就像独木桥一次通过一个人一样 一个例子1234567891011121314151617181920212223242526272829303132/** * SharedResource 指代多线程下的共享资源 */public class Gate &amp;#123;">
 
 
 
@@ -140,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2018/02/15/（红黑树）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/04/15/单线程执行设计模式/">
 
 
 
@@ -148,7 +130,7 @@
 
 
 
-  <title>查找（红黑树） | 淋中之虹</title>
+  <title>单线程执行设计模式（Single Thread Execution） | 淋中之虹</title>
   
 
 
@@ -285,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2018/02/15/（红黑树）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/15/单线程执行设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -302,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">查找（红黑树）</h1>
+          <h1 class="post-title" itemprop="name headline">单线程执行设计模式（Single Thread Execution）</h1>
         
 
         <div class="post-meta">
@@ -314,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-15T09:53:00+08:00">
-                2018-02-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-15T17:00:00+08:00">
+                2019-04-15
               </time>
             
 
@@ -337,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/从零开始的算法征程/" itemprop="url" rel="index">
-                    <span itemprop="name">从零开始的算法征程</span>
+                  <a href="/categories/java多线程学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java多线程学习</span>
                   </a>
                 </span>
 
@@ -355,8 +337,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/15/（红黑树）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/15/（红黑树）/" itemprop="commentCount"></span>
+                <a href="/2019/04/15/单线程执行设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/15/单线程执行设计模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  936字
+                  597字
                 </span>
               
 
@@ -420,37 +402,12 @@
       
 
       
-        <h1 id="平衡查找树（红黑树，2-3树，Balance-Search-Tree）"><a href="#平衡查找树（红黑树，2-3树，Balance-Search-Tree）" class="headerlink" title="平衡查找树（红黑树，2-3树，Balance Search Tree）"></a>平衡查找树（红黑树，2-3树，Balance Search Tree）</h1><h2 id="2-3查找树"><a href="#2-3查找树" class="headerlink" title="2-3查找树"></a>2-3查找树</h2><h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><p>一棵标准的二叉查找树的一个结点是2-结点（有两个孩子和一个键值对），现在引入3-结点，每个结点包含两个键值对和三个孩子<br>一棵完美平衡的2-3树所有空链接到根的距离是一样的<br><img src="/upload/pasted-168.png" alt="upload successful"></p>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>和一般的二叉查找树区别不大<br>只不过是处理3-结点时有一个分叉的问题，左中右<br><img src="/upload/pasted-169.png" alt="upload successful"></p>
-<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>分情况讨论<br>对于2-结点，若插入的结点的父节点是2-结点，则直接将此2-结点变为3-结点</p>
-<p><img src="/upload/pasted-170.png" alt="upload successful"></p>
-<p>对于3-结点<br>首先将新键加入到3-结点中，生成一个临时的4-结点，然后把中间的键上移到父节点，使父节点成为3-结点，并且把剩下的两个键分开，成为两个2-结点，如果父节点原来就是3-结点，则重复此过程</p>
-<p><img src="/upload/pasted-171.png" alt="upload successful"><img src="/upload/pasted-172.png" alt="upload successful"></p>
-<h3 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h3><p><img src="/upload/pasted-173.png" alt="upload successful"><br>之所以要从二叉搜索树衍生出这种2-3结构的树，是因为它能保证较好的平衡性和有序性<br>对于插入算法，分解一个4-结点的变换是局部的：除了相关的链接和结点之外不必修改或检查树的其他部分，每次变换，变更的链接数量不会超过一个很小的常数。而这种局部的操作并不会影响全局的有序性和平衡性，从空链接到根结点的距离是不会改变的，即使是根结点分成三个2-结点时，所有距离+1，因此，即使是在最坏情况，它也能保证lgn</p>
-<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="一般概念"><a href="#一般概念" class="headerlink" title="一般概念"></a>一般概念</h3><p>红黑树实际上是表达2-3查找树的一种二叉查找树<br>主要问题是替换3-结点,因此引入红链和黑链，红链将两个2-结点连起来构成一个3-结点，黑链则是2-3树种的普通结点链接</p>
-<p><img src="/upload/pasted-178.png" alt="upload successful"><br>在红黑树中，应当满足  </p>
-<ul>
-<li>红链接皆为左链接（作为左孩子出现）</li>
-<li>没有任何一个结点和两个红链接相连</li>
-<li>该树是完美黑色平衡的。即任何结点到根结点的路径上黑链接的数量是相等的</li>
-</ul>
-<p>一棵红黑树是和一棵2-3树一一对应的</p>
-<p><img src="/upload/pasted-179.png" alt="upload successful"></p>
-<h3 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h3><p>由于是从一般的搜索二叉树演变过来的，所以查找操作是一摸一样的</p>
-<h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><p>对于2-结点和3-结点的转换，需要涉及到红链接左转和红链接右转，变色的操作，见代码部分<br>对于2-3树，在一个2-结点插入后，会生成有个3-结点，若是向左插入，则生成一个3-结点，若是向右插入，则需要进行旋转</p>
-<ul>
-<li>首先进行查找二叉树的标准插入</li>
-<li>如果新链接指向右，则进行左旋转</li>
-</ul>
-<p><img src="/upload/pasted-184.png" alt="upload successful"></p>
-<p><img src="/upload/pasted-185.png" alt="upload successful"></p>
-<p><img src="/upload/pasted-183.png" alt="upload successful"><br>插入两个结点：需要变色操作</p>
-<p><img src="/upload/pasted-186.png" alt="upload successful"></p>
-<p><img src="/upload/pasted-187.png" alt="upload successful"></p>
-<p><img src="/upload/pasted-188.png" alt="upload successful"><br>对于一个3-结点，插入过程<br>-1 先进行平衡二叉树的标准插入<br>-2 通过旋转，使4-结点变成3-结点（如果需要）<br>-3 通过变色使红链接向上一级<br>-4 通过旋转，使红链接指向左（如果需要）</p>
-<p><img src="/upload/pasted-189.png" alt="upload successful"><br>实现思路：</p>
-<p><img src="/upload/pasted-190.png" alt="upload successful"><br>右孩子黑，左孩子红：左旋操作<br>左孩子，左孩子的左孩子红：右旋操作<br>两个孩子都红：变色操作</p>
-<h3 id="效率对比"><a href="#效率对比" class="headerlink" title="效率对比"></a>效率对比</h3><p>由于红黑树能保持平衡，即使在最坏的情况下树高为2lgn，因此不论查找还是插入都有较高的效率<br><img src="/upload/pasted-191.png" alt="upload successful"></p>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在多线程的状况下，对于某些共享资源，我们需要在使用的时候确保安全性，因此这种模式下，同一时刻只能有一个线程去访问共享资源，就像独木桥一次通过一个人一样</p>
+<h1 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * SharedResource 指代多线程下的共享资源</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> String name = <span class="string">"Nobody"</span>;</span><br><span class="line">    <span class="keyword">private</span> String address = <span class="string">"Nowhere"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 临界值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> address</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">pass</span><span class="params">(String name, String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.counter++;</span><br><span class="line">        <span class="comment">/*race*/</span></span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.address = address;</span><br><span class="line">        verify();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置验证规则：当name和address的首字母不相同时，输出打断</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">verify</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.name.charAt(<span class="number">0</span>) != <span class="keyword">this</span>.address.charAt(<span class="number">0</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"*******BROKEN********"</span> + toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"No."</span> + counter + <span class="string">":"</span> + name + <span class="string">","</span> + address;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指代操作临界资源的线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String myName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String myAddress;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Gate gate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String myName, String myAddress, Gate gate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.myName = myName;</span><br><span class="line">        <span class="keyword">this</span>.myAddress = myAddress;</span><br><span class="line">        <span class="keyword">this</span>.gate = gate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(myName + <span class="string">" BEGIN"</span>);</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.gate.pass(myName, myAddress);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Gate gate = <span class="keyword">new</span> Gate();</span><br><span class="line">        User bj = <span class="keyword">new</span> User(<span class="string">"Baobao"</span>, <span class="string">"Beijing"</span>, gate);</span><br><span class="line">        User sh = <span class="keyword">new</span> User(<span class="string">"ShangLao"</span>, <span class="string">"ShangHai"</span>, gate);</span><br><span class="line">        User gz = <span class="keyword">new</span> User(<span class="string">"GuangLao"</span>, <span class="string">"GuangZhou"</span>, gate);</span><br><span class="line"></span><br><span class="line">        bj.start();</span><br><span class="line">        sh.start();</span><br><span class="line">        gz.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*******BROKEN********No.111356925:GuangLao,GuangZhou</span><br><span class="line">*******BROKEN********No.111357328:Baobao,Beijing</span><br><span class="line">*******BROKEN********No.111357709:GuangLao,GuangZhou</span><br><span class="line">*******BROKEN********No.111362695:Baobao,Beijing</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，其中有的输出结果name和address不同，尽管初始化线程传入的参数时是相同的。有的是满足验证规则但还是输出打断<br>解释：比如A线程传入参数Beyco和Beijing，当向pass方法传入Beyco时，A线程被B线程打断，B线程传入Shenzhen，此时verify自然就broke；另一种情况是，继前面一种情况之后，此时参数已经是Beyco和Shenzhen，在准备toString时，B线程又将address传入实参Beijing，所以就出现了首字母相同还是broke的情况。<br>解决：对于共享资源，在多线程状态下使用，最好的办法自然是上锁，将pass方法和toString方法加上同步锁即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span>   <span class="keyword">void</span> <span class="title">pass</span><span class="params">(String name, String address)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.counter++;</span><br><span class="line">    <span class="comment">/*race*/</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.address = address;</span><br><span class="line">    verify();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span>   String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"No."</span> + counter + <span class="string">":"</span> + name + <span class="string">","</span> + address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -468,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/查找算法/" rel="tag"># 查找算法</a>
+            <a href="/tags/java多线程/" rel="tag"># java多线程</a>
           
         </div>
       
@@ -481,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/14/（2）/" rel="next" title="查找（二叉查找树）">
-                <i class="fa fa-chevron-left"></i> 查找（二叉查找树）
+              <a href="/2019/04/15/者模式和线程监控/" rel="next" title="观察者模式和线程监控">
+                <i class="fa fa-chevron-left"></i> 观察者模式和线程监控
               </a>
             
           </div>
@@ -490,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/16/（B树）/" rel="prev" title="查找（B树）">
-                查找（B树） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -702,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#平衡查找树（红黑树，2-3树，Balance-Search-Tree）"><span class="nav-number">1.</span> <span class="nav-text">平衡查找树（红黑树，2-3树，Balance Search Tree）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3查找树"><span class="nav-number">1.1.</span> <span class="nav-text">2-3查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">1.1.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">1.1.3.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情况分析"><span class="nav-number">1.1.4.</span> <span class="nav-text">情况分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树"><span class="nav-number">1.2.</span> <span class="nav-text">红黑树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般概念"><span class="nav-number">1.2.1.</span> <span class="nav-text">一般概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找操作"><span class="nav-number">1.2.2.</span> <span class="nav-text">查找操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入操作"><span class="nav-number">1.2.3.</span> <span class="nav-text">插入操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效率对比"><span class="nav-number">1.2.4.</span> <span class="nav-text">效率对比</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个例子"><span class="nav-number">2.</span> <span class="nav-text">一个例子</span></a></li></ol></div>
             
 
           </div>
