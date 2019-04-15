@@ -81,23 +81,23 @@
 
 
 
-<meta name="description" content="Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。此外，HashMap中的映射不是有序的。 HashMap 的实例有两个参">
+<meta name="description" content="http://www.importnew.com/28263.html Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。">
 <meta name="keywords" content="java相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap和ConcurrentHashMap">
 <meta property="og:url" content="https://www.junglezero.top/2019/04/11/oncurrentHashMap/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。此外，HashMap中的映射不是有序的。 HashMap 的实例有两个参">
+<meta property="og:description" content="http://www.importnew.com/28263.html Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-271.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-273.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-276.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-274.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-275.png">
-<meta property="og:updated_time" content="2019-04-13T01:33:21.498Z">
+<meta property="og:updated_time" content="2019-04-13T06:04:56.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap和ConcurrentHashMap">
-<meta name="twitter:description" content="Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。此外，HashMap中的映射不是有序的。 HashMap 的实例有两个参">
+<meta name="twitter:description" content="http://www.importnew.com/28263.html Hashmap1.7简介HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。HashMap 的实现不是同步的，这意味着它不是线程安全的。它的key、value都可以为null。">
 <meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-271.png">
 
 
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10,892字
+                  10,898字
                 </span>
               
 
@@ -408,7 +408,8 @@
       
 
       
-        <h1 id="Hashmap"><a href="#Hashmap" class="headerlink" title="Hashmap"></a>Hashmap</h1><h2 id="1-7"><a href="#1-7" class="headerlink" title="1.7"></a>1.7</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。<br>HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。<br>HashMap 的实现不是同步的，这意味着它<strong>不是线程安全</strong>的。它的key、value都可以为null。此外，HashMap中的映射不是有序的。</p>
+        <p><a href="http://www.importnew.com/28263.html" target="_blank" rel="noopener">http://www.importnew.com/28263.html</a></p>
+<h1 id="Hashmap"><a href="#Hashmap" class="headerlink" title="Hashmap"></a>Hashmap</h1><h2 id="1-7"><a href="#1-7" class="headerlink" title="1.7"></a>1.7</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。<br>HashMap 继承于AbstractMap，实现了Map、Cloneable、java.io.Serializable接口。<br>HashMap 的实现不是同步的，这意味着它<strong>不是线程安全</strong>的。它的key、value都可以为null。此外，HashMap中的映射不是有序的。</p>
 <p>HashMap 的实例有两个参数影响其性能：“初始容量” 和 “加载因子”。容量 是哈希表中桶的数量，初始容量 只是哈希表在创建时的容量。加载因子 是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 rehash 操作（即重建内部数据结构），从而哈希表将具有大约两倍的桶数。<br>通常，默认加载因子是 0.75, 这是在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 rehash 操作次数。如果初始容量大于最大条目数除以加载因子，则不会发生 rehash 操作。</p>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>在详细介绍HashMap的代码之前，我们需要了解：HashMap就是一个散列表，它是通过“拉链法”解决哈希冲突的。<br>见<a href="散列表">https://www.junglezero.top/2018/02/17/%EF%BC%88%E6%95%A3%E5%88%97%E8%A1%A8%EF%BC%89/</a><br>还需要再补充说明的一点是影响HashMap性能的有两个参数：初始容量(initialCapacity) 和加载因子(loadFactor)。容量 是哈希表中桶的数量，初始容量只是哈希表在创建时的容量。加载因子 是哈希表在其容量自动增加之前可以达到多满的一种尺度。当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 rehash 操作（即重建内部数据结构），从而哈希表将具有大约两倍的桶数。</p>
 <p><img src="/upload/pasted-271.png" alt="upload successful"></p>
@@ -507,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/15/察者模式和线程监控/" rel="prev" title="观察者模式和线程监控">
+                观察者模式和线程监控 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -625,7 +630,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
