@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="jvm基础,">
+  <meta name="keywords" content="java基础,java常用类,">
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="入门概念字节码（ByteCode）java的跨平台特性（Write Once，Run Anywhere）的根本原因就是字节码，字节码是java源代码编译以后的结果，对于不同的平台，jvm的内部实现机制可能有所不同，但是编译出的字节码却是相同的大部分情况下，字节码都是储存在本地的.class文件，每一个字节码对应着全局唯一一个类或者接口的定义信息扩大来说，任何编程语言只要编译结果满足并包含java虚">
-<meta name="keywords" content="jvm基础">
+<meta name="description" content="在有了不可变对象和不可变类的概念以后，就可以分析一下java中String，StringBuilder，StringBuffer三个概念网上有一篇很简单明了的教程 速度运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &amp;gt; StringBuffer &amp;gt; String而原因就是在于String是不可变的对象 1234String str=&quot;abc&quot;;Syste">
+<meta name="keywords" content="java基础,java常用类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jvm学习笔记（入门）">
-<meta property="og:url" content="https://www.junglezero.top/2019/03/20/jvm学习总结/index.html">
+<meta property="og:title" content="java的String三剑客（String，StringBuilder，StringBuffer）">
+<meta property="og:url" content="https://www.junglezero.top/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="入门概念字节码（ByteCode）java的跨平台特性（Write Once，Run Anywhere）的根本原因就是字节码，字节码是java源代码编译以后的结果，对于不同的平台，jvm的内部实现机制可能有所不同，但是编译出的字节码却是相同的大部分情况下，字节码都是储存在本地的.class文件，每一个字节码对应着全局唯一一个类或者接口的定义信息扩大来说，任何编程语言只要编译结果满足并包含java虚">
+<meta property="og:description" content="在有了不可变对象和不可变类的概念以后，就可以分析一下java中String，StringBuilder，StringBuffer三个概念网上有一篇很简单明了的教程 速度运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &amp;gt; StringBuffer &amp;gt; String而原因就是在于String是不可变的对象 1234String str=&quot;abc&quot;;Syste">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-208.png">
-<meta property="og:updated_time" content="2019-03-20T14:24:31.461Z">
+<meta property="og:updated_time" content="2019-04-16T08:47:27.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jvm学习笔记（入门）">
-<meta name="twitter:description" content="入门概念字节码（ByteCode）java的跨平台特性（Write Once，Run Anywhere）的根本原因就是字节码，字节码是java源代码编译以后的结果，对于不同的平台，jvm的内部实现机制可能有所不同，但是编译出的字节码却是相同的大部分情况下，字节码都是储存在本地的.class文件，每一个字节码对应着全局唯一一个类或者接口的定义信息扩大来说，任何编程语言只要编译结果满足并包含java虚">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-208.png">
+<meta name="twitter:title" content="java的String三剑客（String，StringBuilder，StringBuffer）">
+<meta name="twitter:description" content="在有了不可变对象和不可变类的概念以后，就可以分析一下java中String，StringBuilder，StringBuffer三个概念网上有一篇很简单明了的教程 速度运行速度，或者说是执行速度，在这方面运行速度快慢为：StringBuilder &amp;gt; StringBuffer &amp;gt; String而原因就是在于String是不可变的对象 1234String str=&quot;abc&quot;;Syste">
 
 
 
@@ -124,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/03/20/jvm学习总结/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/">
 
 
 
@@ -132,7 +130,7 @@
 
 
 
-  <title>jvm学习笔记（入门） | 淋中之虹</title>
+  <title>java的String三剑客（String，StringBuilder，StringBuffer） | 淋中之虹</title>
   
 
 
@@ -269,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/20/jvm学习总结/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -286,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jvm学习笔记（入门）</h1>
+          <h1 class="post-title" itemprop="name headline">java的String三剑客（String，StringBuilder，StringBuffer）</h1>
         
 
         <div class="post-meta">
@@ -298,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T09:04:00+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T15:53:00+08:00">
+                2019-04-16
               </time>
             
 
@@ -321,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jvm学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">jvm学习笔记</span>
+                  <a href="/categories/java基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础知识</span>
                   </a>
                 </span>
 
@@ -339,8 +337,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/20/jvm学习总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/jvm学习总结/" itemprop="commentCount"></span>
+                <a href="/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  389字
+                  670字
                 </span>
               
 
@@ -383,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  3分钟
                 </span>
               
             </div>
@@ -404,17 +402,16 @@
       
 
       
-        <h1 id="入门概念"><a href="#入门概念" class="headerlink" title="入门概念"></a>入门概念</h1><h2 id="字节码（ByteCode）"><a href="#字节码（ByteCode）" class="headerlink" title="字节码（ByteCode）"></a>字节码（ByteCode）</h2><p>java的跨平台特性（Write Once，Run Anywhere）的根本原因就是字节码，字节码是java源代码编译以后的结果，对于不同的平台，jvm的内部实现机制可能有所不同，但是编译出的字节码却是相同的<br>大部分情况下，字节码都是储存在本地的.class文件，每一个字节码对应着全局唯一一个类或者接口的定义信息<br>扩大来说，任何编程语言只要编译结果满足并包含java虚拟机的内部指令，符号表以及其他辅助信息，这就是个有效的字节码文件，就能够被虚拟机所识别并装载运行</p>
-<h2 id="Java-API"><a href="#Java-API" class="headerlink" title="Java API"></a>Java API</h2><p>即java应用编程接口，是预先定义好的接口，目的是让人用来进行开发，而又无需访问或者理解其内部源码（虽然为了我们自己的进步还是要去看源码）</p>
-<h2 id="java虚拟机（JVM，java-Virtual-Machine）"><a href="#java虚拟机（JVM，java-Virtual-Machine）" class="headerlink" title="java虚拟机（JVM，java Virtual Machine）"></a>java虚拟机（JVM，java Virtual Machine）</h2><p>这是java技术的核心所在，因为所有的java程序都运行在java虚拟机内部，之所以说是虚拟机，是因为它是一组规范所定义的抽象计算机，jvm的主要任务是将字节码装载到内部，编译为对应平台的机器指令</p>
-<p><img src="/upload/pasted-208.png" alt="upload successful"></p>
-<h2 id="Java相对于其他几种语言的优势"><a href="#Java相对于其他几种语言的优势" class="headerlink" title="Java相对于其他几种语言的优势"></a>Java相对于其他几种语言的优势</h2><ul>
-<li>1 体系结构独立</li>
-<li>2 安全性优越</li>
-<li>3 多线程</li>
-<li>4 分布式</li>
-<li>5 丰富的第三方开源组件</li>
-</ul>
+        <p>在有了不可变对象和不可变类的概念以后，就可以分析一下java中String，StringBuilder，StringBuffer三个概念<br>网上有一篇很简单明了的<a href="https://www.cnblogs.com/su-feng/p/6659064.html" target="_blank" rel="noopener">教程</a></p>
+<h1 id="速度"><a href="#速度" class="headerlink" title="速度"></a>速度</h1><p>运行速度，或者说是执行速度，在这方面运行速度快慢为：<strong>StringBuilder &gt; StringBuffer &gt; String</strong><br>而原因就是在于String是不可变的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str=<span class="string">"abc"</span>;</span><br><span class="line">System.out.println(str);</span><br><span class="line">str=str.replace(<span class="string">"c"</span>,<span class="string">"mn"</span>);</span><br><span class="line">System.out.println(str);</span><br></pre></td></tr></table></figure>
+<p>有人会说，这样str不是变了吗？<br>要想解释这个问题，首先我们要知道String类属于不可变类，而它的对象属于不可变对象<br>然后看一部分replace方法的源码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Replaces each substring of this string that matches the literal target</span></span><br><span class="line"><span class="comment">     * sequence with the specified literal replacement sequence. The</span></span><br><span class="line"><span class="comment">     * replacement proceeds from the beginning of the string to the end, for</span></span><br><span class="line"><span class="comment">     * example, replacing "aa" with "b" in the string "aaa" will result in</span></span><br><span class="line"><span class="comment">     * "ba" rather than "ab".</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  target The sequence of char values to be replaced</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span>  replacement The replacement sequence of char values</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  The resulting string</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@since</span> 1.5</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">replace</span><span class="params">(CharSequence target, CharSequence replacement)</span> </span>&#123;</span><br><span class="line">        String tgtStr = target.toString();</span><br><span class="line">        String replStr = replacement.toString();</span><br><span class="line">        <span class="keyword">int</span> j = indexOf(tgtStr);</span><br><span class="line">        <span class="keyword">if</span> (j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tgtLen = tgtStr.length();</span><br><span class="line">        <span class="keyword">int</span> tgtLen1 = Math.max(tgtLen, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> thisLen = length();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> newLenHint = thisLen - tgtLen + replStr.length();</span><br><span class="line">        <span class="keyword">if</span> (newLenHint &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder(newLenHint);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            sb.append(<span class="keyword">this</span>, i, j).append(replStr);</span><br><span class="line">            i = j + tgtLen;</span><br><span class="line">        &#125; <span class="keyword">while</span> (j &lt; thisLen &amp;&amp; (j = indexOf(tgtStr, j + tgtLen1)) &gt; <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.append(<span class="keyword">this</span>, i, thisLen).toString();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以发现，底层应用的实际是StringBuilder，而且问题的关键是，由于是不可变对象，所以一切所谓的“改变”，都会创建新的对象<br>而对于StringBuilder和StringBuffer，他们都是可变对象，因而发生改变时不需要额外创建新的对象，所以速度更快</p>
+<h1 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h1><p>String自不必说，因为不可变对象一定是线程安全的<br>对于StringBuffer，如果观看源码的话，会发现设计改变的操作都上了锁（synchronized 关键字）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, Object obj)</span> </span>&#123;</span><br><span class="line">    toStringCache = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.insert(offset, String.valueOf(obj));</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> StringIndexOutOfBoundsException &#123;<span class="doctag">@inheritDoc</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">insert</span><span class="params">(<span class="keyword">int</span> offset, String str)</span> </span>&#123;</span><br><span class="line">    toStringCache = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">super</span>.insert(offset, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>而StringBuilder却没有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(StringBuffer sb)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.append(sb);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> StringBuilder <span class="title">append</span><span class="params">(CharSequence s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.append(s);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>根据其特点，可以总结出具体应用场景:</p>
+<p>String：适用于少量的字符串操作的情况</p>
+<p>StringBuilder：适用于单线程下在字符缓冲区进行大量操作的情况<br>　　<br>StringBuffer：适用多线程下在字符缓冲区进行大量操作的情况</p>
 
       
     </div>
@@ -432,7 +429,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jvm基础/" rel="tag"># jvm基础</a>
+            <a href="/tags/java基础/" rel="tag"># java基础</a>
+          
+            <a href="/tags/java常用类/" rel="tag"># java常用类</a>
           
         </div>
       
@@ -445,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/18/卷水浒传-20周年企划-第五章-翻译/" rel="next" title="绘卷水浒传 20周年企划 第五章 翻译">
-                <i class="fa fa-chevron-left"></i> 绘卷水浒传 20周年企划 第五章 翻译
+              <a href="/2019/04/16/线程读写锁分离/" rel="next" title="多线程读写锁分离">
+                <i class="fa fa-chevron-left"></i> 多线程读写锁分离
               </a>
             
           </div>
@@ -454,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/20/vm学习笔记（内存）/" rel="prev" title="jvm学习笔记（内存）">
-                jvm学习笔记（内存） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -666,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门概念"><span class="nav-number">1.</span> <span class="nav-text">入门概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字节码（ByteCode）"><span class="nav-number">1.1.</span> <span class="nav-text">字节码（ByteCode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-API"><span class="nav-number">1.2.</span> <span class="nav-text">Java API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java虚拟机（JVM，java-Virtual-Machine）"><span class="nav-number">1.3.</span> <span class="nav-text">java虚拟机（JVM，java Virtual Machine）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java相对于其他几种语言的优势"><span class="nav-number">1.4.</span> <span class="nav-text">Java相对于其他几种语言的优势</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#速度"><span class="nav-number">1.</span> <span class="nav-text">速度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全"><span class="nav-number">2.</span> <span class="nav-text">线程安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
