@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="jvm内存相关,">
+  <meta name="keywords" content="java多线程,">
 
 
 
@@ -81,24 +81,21 @@
 
 
 
-<meta name="description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
-<meta name="keywords" content="jvm内存相关">
+<meta name="description" content="基本概念future设计模式实际上相当一个异步完成任务充分利用本应当的等待时间，有点类似于商品订单。比如在网购时，当看中某一件商品时就可以提交订单，当订单处理完成后，在家里等待商品送货上门即可。或者说更形象的我们发送Ajax请求时，页面是异步进行后台处理，用户无需一直等待请求结果，可以继续浏览或操作其他内容类似于下面的一个商品订单的时序图 客户端发送一个长时间的请求，服务端不需等待该数据处理完成便">
+<meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jvm学习笔记（内存）">
-<meta property="og:url" content="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/index.html">
+<meta property="og:title" content="多线程future设计模式">
+<meta property="og:url" content="https://www.junglezero.top/2019/04/17/线程future设计模式/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
+<meta property="og:description" content="基本概念future设计模式实际上相当一个异步完成任务充分利用本应当的等待时间，有点类似于商品订单。比如在网购时，当看中某一件商品时就可以提交订单，当订单处理完成后，在家里等待商品送货上门即可。或者说更形象的我们发送Ajax请求时，页面是异步进行后台处理，用户无需一直等待请求结果，可以继续浏览或操作其他内容类似于下面的一个商品订单的时序图 客户端发送一个长时间的请求，服务端不需等待该数据处理完成便">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-209.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-211.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-212.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-213.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-214.png">
-<meta property="og:updated_time" content="2019-03-21T03:19:39.820Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-280.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-281.png">
+<meta property="og:updated_time" content="2019-04-17T07:54:23.348Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jvm学习笔记（内存）">
-<meta name="twitter:description" content="JVM的内存管理基本五大区 线程共享区和线程独占区线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域 程序计数器（Program Counter Register）是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的行号指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的地址； 如果是">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-209.png">
+<meta name="twitter:title" content="多线程future设计模式">
+<meta name="twitter:description" content="基本概念future设计模式实际上相当一个异步完成任务充分利用本应当的等待时间，有点类似于商品订单。比如在网购时，当看中某一件商品时就可以提交订单，当订单处理完成后，在家里等待商品送货上门即可。或者说更形象的我们发送Ajax请求时，页面是异步进行后台处理，用户无需一直等待请求结果，可以继续浏览或操作其他内容类似于下面的一个商品订单的时序图 客户端发送一个长时间的请求，服务端不需等待该数据处理完成便">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-280.png">
 
 
 
@@ -128,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/04/17/线程future设计模式/">
 
 
 
@@ -136,7 +133,7 @@
 
 
 
-  <title>jvm学习笔记（内存） | 淋中之虹</title>
+  <title>多线程future设计模式 | 淋中之虹</title>
   
 
 
@@ -273,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/03/20/vm学习笔记（内存）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/17/线程future设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -290,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">jvm学习笔记（内存）</h1>
+          <h1 class="post-title" itemprop="name headline">多线程future设计模式</h1>
         
 
         <div class="post-meta">
@@ -302,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T15:13:00+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T10:49:00+08:00">
+                2019-04-17
               </time>
             
 
@@ -325,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jvm学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">jvm学习笔记</span>
+                  <a href="/categories/java多线程学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java多线程学习</span>
                   </a>
                 </span>
 
@@ -343,8 +340,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/20/vm学习笔记（内存）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/20/vm学习笔记（内存）/" itemprop="commentCount"></span>
+                <a href="/2019/04/17/线程future设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/17/线程future设计模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,728字
+                  672字
                 </span>
               
 
@@ -387,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6分钟
+                  3分钟
                 </span>
               
             </div>
@@ -408,50 +405,18 @@
       
 
       
-        <h1 id="JVM的内存管理"><a href="#JVM的内存管理" class="headerlink" title="JVM的内存管理"></a>JVM的内存管理</h1><h2 id="基本五大区"><a href="#基本五大区" class="headerlink" title="基本五大区"></a>基本五大区</h2><p><img src="/upload/pasted-209.png" alt="upload successful"></p>
-<h3 id="线程共享区和线程独占区"><a href="#线程共享区和线程独占区" class="headerlink" title="线程共享区和线程独占区"></a>线程共享区和线程独占区</h3><p>线程，是操作系统中能够进行调度的最小单位，线程共享区是指所有线程共同使用的区域，线程独占区是指每个线程单独创建和使用的内存区域</p>
-<h3 id="程序计数器（Program-Counter-Register）"><a href="#程序计数器（Program-Counter-Register）" class="headerlink" title="程序计数器（Program Counter Register）"></a>程序计数器（Program Counter Register）</h3><p>是内存中一块较小空间，可以理解为是记录当前线程所执行的字节码的<strong>行号</strong>指示器，如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机指令码的<strong>地址</strong>； 如果是Native方法，计数器为空（undefined），程序计数器是唯一一个在java虚拟机规范中没有规定任何OutOfMemoryError情况的区域</p>
-<h3 id="Java虚拟机栈（Java-Virtual-Machine-Stacks）"><a href="#Java虚拟机栈（Java-Virtual-Machine-Stacks）" class="headerlink" title="Java虚拟机栈（Java Virtual Machine Stacks）"></a>Java虚拟机栈（Java Virtual Machine Stacks）</h3><p>虚拟机栈描述的是java方法执行的内存模型<br>栈帧（Stack Frame）：每个方法在执行完成时，都会创建一个栈帧，伴随着方法从创建到执行的完成，用于储存局部变量表【存放编译器可知道的各种基本类型，引用类型，returnAddress（一条字节码指令的地址）类型，在编译器完成分配，在方法运行期间大小不会改变】，操作数栈，动态链接，方法出口等<br>【结合栈的先进先出特性理解】<br>异常状况：线程请求的栈的深度大于虚拟机所允许的最大深度，则发生StackOverflowError【一个没有结束的递归函数】】如果虚拟机栈可以动态扩展，而扩展到无法申请到足够内存时，抛出OutOfMemoryError</p>
-<h3 id="本地方法栈（Native-Method-Stack）"><a href="#本地方法栈（Native-Method-Stack）" class="headerlink" title="本地方法栈（Native Method Stack）"></a>本地方法栈（Native Method Stack）</h3><p>和虚拟机栈类似，区别是虚拟机栈为虚拟机执行java方法而服务，本地方法栈则为使用到的Native方法服务，在hot spot 中，两者是一体的</p>
-<h3 id="java堆（Java-Heap）"><a href="#java堆（Java-Heap）" class="headerlink" title="java堆（Java Heap）"></a>java堆（Java Heap）</h3><p>用来存储对象的<strong>实例</strong>，是java虚拟机所管理的最大的内存区域</p>
-<ul>
-<li>大部分对象实例在此分配内存</li>
-<li>垃圾收集器管理的主要区域</li>
-<li>内存不够时，会抛出OutOfMemoryError异常</li>
-<li>可以通过-Xmx和-XMS控制动态控制<h3 id="方法区（Method-Area）"><a href="#方法区（Method-Area）" class="headerlink" title="方法区（Method Area）"></a>方法区（Method Area）</h3>用以储存已被虚拟机加载的<strong>类信息【版本，字段，方法，接口】，常量，静态变量</strong>，即时编译器编译后的代码等数据<br>称作“永久代”（Permanent Generation）:在hot spot中GC分代收集扩展到了方法区，或者说使用了永久代而已，两者并不等价<br>会抛出OutOfMemoryError</li>
-</ul>
-<h2 id="重点区域"><a href="#重点区域" class="headerlink" title="重点区域"></a>重点区域</h2><h3 id="运行时常量池（Runtime-Constant-Pool）"><a href="#运行时常量池（Runtime-Constant-Pool）" class="headerlink" title="运行时常量池（Runtime Constant Pool）"></a>运行时常量池（Runtime Constant Pool）</h3><p>位于方法区，用来存放编译期生成的各种字面量和符号引用<br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s1=&quot;abc&quot;;</span><br><span class="line">String s2=&quot;abc&quot;;</span><br><span class="line">System.out.println(s1==s2)</span><br></pre></td></tr></table></figure></p>
-<p>要按照上面的说法，虚拟机在创建s1时，会先将在虚拟机栈中的局部变量表中创建引用s1，然后再在堆中创建实例“abc”，同理s2也是，这样来看，判定s1==s2的话，由于string是引用类型，因此会比较两个的地址，则创建的两个实例虽然内容相同，但是地址是不同的，所以应当是false，但是实际操作中，却是true。答案就在于“abc”属于可以在编译器直接翻译出的字面量，会存在运行常量池中，而在运行常量池中，实际上维持的是一个Stingtable（对于string来说），而其底层是HashSet(无序性，不重复性的集合)，因此，两个引用实际上指向的是同一个“abc”，故地址相同，判定为true<br>而对于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s3=new String(&quot;abc&quot;)；</span><br><span class="line">System.out.println(s1==s3)</span><br></pre></td></tr></table></figure></p>
-<p>其结果为false<br>关键在于关键字“new”,通过这种方式，就需要按照上面说的那样，引用在栈，实例在堆，因此地址是不相等<br>但是如果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(s1==s3.intern())</span><br></pre></td></tr></table></figure></p>
-<p>结果为true，这是因为运行时常量池的另一个特性：动态性，它可以在运行期把常量放入常量池中，而intern()主要做的事情就是对于一个string，它会查看在栈（局部常量表）中查找是否有值相等的值，若没有，则创建并返回其在栈中的地址，若有则直接返回栈中地址</p>
-<h3 id="直接内存（Direct-Memory）"><a href="#直接内存（Direct-Memory）" class="headerlink" title="直接内存（Direct Memory）"></a>直接内存（Direct Memory）</h3><p>实际上它不属于虚拟机运行时数据的一部分，也不是java虚拟机规范中定义的内存区域，但是还是用的到，既然是内存，会受到本机总内存影响，也会抛出OutOfMemoryError</p>
-<h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><p><img src="/upload/pasted-211.png" alt="upload successful"></p>
-<h3 id="分配内存过程"><a href="#分配内存过程" class="headerlink" title="分配内存过程"></a>分配内存过程</h3><p>对象所需的内存大小在类加载完成后就已经完全确定<br>指针碰撞（Bump the Pointer）： 如果在堆中内存时绝对齐整的，所用的内存在一边，空闲的内存在另一边，中间有一个指针作为分界，分配内存实际上就是指针向空闲内存区域移动与对象大小相等的一个空间<br>空闲列表（Free List）：在堆内存中，更多时候是不规整的，虚拟机可以维护一个列表进行记录，记录那些内存块是可用的，分配内存时，从；列表中找出一块可用区域即可<br>采取何种方式取决于堆内存是否规整，而堆内存是否规整又取决于垃圾收集器是否有压缩整理功能</p>
-<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>在分配时，由于多线，可能会引发线程安全问题<br>解决方法：</p>
-<ul>
-<li>线程同步，但是效率太低</li>
-<li>本地线程分配缓冲（Thread Local Allocation Buffer）,即每个线程在java堆中预先分配一小块内存，若预分配的TALB满了，则采用同步策略</li>
-</ul>
-<h3 id="初始化对象"><a href="#初始化对象" class="headerlink" title="初始化对象"></a>初始化对象</h3><h3 id="对象的结构"><a href="#对象的结构" class="headerlink" title="对象的结构"></a>对象的结构</h3><p><img src="/upload/pasted-212.png" alt="upload successful"></p>
-<ul>
-<li>对象头（Header）<ul>
-<li>自身运行时的数据（Mark Word）<ul>
-<li>哈希值</li>
-<li>GC分代年龄</li>
-<li>锁状态标志</li>
-<li>线程持有锁</li>
-<li>偏向线程ID</li>
-<li>偏向时间戳</li>
-</ul>
-</li>
-<li>类型指针</li>
-</ul>
-</li>
-<li>instance data:对象的有效信息</li>
-<li>padding：填充作用,因为要求对象的内存大小要是8的整数倍</li>
-</ul>
-<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>这个过程指的是从reference到堆上实例的过程<br>句柄访问：<br>在java堆中划分出一块内存来作为句柄池，reference储存的对象就是句柄地址，而句柄中包含了对象实例数据和类型数据的地址<br>这种方法的好处是reference储存的是稳定的句柄地址，对象发生移动时，只会改变句柄中实例数据指针，不会改变reference<br><img src="/upload/pasted-213.png" alt="upload successful"></p>
-<p>直接指针访问：<br>reference储存的直接是对象的地址<br>这种方法的好处是速度较快，因为节省了一次指针定位，hotspot中采用的是这种方式<br><img src="/upload/pasted-214.png" alt="upload successful"></p>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>future设计模式实际上相当一个异步完成任务充分利用本应当的等待时间，有点类似于商品订单。比如在网购时，当看中某一件商品时就可以提交订单，当订单处理完成后，在家里等待商品送货上门即可。或者说更形象的我们发送Ajax请求时，页面是异步进行后台处理，用户无需一直等待请求结果，可以继续浏览或操作其他内容<br>类似于下面的一个商品订单的时序图</p>
+<p><img src="/upload/pasted-280.png" alt="upload successful"><br>客户端发送一个长时间的请求，服务端不需等待该数据处理完成便立即返回一个伪造的代理数据（相当于商品订单，不是商品本身），用户也无需等待，先去执行其他的若干操作后，再去调用服务器已经完成组装的真实数据。该模型充分利用了等待的时间片段。</p>
+<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><p><img src="/upload/pasted-281.png" alt="upload successful"><br>Main：启动系统，调用Client发出请求；</p>
+<p>Client：返回Data对象，理解返回FutureData，并开启ClientThread线程装配RealData；</p>
+<p>Data：返回数据的接口；</p>
+<p>FutureData：Future数据，构造很快，但是是一个虚拟的数据，需要装配RealData；</p>
+<p>RealData：真实数据，构造比较慢。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>具体实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Client client = <span class="keyword">new</span> Client();</span><br><span class="line">		<span class="comment">//理解返回一个FutureData</span></span><br><span class="line">		Data data = client.request(<span class="string">"name"</span>);</span><br><span class="line">		System.out.println(<span class="string">"请求完毕！"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//处理其他业务</span></span><br><span class="line">			<span class="comment">//这个过程中，真是数据RealData组装完成，重复利用等待时间</span></span><br><span class="line">			Thread.sleep(<span class="number">2000</span>);			</span><br><span class="line">			</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//真实数据</span></span><br><span class="line">		System.out.println(<span class="string">"数据 = "</span>+ data.getResult());</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>client:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> Data <span class="title">request</span><span class="params">(<span class="keyword">final</span> String queryStr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">final</span> FutureData future = <span class="keyword">new</span> FutureData();</span><br><span class="line">		<span class="comment">//开启一个新的线程来构造真实数据</span></span><br><span class="line">		<span class="keyword">new</span> Thread()&#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">				RealData realData = <span class="keyword">new</span> RealData(queryStr);</span><br><span class="line">				future.setRealData(realData);			&#125;</span><br><span class="line">		&#125;.start();</span><br><span class="line">		<span class="keyword">return</span> future;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Data:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Data</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span>  String <span class="title">getResult</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>FutureData<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 是对RealData的一个包装</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> limin</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FutureData</span> <span class="keyword">implements</span> <span class="title">Data</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">protected</span> RealData realData =<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">boolean</span> isReady = <span class="keyword">false</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">setRealData</span><span class="params">(RealData realData)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(isReady)&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.realData=realData;</span><br><span class="line">		isReady=<span class="keyword">true</span>;</span><br><span class="line">		notifyAll();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">synchronized</span>  String <span class="title">getResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(!isReady)&#123;</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				wait();</span><br><span class="line">			&#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> realData.result;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>RealData:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RealData</span> <span class="keyword">implements</span> <span class="title">Data</span> </span>&#123;</span><br><span class="line">	<span class="keyword">protected</span>  String  result;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">RealData</span><span class="params">(String para)</span></span>&#123;</span><br><span class="line">		 <span class="comment">//构造比较慢</span></span><br><span class="line">		StringBuffer sb= <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">			sb.append(para);</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">			&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			result= sb.toString();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -469,7 +434,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jvm内存相关/" rel="tag"># jvm内存相关</a>
+            <a href="/tags/java多线程/" rel="tag"># java多线程</a>
           
         </div>
       
@@ -482,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/20/jvm学习总结/" rel="next" title="jvm学习笔记（入门）">
-                <i class="fa fa-chevron-left"></i> jvm学习笔记（入门）
+              <a href="/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/" rel="next" title="java的String三剑客（String，StringBuilder，StringBuffer）">
+                <i class="fa fa-chevron-left"></i> java的String三剑客（String，StringBuilder，StringBuffer）
               </a>
             
           </div>
@@ -491,10 +456,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/21/m学习笔记（垃圾回收）/" rel="prev" title="jvm学习笔记（垃圾回收）">
-                jvm学习笔记（垃圾回收） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -703,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM的内存管理"><span class="nav-number">1.</span> <span class="nav-text">JVM的内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本五大区"><span class="nav-number">1.1.</span> <span class="nav-text">基本五大区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程共享区和线程独占区"><span class="nav-number">1.1.1.</span> <span class="nav-text">线程共享区和线程独占区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程序计数器（Program-Counter-Register）"><span class="nav-number">1.1.2.</span> <span class="nav-text">程序计数器（Program Counter Register）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java虚拟机栈（Java-Virtual-Machine-Stacks）"><span class="nav-number">1.1.3.</span> <span class="nav-text">Java虚拟机栈（Java Virtual Machine Stacks）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地方法栈（Native-Method-Stack）"><span class="nav-number">1.1.4.</span> <span class="nav-text">本地方法栈（Native Method Stack）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java堆（Java-Heap）"><span class="nav-number">1.1.5.</span> <span class="nav-text">java堆（Java Heap）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法区（Method-Area）"><span class="nav-number">1.1.6.</span> <span class="nav-text">方法区（Method Area）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重点区域"><span class="nav-number">1.2.</span> <span class="nav-text">重点区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时常量池（Runtime-Constant-Pool）"><span class="nav-number">1.2.1.</span> <span class="nav-text">运行时常量池（Runtime Constant Pool）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接内存（Direct-Memory）"><span class="nav-number">1.2.2.</span> <span class="nav-text">直接内存（Direct Memory）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的创建"><span class="nav-number">1.3.</span> <span class="nav-text">对象的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分配内存过程"><span class="nav-number">1.3.1.</span> <span class="nav-text">分配内存过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全"><span class="nav-number">1.3.2.</span> <span class="nav-text">线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化对象"><span class="nav-number">1.3.3.</span> <span class="nav-text">初始化对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的结构"><span class="nav-number">1.3.4.</span> <span class="nav-text">对象的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的访问定位"><span class="nav-number">1.3.5.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构"><span class="nav-number">2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
