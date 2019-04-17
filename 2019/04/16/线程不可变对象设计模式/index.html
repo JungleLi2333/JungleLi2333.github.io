@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,">
+  <meta name="keywords" content="java多线程,">
 
 
 
@@ -81,26 +81,18 @@
 
 
 
-<meta name="description" content="Queue一般概念队列是数据结构中比较重要的一种类型，它支持 FIFO，尾部添加、头部删除（先进队列的元素先出队列），跟我们生活中的排队类似。 种类单队列，即用一个数组实现的队列 每添加一个队列，队尾向后移动一位，当添加四个元素后前两个元素出队后 所谓“假溢出”就是对于当前队列，当想再添加两个元素时，却溢出了，但实际上当前数组是还有空位的  而利用循环队列，避免了假溢出的问题对于循环队列，添加新元">
-<meta name="keywords" content="数据结构">
+<meta name="description" content="基本概念不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，任何对它的改变都应该产生一个新的对象。可变对象(Mutable Objects)：相对于不可变类，可变类创建实例后可以改变其成员变量值，开发中创建的大部分类都属于可变类。  不可变对象一定是线程安全的 可变对象不一定是线程不安全的  官方文档对于不可变类和对象的说明 Don’t">
+<meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java与基本数据结构">
-<meta property="og:url" content="https://www.junglezero.top/2018/02/12/va与基本数据结构/index.html">
+<meta property="og:title" content="多线程不可变对象设计模式">
+<meta property="og:url" content="https://www.junglezero.top/2019/04/16/线程不可变对象设计模式/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="Queue一般概念队列是数据结构中比较重要的一种类型，它支持 FIFO，尾部添加、头部删除（先进队列的元素先出队列），跟我们生活中的排队类似。 种类单队列，即用一个数组实现的队列 每添加一个队列，队尾向后移动一位，当添加四个元素后前两个元素出队后 所谓“假溢出”就是对于当前队列，当想再添加两个元素时，却溢出了，但实际上当前数组是还有空位的  而利用循环队列，避免了假溢出的问题对于循环队列，添加新元">
+<meta property="og:description" content="基本概念不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，任何对它的改变都应该产生一个新的对象。可变对象(Mutable Objects)：相对于不可变类，可变类创建实例后可以改变其成员变量值，开发中创建的大部分类都属于可变类。  不可变对象一定是线程安全的 可变对象不一定是线程不安全的  官方文档对于不可变类和对象的说明 Don’t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-129.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-130.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-131.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-132.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-133.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-134.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-135.png">
-<meta property="og:updated_time" content="2019-03-14T01:25:14.162Z">
+<meta property="og:updated_time" content="2019-04-17T02:34:08.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java与基本数据结构">
-<meta name="twitter:description" content="Queue一般概念队列是数据结构中比较重要的一种类型，它支持 FIFO，尾部添加、头部删除（先进队列的元素先出队列），跟我们生活中的排队类似。 种类单队列，即用一个数组实现的队列 每添加一个队列，队尾向后移动一位，当添加四个元素后前两个元素出队后 所谓“假溢出”就是对于当前队列，当想再添加两个元素时，却溢出了，但实际上当前数组是还有空位的  而利用循环队列，避免了假溢出的问题对于循环队列，添加新元">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-129.png">
+<meta name="twitter:title" content="多线程不可变对象设计模式">
+<meta name="twitter:description" content="基本概念不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，任何对它的改变都应该产生一个新的对象。可变对象(Mutable Objects)：相对于不可变类，可变类创建实例后可以改变其成员变量值，开发中创建的大部分类都属于可变类。  不可变对象一定是线程安全的 可变对象不一定是线程不安全的  官方文档对于不可变类和对象的说明 Don’t">
 
 
 
@@ -130,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2018/02/12/va与基本数据结构/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/04/16/线程不可变对象设计模式/">
 
 
 
@@ -138,7 +130,7 @@
 
 
 
-  <title>Java与基本数据结构 | 淋中之虹</title>
+  <title>多线程不可变对象设计模式 | 淋中之虹</title>
   
 
 
@@ -275,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2018/02/12/va与基本数据结构/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/16/线程不可变对象设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -292,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java与基本数据结构</h1>
+          <h1 class="post-title" itemprop="name headline">多线程不可变对象设计模式</h1>
         
 
         <div class="post-meta">
@@ -304,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T09:15:00+08:00">
-                2018-02-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T14:37:00+08:00">
+                2019-04-16
               </time>
             
 
@@ -327,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/从零开始的算法征程/" itemprop="url" rel="index">
-                    <span itemprop="name">从零开始的算法征程</span>
+                  <a href="/categories/java多线程学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java多线程学习</span>
                   </a>
                 </span>
 
@@ -345,8 +337,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/02/12/va与基本数据结构/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/12/va与基本数据结构/" itemprop="commentCount"></span>
+                <a href="/2019/04/16/线程不可变对象设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/16/线程不可变对象设计模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,535字
+                  587字
                 </span>
               
 
@@ -389,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6分钟
+                  3分钟
                 </span>
               
             </div>
@@ -410,65 +402,30 @@
       
 
       
-        <h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h3 id="一般概念"><a href="#一般概念" class="headerlink" title="一般概念"></a>一般概念</h3><p>队列是数据结构中比较重要的一种类型，它支持 FIFO，尾部添加、头部删除（先进队列的元素先出队列），跟我们生活中的排队类似。</p>
-<h3 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h3><p>单队列，即用一个数组实现的队列</p>
-<p><img src="/upload/pasted-129.png" alt="upload successful"><br>每添加一个队列，队尾向后移动一位，当添加四个元素后<br><img src="/upload/pasted-130.png" alt="upload successful"><br>前两个元素出队后</p>
-<p><img src="/upload/pasted-131.png" alt="upload successful"><br>所谓“假溢出”就是对于当前队列，当想再添加两个元素时，却溢出了，但实际上当前数组是还有空位的</p>
-<p><img src="/upload/pasted-132.png" alt="upload successful"></p>
-<p>而利用循环队列，避免了假溢出的问题<br>对于循环队列，添加新元素时，rear不是单纯的+1 而是<strong>rear = (rear - size) % size</strong>,对于上面的实例，<strong>rear = ( 5 - 5) % 5 = 0</strong> </p>
-<p><img src="/upload/pasted-133.png" alt="upload successful"><br>判满的条件<strong>(rear - front) % size = 1。</strong></p>
-<h3 id="java中的queue"><a href="#java中的queue" class="headerlink" title="java中的queue"></a>java中的queue</h3><p>Java 集合中的 Queue 继承自 Collection 接口 ，Deque, LinkedList, PriorityQueue, BlockingQueue 等类都实现了它。 Queue 用来存放 等待处理元素 的集合，这种场景一般用于缓冲、并发访问。 除了继承 Collection 接口的一些方法，Queue 还添加了额外的 添加、删除、查询操作。</p>
-<p><img src="/upload/pasted-134.png" alt="upload successful"><br>对于提供的两种向队尾插入元素的方法，当插入add(null) 会抛异常，而offer()只会返回false</p>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p><img src="/upload/pasted-135.png" alt="upload successful"></p>
-<h3 id="一般概念-1"><a href="#一般概念-1" class="headerlink" title="一般概念"></a>一般概念</h3><p>Set 继承于 Collection 接口，是一个<strong>不允许出现重复元素，并且无序</strong>的集合，主要 HashSet 和 TreeSet 两大实现类。<br>在判断重复元素的时候，Set 集合会调用 <strong>hashCode()和 equal()</strong>方法来实现。</p>
-<p>HashSet 是哈希表结构，主要利用 HashMap 的 key 来存储元素，计算插入元素的 hashCode 来获取元素在集合中的位置；</p>
-<p>TreeSet 是红黑树结构，每一个元素都是树中的一个节点，插入的元素都会进行排序；</p>
-<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet实现Set接口，底层由HashMap来实现，为哈希表结构，新增元素相当于HashMap的key，value默认为一个固定的Object<br>当有元素插入的时候，会计算元素的hashCode值，将元素插入到哈希表对应的位置中来<br>它继承于AbstractSet，实现了Set, Cloneable, Serializable接口。</p>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>不可变对象(Immutable Objects)</strong>即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，任何对它的改变都应该产生一个新的对象。<br><strong>可变对象(Mutable Objects)</strong>：相对于不可变类，可变类创建实例后可以改变其成员变量值，开发中创建的大部分类都属于可变类。</p>
 <ul>
-<li>HashSet继承AbstractSet类，获得了Set接口大部分的实现，减少了实现此接口所需的工作，实际上是又继承了AbstractCollection类；</li>
-<li>HashSet实现了Set接口，获取Set接口的方法，可以自定义具体实现，也可以继承AbstractSet类中的实现；</li>
-<li>HashSet实现Cloneable，得到了clone()方法，可以实现克隆功能；</li>
-<li>HashSet实现Serializable，表示可以被序列化，通过序列化去传输，典型的应用就是hessian协议。</li>
+<li>不可变对象一定是线程安全的</li>
+<li>可变对象不一定是线程不安全的</li>
 </ul>
-<p>具有如下特点：</p>
-<ul>
-<li><p>不允许出现重复因素；</p>
-</li>
-<li><p>允许插入Null值；</p>
-</li>
-<li><p>元素无序（添加顺序和遍历顺序不一致）；</p>
-</li>
-<li><p>线程不安全，若2个线程同时操作HashSet，必须通过代码实现同步；</p>
-</li>
+<h1 id="官方文档对于不可变类和对象的说明"><a href="#官方文档对于不可变类和对象的说明" class="headerlink" title="官方文档对于不可变类和对象的说明"></a>官方文档对于不可变类和对象的说明</h1><ol>
+<li>Don’t provide “setter” methods — methods that modify fields or objects referred to by fields.</li>
+<li>Make all fields final and private.</li>
+<li>Don’t allow subclasses to override methods. The simplest way to do this is to declare the class as final. A more sophisticated approach is to make the constructor private and construct instances in factory methods.</li>
+<li>If the instance fields include references to mutable objects, don’t allow those objects to be changed: <ul>
+<li>Don’t provide methods that modify the mutable objects.</li>
+<li>Don’t share references to the mutable objects. Never store references to external, mutable objects passed to the constructor; if necessary, create copies, and store references to the copies. Similarly, create copies of your internal mutable objects when necessary to avoid returning the originals in your methods</li>
 </ul>
-<ul>
-<li><p>HashSet没有get()方法，remove元素时通过hashcode的值来删除</p>
 </li>
-<li><p>HashSet不允许添加重复元素的具体解释：<br>HashSey 的add方法实际上是调用HashMap的put()方法<br>在向HashMap中添加元素时，先判断key的hashCode值是否相同，如果相同，则调用equals()、==进行判断，若相同则覆盖原有元素；如果不同，则直接向Map中添加元素；</p>
-<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>从名字上可以看出，此集合的实现和树结构有关。与HashSet集合类似，TreeSet也是基于Map来实现，具体实现TreeMap(后面讲解)，其底层结构为红黑树（特殊的二叉查找树）；<br>与HashSet不同的是，TreeSet具有排序功能，分为自然排序(123456)和自定义排序两类，默认是自然排序；在程序中，我们可以按照任意顺序将元素插入到集合中，等到遍历时TreeSet会按照一定顺序输出–倒序或者升序；</p>
+</ol>
+<h1 id="不可变对象的一个例子"><a href="#不可变对象的一个例子" class="headerlink" title="不可变对象的一个例子"></a>不可变对象的一个例子</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类是final的</span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImmutableRGB</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//所有的属性都是final private的</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">int</span> red;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">int</span> green;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> <span class="keyword">int</span> blue;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Values must be between 0 and 255.</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> red,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">int</span> green,</span></span></span><br><span class="line"><span class="function"><span class="params">                       <span class="keyword">int</span> blue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (red &lt; <span class="number">0</span> || red &gt; <span class="number">255</span></span><br><span class="line">            || green &lt; <span class="number">0</span> || green &gt; <span class="number">255</span></span><br><span class="line">            || blue &lt; <span class="number">0</span> || blue &gt; <span class="number">255</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//没有setter方法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ImmutableRGB</span><span class="params">(<span class="keyword">int</span> red,</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">int</span> green,</span></span></span><br><span class="line"><span class="function"><span class="params">                        <span class="keyword">int</span> blue,</span></span></span><br><span class="line"><span class="function"><span class="params">                        String name)</span> </span>&#123;</span><br><span class="line">        check(red, green, blue);</span><br><span class="line">        <span class="keyword">this</span>.red = red;</span><br><span class="line">        <span class="keyword">this</span>.green = green;</span><br><span class="line">        <span class="keyword">this</span>.blue = blue;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRGB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ((red &lt;&lt; <span class="number">16</span>) | (green &lt;&lt; <span class="number">8</span>) | blue);</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这种转换的方式实际上产生了一个新的实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ImmutableRGB <span class="title">invert</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ImmutableRGB(<span class="number">255</span> - red,</span><br><span class="line">                       <span class="number">255</span> - green,</span><br><span class="line">                       <span class="number">255</span> - blue,</span><br><span class="line">                       <span class="string">"Inverse of "</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="一些讨论"><a href="#一些讨论" class="headerlink" title="一些讨论"></a>一些讨论</h1><ol>
+<li><p>当不可变类中包含List类型时<br>如果只是单单纯的返回List，是有机会对其进行更改的<br>应当采用以下方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.unmodifiableList(list);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>它继承AbstractSet，实现NavigableSet, Cloneable, Serializable接口。<br>（1）与HashSet同理，TreeSet继承AbstractSet类，获得了Set集合基础实现操作；<br>（2）TreeSet实现NavigableSet接口，而NavigableSet又扩展了SortedSet接口。这两个接口主要定义了搜索元素的能力，例如给定某个元素，查找该集合中比给定元素大于、小于、等于的元素集合，或者比给定元素大于、小于、等于的元素个数；简单地说，实现NavigableSet接口使得TreeSet具备了元素搜索功能；<br>（3）TreeSet实现Cloneable接口，意味着它也可以被克隆；<br>（4）TreeSet实现了Serializable接口，可以被序列化，可以使用hessian协议来传输；</p>
-<p>具有如下特点：</p>
-<ul>
-<li><p>对插入的元素进行排序，是一个有序的集合（主要与HashSet的区别）;</p>
+<li><p>线程安全<br>不可变对象是线程安全的，适合在多线程的环境下进行同步而不用考虑线程安全的问题</p>
 </li>
-<li><p>底层使用红黑树结构，而不是哈希表结构；</p>
-</li>
-<li><p>允许插入Null值；</p>
-</li>
-<li><p>不允许插入重复元素；</p>
-</li>
-<li><p>线程不安全；</p>
-</li>
-</ul>
-<p>TreeSet自然排序和自定义排序的具体方法<br>TreeSet在调用add()时，会调用TreeMap的put()方法，在put方法中会调用到compare(key, key)方法，进行key大小的比较；对于string integer等原生类型，已经实现了comparable接口，而对于自定义类型，需要先实现comparable接口，否则会抛异常</p>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="一般概念-2"><a href="#一般概念-2" class="headerlink" title="一般概念"></a>一般概念</h3><p>在 List 中，用户可以<strong>精确控制列表中每个元素的插入位置</strong>，另外用户可以<strong>通过整数索引（列表中的位置）访问元素</strong>，并搜索列表中的元素。 与 Set 不同，List 通常<strong>允许重复的元素</strong>。 另外 List 是有序集合而 Set 是无序集合。</p>
-<h3 id="常见实现类"><a href="#常见实现类" class="headerlink" title="常见实现类"></a>常见实现类</h3><p>ArrayList 是一个数组队列，相当于动态数组。它由数组实现，随机访问效率高，随机插入、随机删除效率低。</p>
-<p>LinkedList 是一个双向链表。它也可以被当作堆栈、队列或双端队列进行操作。LinkedList随机访问效率低，但随机插入、随机删除效率高。</p>
-<p>Vector 是矢量队列，和ArrayList一样，它也是一个动态数组，由数组实现。但是ArrayList是非线程安全的，而Vector是线程安全的。</p>
-<p>Stack 是栈，它继承于Vector。它的特性是：先进后出(FILO, First In Last Out)。</p>
-<h3 id="ArrayList-LinkedList"><a href="#ArrayList-LinkedList" class="headerlink" title="ArrayList,LinkedList"></a>ArrayList,LinkedList</h3><h3 id="Vector-Stack"><a href="#Vector-Stack" class="headerlink" title="Vector Stack"></a>Vector Stack</h3><h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2>
+</ol>
+
       
     </div>
     
@@ -485,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+            <a href="/tags/java多线程/" rel="tag"># java多线程</a>
           
         </div>
       
@@ -498,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/08/的排序算法（归并，快排，堆排）/" rel="next" title="进阶的排序算法（归并，快排，堆排）">
-                <i class="fa fa-chevron-left"></i> 进阶的排序算法（归并，快排，堆排）
+              <a href="/2019/04/16/线程读写锁分离/" rel="next" title="多线程读写锁分离">
+                <i class="fa fa-chevron-left"></i> 多线程读写锁分离
               </a>
             
           </div>
@@ -508,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/13/找/" rel="prev" title="查找（一般无序链表，二分查找的数组）">
-                查找（一般无序链表，二分查找的数组） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/16/va的String三剑客（String，StringBuilder，StringBuffer-）/" rel="prev" title="java的String三剑客（String，StringBuilder，StringBuffer）">
+                java的String三剑客（String，StringBuilder，StringBuffer） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -719,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">1.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般概念"><span class="nav-number">1.1.</span> <span class="nav-text">一般概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#种类"><span class="nav-number">1.2.</span> <span class="nav-text">种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java中的queue"><span class="nav-number">1.3.</span> <span class="nav-text">java中的queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set"><span class="nav-number">2.</span> <span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般概念-1"><span class="nav-number">2.1.</span> <span class="nav-text">一般概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">2.2.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">2.3.</span> <span class="nav-text">TreeSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">3.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般概念-2"><span class="nav-number">3.1.</span> <span class="nav-text">一般概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见实现类"><span class="nav-number">3.2.</span> <span class="nav-text">常见实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList-LinkedList"><span class="nav-number">3.3.</span> <span class="nav-text">ArrayList,LinkedList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector-Stack"><span class="nav-number">3.4.</span> <span class="nav-text">Vector Stack</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">4.</span> <span class="nav-text">Map</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#官方文档对于不可变类和对象的说明"><span class="nav-number">2.</span> <span class="nav-text">官方文档对于不可变类和对象的说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不可变对象的一个例子"><span class="nav-number">3.</span> <span class="nav-text">不可变对象的一个例子</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些讨论"><span class="nav-number">4.</span> <span class="nav-text">一些讨论</span></a></li></ol></div>
             
 
           </div>
