@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="# 常见题目有序旋转数组中的最小数字有序数组查找，应当想到二分法，而在这道题中，用二分法应当注意，它是分为两个有序数组的，第一个第二个数组的交界（即第二个数组的起点）一定是最小值的所在，因此，对于中间值，有两种情况，要么是在第一个数组，此时表现为中间数&amp;gt;前一个数，要么是在第二个数组，此时表现为中间数&amp;lt;后一个数……当循环到两个指针间隔1时，后面的指向就是最小值但是这道题存在两个特殊情况：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找专题">
+<meta property="og:url" content="https://www.junglezero.top/2019/06/20/专题/index.html">
+<meta property="og:site_name" content="淋中之虹">
+<meta property="og:description" content="# 常见题目有序旋转数组中的最小数字有序数组查找，应当想到二分法，而在这道题中，用二分法应当注意，它是分为两个有序数组的，第一个第二个数组的交界（即第二个数组的起点）一定是最小值的所在，因此，对于中间值，有两种情况，要么是在第一个数组，此时表现为中间数&amp;gt;前一个数，要么是在第二个数组，此时表现为中间数&amp;lt;后一个数……当循环到两个指针间隔1时，后面的指向就是最小值但是这道题存在两个特殊情况：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-20T09:14:53.656Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="查找专题">
+<meta name="twitter:description" content="# 常见题目有序旋转数组中的最小数字有序数组查找，应当想到二分法，而在这道题中，用二分法应当注意，它是分为两个有序数组的，第一个第二个数组的交界（即第二个数组的起点）一定是最小值的所在，因此，对于中间值，有两种情况，要么是在第一个数组，此时表现为中间数&amp;gt;前一个数，要么是在第二个数组，此时表现为中间数&amp;lt;后一个数……当循环到两个指针间隔1时，后面的指向就是最小值但是这道题存在两个特殊情况：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.junglezero.top/2019/06/20/专题/">
+
+
+
+
+
+
+
+  <title>查找专题 | 淋中之虹</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">淋中之虹</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">向来不知道该说些什么</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/06/20/专题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JungleZero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/ve.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淋中之虹">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">查找专题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T08:58:43+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/20/专题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/专题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,576字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#</p>
+<h1 id="常见题目"><a href="#常见题目" class="headerlink" title="常见题目"></a>常见题目</h1><h2 id="有序旋转数组中的最小数字"><a href="#有序旋转数组中的最小数字" class="headerlink" title="有序旋转数组中的最小数字"></a>有序旋转数组中的最小数字</h2><p>有序数组查找，应当想到二分法，而在这道题中，用二分法应当注意，它是分为两个有序数组的，第一个第二个数组的交界（即第二个数组的起点）一定是最小值的所在，因此，对于中间值，有两种情况，要么是在第一个数组，此时表现为中间数&gt;前一个数，要么是在第二个数组，此时表现为中间数&lt;后一个数……当循环到两个指针间隔1时，后面的指向就是最小值<br>但是这道题存在两个特殊情况：</p>
+<ul>
+<li>存在相同数的情况，如0111111旋转后，1110111只能顺序查找</li>
+<li>并未进行旋转，表现为第一个数&lt;第二个数，第一个元素就是最小值</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旋转数组中的最小值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getMinInReverse</span><span class="params">(<span class="keyword">int</span> [] numbers)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (numbers==<span class="keyword">null</span> || numbers.length==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"数组为空"</span>);</span><br><span class="line">    <span class="keyword">int</span> pre=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> post=numbers.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid=pre;</span><br><span class="line">    <span class="comment">//若第二个数&gt;第一个数，说明是有序数组，直接返回第一个数</span></span><br><span class="line">    <span class="keyword">while</span> (numbers[pre]&gt;=numbers[post])&#123;</span><br><span class="line">        <span class="keyword">if</span> (post-pre==<span class="number">1</span>) &#123;</span><br><span class="line">            mid = post;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">         mid=(post+pre)/<span class="number">2</span>;</span><br><span class="line">         <span class="comment">//前中后三个数相等的特殊情况，只能顺序查找</span></span><br><span class="line">         <span class="keyword">if</span> (numbers[pre]==numbers[mid]&amp;&amp;numbers[mid]==numbers[post])</span><br><span class="line">             <span class="keyword">return</span> searchByOrder(numbers);</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">if</span> (numbers[mid]&gt;numbers[pre])&#123;</span><br><span class="line">             pre=mid;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span> <span class="keyword">if</span> (numbers[mid]&lt;numbers[post])&#123;</span><br><span class="line">             post=mid;</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> numbers[mid];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">searchByOrder</span><span class="params">(<span class="keyword">int</span> [] numbers)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ansNumber=numbers[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> num : numbers)&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (num&lt;ansNumber)&#123;</span><br><span class="line">            ansNumber=num;</span><br><span class="line">            ans=i;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="矩阵中的路径"><a href="#矩阵中的路径" class="headerlink" title="矩阵中的路径"></a>矩阵中的路径</h2><p><strong>题目</strong>　　请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用下划线标出）。但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子<br> A B T G<br> C F C S<br> J D E H<br> <strong>思路</strong>：回溯法<br> <strong>实现思路</strong> 对于任意一个点，无非就是首先看这个点是不是给定字符串给定路径的点,如果是，标记当前点，并继续上下左右点的判断（递归）；如果不是，就返回false，并将当前点的标记设为false<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">strPathInMatrix</span><span class="params">(<span class="keyword">char</span> [] []martix,<span class="keyword">int</span> rows,<span class="keyword">int</span> cols,<span class="keyword">char</span>[] str)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//输入错误判定</span></span><br><span class="line">    <span class="keyword">if</span> (martix==<span class="keyword">null</span>||rows&lt;<span class="number">1</span>||cols&lt;<span class="number">1</span>||str==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="comment">//初始化辅助标识矩阵</span></span><br><span class="line">    <span class="keyword">boolean</span> isVisited[]=<span class="keyword">new</span> <span class="keyword">boolean</span>[rows * cols];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">boolean</span> v:isVisited)&#123;</span><br><span class="line">        v=<span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">int</span> pathLength=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//找到路径的第一个点：逐行逐列查找，找到第一个满足要求的字符</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> row=<span class="number">0</span>;row&lt;rows;rows++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> col=<span class="number">0</span>;col&lt;cols;cols++)</span><br><span class="line">            <span class="comment">//进入递归方法</span></span><br><span class="line">            <span class="keyword">if</span> (hasPathCore(martix,rows,cols,row,col,str,pathLength,isVisited))</span><br><span class="line">                <span class="keyword">return</span>  <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasPathCore</span><span class="params">(<span class="keyword">char</span>[][] martix, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">char</span>[] str, <span class="keyword">int</span> pathLength, <span class="keyword">boolean</span>[] isVisited)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//对于进入的点，若发生非法情况或者字符串上的对应位置并不和此时的点相等，则返回false，相当于准备回溯</span></span><br><span class="line">    <span class="keyword">if</span> (row&lt;<span class="number">0</span>||col&lt;<span class="number">0</span>||row&gt;=rows||col&gt;=cols||!isVisited[row*cols+col]||str[pathLength]!=martix[row][col])</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//若当前位置满足字符串对应位置的元素且当前元素正好是最后一个元素，则找到了路径返回true</span></span><br><span class="line">    <span class="keyword">if</span> (pathLength==str.length-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对于任意一点，向下一个点有</span></span><br><span class="line">    <span class="keyword">boolean</span> hasPath=<span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//将当前点标记为已访问</span></span><br><span class="line">    isVisited[row*cols+col]=<span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//对于任意一个顶点，有四种移动方法，虽然顶点只有两种，但是非法的已经在递归终止条件中删去</span></span><br><span class="line">    hasPath=hasPathCore(martix, rows, cols, row - <span class="number">1</span>, col, str, pathLength + <span class="number">1</span>, isVisited)</span><br><span class="line">            ||hasPathCore(martix, rows, cols, row +<span class="number">1</span>, col, str, pathLength + <span class="number">1</span>, isVisited)</span><br><span class="line">            ||hasPathCore(martix, rows, cols, row , col-<span class="number">1</span>, str, pathLength + <span class="number">1</span>, isVisited)</span><br><span class="line">            ||hasPathCore(martix, rows, cols, row , col+<span class="number">1</span>, str, pathLength + <span class="number">1</span>, isVisited);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//递归回来得到结果，如果发现并未得到路径，则取消标记</span></span><br><span class="line">    <span class="keyword">if</span> (!hasPath)</span><br><span class="line">        isVisited[row*rows+col]=<span class="keyword">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> hasPath;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="机器人的运动范围"><a href="#机器人的运动范围" class="headerlink" title="机器人的运动范围"></a>机器人的运动范围</h2><p> <strong>题目</strong><br>地上有一个m行n列的方格。一个机器人从坐标(0, 0)的格子开始移动，它每一次可以向左、右、上、下移动一格，但不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格(35, 37)，因为3+5+3+7=18。但它不能进入方格(35, 38)，因为3+5+3+8=19。请问该机器人能够到达多少个格子？<br><strong>实现思路</strong><br>和上面那道题差不多<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">movingConting</span><span class="params">(<span class="keyword">int</span> threshold,<span class="keyword">int</span> rows,<span class="keyword">int</span> cols)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">     <span class="comment">//判断输入</span></span><br><span class="line">     <span class="keyword">if</span>(threshold&lt;<span class="number">0</span>||rows&lt;<span class="number">0</span>||cols&lt;<span class="number">0</span>)</span><br><span class="line">         <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"输入有误！"</span>);</span><br><span class="line">     <span class="comment">//创建并初始化标识数组</span></span><br><span class="line">     <span class="keyword">boolean</span>[] isVisited=<span class="keyword">new</span> <span class="keyword">boolean</span>[rows*cols];</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">boolean</span> b:isVisited)&#123;</span><br><span class="line">         b=<span class="keyword">false</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//进入递归方法</span></span><br><span class="line">     <span class="keyword">int</span> count = movingContingCore(threshold,rows,cols,<span class="number">0</span>,<span class="number">0</span>,isVisited);</span><br><span class="line">     <span class="keyword">return</span>  count;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">movingContingCore</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] isVisited)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">     <span class="comment">//判定当前点是否满足要求</span></span><br><span class="line">     <span class="keyword">if</span> (check(threshold,rows,cols,row,col,isVisited))&#123;</span><br><span class="line">         <span class="comment">//如果满足要求，则标记当前点，进入下一个点（四个方向）</span></span><br><span class="line">         isVisited[row*cols+col]=<span class="keyword">true</span>;</span><br><span class="line">         count=<span class="number">1</span>+movingContingCore(threshold,rows,cols,row-<span class="number">1</span>,col,isVisited)</span><br><span class="line">                 +movingContingCore(threshold,rows,cols,row+<span class="number">1</span>,col,isVisited)</span><br><span class="line">                 +movingContingCore(threshold,rows,cols,row,col-<span class="number">1</span>,isVisited)</span><br><span class="line">                 +movingContingCore(threshold,rows,cols,row,col+<span class="number">1</span>,isVisited);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> count;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> threshold, <span class="keyword">int</span> rows, <span class="keyword">int</span> cols, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">boolean</span>[] isVisited)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (row&gt;=<span class="number">0</span>&amp;&amp;row&lt;=rows&amp;&amp;col&gt;=<span class="number">0</span>&amp;&amp;col&lt;=cols&amp;&amp;getDigitSum(row,col)&lt;=threshold&amp;&amp;isVisited[row*cols+col]==<span class="keyword">false</span>)</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getDigitSum</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> col)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">while</span> (row&gt;<span class="number">0</span>)&#123;</span><br><span class="line">         sum+=row%<span class="number">10</span>;</span><br><span class="line">         row/=<span class="number">10</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">while</span> (col&gt;<span class="number">0</span>)&#123;</span><br><span class="line">         sum+=col%<span class="number">10</span>;</span><br><span class="line">         col/=<span class="number">10</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> sum;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/19/Java语言基础知识/" rel="next" title="Java语言基础知识">
+                <i class="fa fa-chevron-left"></i> Java语言基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/ve.png" alt="JungleZero">
+            
+              <p class="site-author-name" itemprop="name">JungleZero</p>
+              <p class="site-description motion-element" itemprop="description">man with story</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lihonglin3012@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhongzimao.com/" title="无所不有" target="_blank">无所不有</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.5isjyx.com/1234/" title="Brave New World" target="_blank">Brave New World</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常见题目"><span class="nav-number">1.</span> <span class="nav-text">常见题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有序旋转数组中的最小数字"><span class="nav-number">1.1.</span> <span class="nav-text">有序旋转数组中的最小数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵中的路径"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵中的路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器人的运动范围"><span class="nav-number">1.3.</span> <span class="nav-text">机器人的运动范围</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JungleZero</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '0t9n1KTa7IvShYCKvwDzcqCm-gzGzoHsz',
+        appKey: 'SEfKH5WvqSEJtDdOGOt0XVtv',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
