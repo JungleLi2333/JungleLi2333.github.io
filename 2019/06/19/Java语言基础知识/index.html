@@ -90,7 +90,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-320.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-321.png">
-<meta property="og:updated_time" content="2019-06-20T12:31:44.495Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-323.png">
+<meta property="og:updated_time" content="2019-06-22T13:23:02.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java语言基础知识">
 <meta name="twitter:description" content="#  ArrayList和Linkedlist区别1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。4．对ArrayList和Lin">
@@ -345,7 +346,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,378字
+                  4,461字
                 </span>
               
 
@@ -361,7 +362,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12分钟
+                  17分钟
                 </span>
               
             </div>
@@ -416,14 +417,57 @@
 <h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><img src="/upload/pasted-321.png" alt="upload successful"></p>
 <h2 id="和equals"><a href="#和equals" class="headerlink" title="==和equals"></a>==和equals</h2><p>==用来判断两个变量是否相等时，如果两个变量是基本类型变量，且都是数值类型(不要求数据类型严格相同)，则只要两个变量的值相等，就返回true；对于两个引用类型变量，必须指向同一个对象，==才会返回true。<br>equals方法用于比较两个独立对象的内容是否相同</p>
 <h2 id="实例变量，局部变量，类变量，final变量"><a href="#实例变量，局部变量，类变量，final变量" class="headerlink" title="实例变量，局部变量，类变量，final变量"></a>实例变量，局部变量，类变量，final变量</h2><ul>
-<li>实例变量：是定义在是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。分配了内存空间后会给所有的成员变量一次初始化，没有赋值的会给成员变量对应类型的值，数据类型不同则默认值不同。所以A正确。</li>
-<li>局部变量：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。用的时候是直接入栈的，如果没有赋值，这个变量就没有初始值，也就无法操作，所以局部变量要初始化。所以B错误。</li>
-<li>类变量：类变量也声明在类中，方法体之外，但必须声明为static类型。所以C正确。</li>
-<li>final变量，final 修饰的变量。如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。所以D正确。</li>
+<li>实例变量：是定义在是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。分配了内存空间后会给所有的成员变量一次初始化，没有赋值的会给成员变量对应类型的值，数据类型不同则默认值不同。</li>
+<li>局部变量：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。用的时候是直接入栈的，如果没有赋值，这个变量就没有初始值，也就无法操作，所以局部变量要初始化。</li>
+<li>类变量：类变量也声明在类中，方法体之外，但必须声明为static类型。</li>
+<li>final变量，final 修饰的变量。如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</li>
 </ul>
 <h2 id="Integer的赋值问题"><a href="#Integer的赋值问题" class="headerlink" title="Integer的赋值问题"></a>Integer的赋值问题</h2><p>在为Integer赋值的时候，java编译器会将其翻译成调用valueOf()方法。比如Integer i=127翻译为Integer i=Integer.valueOf(127)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//high为127</span></span><br><span class="line">        <span class="keyword">if</span>(i &gt;= -<span class="number">128</span> &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + <span class="number">128</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看出，对于-128到127之间的数，Java会对其进行缓存。而超出这个范围则新建一个对象。</p>
 <h2 id="throws和throw"><a href="#throws和throw" class="headerlink" title="throws和throw"></a>throws和throw</h2><p>1、throws出现在方法头，throw出现在方法体 2、throws表示出现异常的一种可能性，并不一定会发生异常；throw则是抛出了异常，执行throw则一定抛出了某种异常。 3、两者都是消极的异常处理方式，只是抛出或者可能抛出异常，是不会由函数处理，真正的处理异常由它的上层调用处理</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>Reflection（反射）是Java被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API取得任何类的內部信息，并能直接操作任意对象的内部属性及方法。</p>
+<p>Java反射机制主要提供了以下功能：</p>
+<ul>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时获取任意一个类所具有的成员变量和方法</li>
+<li>在运行时调用任意一个对象的方法（属性）</li>
+<li>生成动态代理</li>
+</ul>
+<ol>
+<li><p>Class: 是一个类; 一个描述类的类.<br>　　封装了描述方法的 Method,描述字段的 Filed,描述构造器的 Constructor 等属性.</p>
+<ol start="2">
+<li><p>如何得到 Class 对象:<br>　　2.1 Person.class<br>　　2.2 person.getClass()<br>　　2.3 Class.forName(“com.atguigu.javase.Person”)</p>
+</li>
+<li><p>关于 Method:<br>　　3.1 如何获取 Method:<br>　　　　1). getDeclaredMethods: 得到 Method 的数组.<br>　　　　2). getDeclaredMethod(String methondName, Class … parameterTypes)</p>
+</li>
+</ol>
+<p>　　3.2 如何调用 Method<br>　　　　1). 如果方法时 private 修饰的, 需要先调用 Method 的　setAccessible(true), 使其变为可访问<br>　　　　2). method.invoke(obj, Object … args);</p>
+<ol start="4">
+<li><p>关于 Field:<br>　　4.1 如何获取 Field: getField(String fieldName)<br>　　4.2 如何获取 Field 的值:<br>　　　　1). setAccessible(true)<br>　　　　2). field.get(Object obj)<br>　　4.3 如何设置 Field 的值:<br>　　　　field.set(Obejct obj, Object val)</p>
+</li>
+<li><p>了解 Constructor 和 Annotation </p>
+</li>
+<li><p>反射和泛型.<br>　　6.1 getGenericSuperClass: 获取带泛型参数的父类, 返回值为: BaseDao&lt;Employee, String&gt;<br>　　6.2 Type 的子接口: ParameterizedType<br>　　6.3 可以调用 ParameterizedType 的 Type[] getActualTypeArguments() 获取泛型参数的数组.<br><a href="https://www.cnblogs.com/tech-bird/p/3525336.html" target="_blank" rel="noopener">https://www.cnblogs.com/tech-bird/p/3525336.html</a></p>
+<h2 id="AQS和CAS"><a href="#AQS和CAS" class="headerlink" title="AQS和CAS"></a>AQS和CAS</h2><p>抽象队列同步器AQS ( AbstractQueuedSychronizer ) , 如果说java.util.concurrent的基础是CAS的话,那么AQS就是整个Java并发包的核心了, ReentrantLock、CountDownLatch、Semaphore等都用到了它。AQS实际上以双向队列的形式连接所有的Entry ,比方说ReentrantLock ,所有等待的线程都被放在一个Entry中并连成双向队列,前面一个线程使用 ReentrantLock好了, 则双向队列实际上的第一个Entry开始运行。 AQS定 义了对双向队列所有的操作,而只开放了tryLock和tryRelease方法给开发者使用,开发者可以根据自己的实现重写tryLock和tryRelease方法,以实现自己的并发功能。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>比较并替换CAS(Compare and Swap) ,假设有三个操作数:内存值V、旧的预期值A、要修改的值B ,当且仅当预期值A和内存值V相同时,才桧将内存值修改为B并返回true ,否则什么都不做并返回false ,整个比较并替换的操作是一个原子操作。CAS一定要volatile变量配合,这样才能保证每次拿到的变量是主内中最新的相应值,否则旧的预期值A对某条线程来说,永远是一个不会变的值A,只要某次CAS操作失败，下面永远都不可能成功。</p>
+<p>CAS虽然比较高效的解决了原子操作问题,但仍存在三大问题。</p>
+<ul>
+<li>循环时间开销大</li>
+<li>只能保证一个共享变量的原子操作</li>
+<li>ABA问题</li>
+</ul>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p> Condition是在java 1.5中才出现的，它用来替代传统的Object的wait()、notify()实现线程间的协作，相比使用Object的wait()、notify()，使用Condition1的await()、signal()这种方式实现线程间协作更加安全和高效。因此通常来说比较推荐使用Condition，在阻塞队列那一篇博文中就讲述到了，阻塞队列实际上是使用了Condition来模拟线程间协作。</p>
+<ul>
+<li>Condition是个接口，基本的方法就是await()和signal()方法；</li>
+<li>Condition依赖于Lock接口，生成一个Condition的基本代码是lock.newCondition()</li>
+<li>调用Condition的await()和signal()方法，都必须在lock保护之内，就是说必须在lock.lock()和lock.unlock之间才可以使用Conditon中的await()对应Object的wait()； Condition中的signal()对应Object的notify()； Condition中的signalAll()对应Object的notifyAll() <h2 id="Spring-mvc执行流程"><a href="#Spring-mvc执行流程" class="headerlink" title="Spring mvc执行流程"></a>Spring mvc执行流程</h2></li>
+</ul>
+<p><img src="/upload/pasted-323.png" alt="upload successful"><br><a href="https://www.cnblogs.com/jay36/p/7527039.html" target="_blank" rel="noopener">https://www.cnblogs.com/jay36/p/7527039.html</a></p>
+<h2 id="AOP-IOC"><a href="#AOP-IOC" class="headerlink" title="AOP IOC"></a>AOP IOC</h2><p>AOP和IOC是Spring精华部分, AOP可以看做是对OOP的补充,对代码进行横向的扩展,通过代理模式实现,代理模式有静态代理,动态代理, Spring利用的是动态代理,在程序运行过程中将增强代码织入原代码中。IOC是 控制反转,将对象的控制权交给Spring框架,用户需要使用对象无需创建,直接使用即呵。AOP和IOC最可贵的是它们的思想。</p>
 
       
     </div>
@@ -669,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和Linkedlist区别"><span class="nav-number">1.</span> <span class="nav-text">ArrayList和Linkedlist区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java方法“值传递”的理解"><span class="nav-number">2.</span> <span class="nav-text">java方法“值传递”的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile"><span class="nav-number">3.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组复制"><span class="nav-number">4.</span> <span class="nav-text">数组复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载顺序"><span class="nav-number">5.</span> <span class="nav-text">类的加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">6.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#registerNatives"><span class="nav-number">7.1.</span> <span class="nav-text">registerNatives()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getClass"><span class="nav-number">7.2.</span> <span class="nav-text">getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode"><span class="nav-number">7.3.</span> <span class="nav-text">hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals"><span class="nav-number">7.4.</span> <span class="nav-text">equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">7.5.</span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">7.6.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-相关方法"><span class="nav-number">7.7.</span> <span class="nav-text">wait()相关方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">7.8.</span> <span class="nav-text">notify()/notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">7.9.</span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals"><span class="nav-number">9.</span> <span class="nav-text">==和equals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量，局部变量，类变量，final变量"><span class="nav-number">10.</span> <span class="nav-text">实例变量，局部变量，类变量，final变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的赋值问题"><span class="nav-number">11.</span> <span class="nav-text">Integer的赋值问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws和throw"><span class="nav-number">12.</span> <span class="nav-text">throws和throw</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和Linkedlist区别"><span class="nav-number">1.</span> <span class="nav-text">ArrayList和Linkedlist区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java方法“值传递”的理解"><span class="nav-number">2.</span> <span class="nav-text">java方法“值传递”的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile"><span class="nav-number">3.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组复制"><span class="nav-number">4.</span> <span class="nav-text">数组复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载顺序"><span class="nav-number">5.</span> <span class="nav-text">类的加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">6.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#registerNatives"><span class="nav-number">7.1.</span> <span class="nav-text">registerNatives()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getClass"><span class="nav-number">7.2.</span> <span class="nav-text">getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode"><span class="nav-number">7.3.</span> <span class="nav-text">hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals"><span class="nav-number">7.4.</span> <span class="nav-text">equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">7.5.</span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">7.6.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-相关方法"><span class="nav-number">7.7.</span> <span class="nav-text">wait()相关方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">7.8.</span> <span class="nav-text">notify()/notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">7.9.</span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals"><span class="nav-number">9.</span> <span class="nav-text">==和equals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量，局部变量，类变量，final变量"><span class="nav-number">10.</span> <span class="nav-text">实例变量，局部变量，类变量，final变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的赋值问题"><span class="nav-number">11.</span> <span class="nav-text">Integer的赋值问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws和throw"><span class="nav-number">12.</span> <span class="nav-text">throws和throw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">13.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS和CAS"><span class="nav-number">14.</span> <span class="nav-text">AQS和CAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">15.</span> <span class="nav-text">Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-mvc执行流程"><span class="nav-number">16.</span> <span class="nav-text">Spring mvc执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-IOC"><span class="nav-number">17.</span> <span class="nav-text">AOP IOC</span></a></li></ol></div>
             
 
           </div>
