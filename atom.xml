@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.junglezero.top/"/>
-  <updated>2019-06-24T02:56:37.290Z</updated>
+  <updated>2019-06-24T08:13:26.192Z</updated>
   <id>https://www.junglezero.top/</id>
   
   <author>
@@ -18,18 +18,18 @@
   
   <entry>
     <title>链表专题</title>
-    <link href="https://www.junglezero.top/2019/06/24/%E8%A1%A8%E4%B8%93%E9%A2%98/"/>
-    <id>https://www.junglezero.top/2019/06/24/表专题/</id>
-    <published>2019-06-24T02:23:50.000Z</published>
-    <updated>2019-06-24T02:56:37.290Z</updated>
+    <link href="https://www.junglezero.top/2019/06/24/linkedList/"/>
+    <id>https://www.junglezero.top/2019/06/24/linkedList/</id>
+    <published>2019-06-24T02:23:00.000Z</published>
+    <updated>2019-06-24T08:13:26.192Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="在O-1-删除链表中的结点"><a href="#在O-1-删除链表中的结点" class="headerlink" title="在O(1)删除链表中的结点"></a>在O(1)删除链表中的结点</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="在O-1-删除链表中的结点"><a href="#在O-1-删除链表中的结点" class="headerlink" title="在O(1)删除链表中的结点"></a>在O(1)删除链表中的结点</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给定单链表的头指针和一个节点指针，定义一个函数在O(1)时间删除该节点</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>一般的链表删除结点都是从头结点遍历，找到要删除的结点然后进行删除，但是这个题目由于给了要删除结点的位置，就可以采取一些别的措施<br><img src="/upload/pasted-325.png" alt="upload successful"><br>这里的一个思路就是看重了结点的值：把要删除结点的下一个结点的值赋给要删除的结点，此时在删除要删除结点的下一个结点（如c）<br>但是还要注意特殊情况：</p><ul><li>要删除的结点是尾结点：此时只能从头结点顺序遍历，然后找到尾结点的前一个结点，然后再删除</li><li>要删除的链表只有一个结点，直接将头结点设为空</li></ul><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除链表中的结点</span></span><br><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">DeleteNode</span><span class="params">(ListNode first,ListNode deleteNode)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (first.next==<span class="keyword">null</span>)&#123;</span><br><span class="line">        first=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (deleteNode.next==<span class="keyword">null</span>)&#123;</span><br><span class="line">        ListNode l=first;</span><br><span class="line">        <span class="keyword">while</span> (l.next!=deleteNode)&#123;</span><br><span class="line">            l=l.next;</span><br><span class="line">        &#125;</span><br><span class="line">        l.next=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deleteNode.val=deleteNode.next.val;</span><br><span class="line">    deleteNode.next=deleteNode.next.next;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;在O-1-删除链表中的结点&quot;&gt;&lt;a href=&quot;#在O-1-删除链表中的结点&quot; class=&quot;headerlink&quot; title=&quot;在O(1)删除链表中的结点&quot;&gt;&lt;/a&gt;在O(1)删除链表中的结点&lt;/h1&gt;&lt;h2 id=&quot;内容&quot;&gt;&lt;a href=&quot;#内容&quot; cla
+        &lt;h1 id=&quot;在O-1-删除链表中的结点&quot;&gt;&lt;a href=&quot;#在O-1-删除链表中的结点&quot; class=&quot;headerlink&quot; title=&quot;在O(1)删除链表中的结点&quot;&gt;&lt;/a&gt;在O(1)删除链表中的结点&lt;/h1&gt;&lt;h2 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; cla
       
     
     </summary>
