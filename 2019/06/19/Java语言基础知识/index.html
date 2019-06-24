@@ -90,8 +90,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-320.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-321.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-324.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-323.png">
-<meta property="og:updated_time" content="2019-06-22T13:23:02.502Z">
+<meta property="og:updated_time" content="2019-06-22T14:18:10.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java语言基础知识">
 <meta name="twitter:description" content="#  ArrayList和Linkedlist区别1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。4．对ArrayList和Lin">
@@ -346,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,461字
+                  5,173字
                 </span>
               
 
@@ -362,7 +363,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  17分钟
+                  19分钟
                 </span>
               
             </div>
@@ -425,6 +426,13 @@
 <h2 id="Integer的赋值问题"><a href="#Integer的赋值问题" class="headerlink" title="Integer的赋值问题"></a>Integer的赋值问题</h2><p>在为Integer赋值的时候，java编译器会将其翻译成调用valueOf()方法。比如Integer i=127翻译为Integer i=Integer.valueOf(127)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//high为127</span></span><br><span class="line">        <span class="keyword">if</span>(i &gt;= -<span class="number">128</span> &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + <span class="number">128</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以看出，对于-128到127之间的数，Java会对其进行缓存。而超出这个范围则新建一个对象。</p>
 <h2 id="throws和throw"><a href="#throws和throw" class="headerlink" title="throws和throw"></a>throws和throw</h2><p>1、throws出现在方法头，throw出现在方法体 2、throws表示出现异常的一种可能性，并不一定会发生异常；throw则是抛出了异常，执行throw则一定抛出了某种异常。 3、两者都是消极的异常处理方式，只是抛出或者可能抛出异常，是不会由函数处理，真正的处理异常由它的上层调用处理</p>
+<h2 id="接口（Interface）"><a href="#接口（Interface）" class="headerlink" title="接口（Interface）"></a>接口（Interface）</h2><p>接口，比抽象类还要抽象的类。</p>
+<ul>
+<li>接口中每一个方法也是隐式抽象的,接口中的方法会被隐式的指定为 public abstract （只能是 public abstract，其他修饰符都会报错）。</li>
+<li>接口中可以含有变量，但是接口中的变量会被隐式的指定为  public static final   变量（并且只能是 public，用 private 修饰会报编译错误。）</li>
+<li>接口中的方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。 </li>
+</ul>
+<p>注：<br>接口是隐式抽象的，当声明一个接口的时候，不必使用abstract关键字。<br>接口中每一个方法也是隐式抽象的，声明时同样不需要abstract关键字。<br>接口中的方法都是公有的。public</p>
 <h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>Reflection（反射）是Java被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API取得任何类的內部信息，并能直接操作任意对象的内部属性及方法。</p>
 <p>Java反射机制主要提供了以下功能：</p>
 <ul>
@@ -464,10 +472,15 @@
 <ul>
 <li>Condition是个接口，基本的方法就是await()和signal()方法；</li>
 <li>Condition依赖于Lock接口，生成一个Condition的基本代码是lock.newCondition()</li>
-<li>调用Condition的await()和signal()方法，都必须在lock保护之内，就是说必须在lock.lock()和lock.unlock之间才可以使用Conditon中的await()对应Object的wait()； Condition中的signal()对应Object的notify()； Condition中的signalAll()对应Object的notifyAll() <h2 id="Spring-mvc执行流程"><a href="#Spring-mvc执行流程" class="headerlink" title="Spring mvc执行流程"></a>Spring mvc执行流程</h2></li>
+<li>调用Condition的await()和signal()方法，都必须在lock保护之内，就是说必须在lock.lock()和lock.unlock之间才可以使用Conditon中的await()对应Object的wait()； Condition中的signal()对应Object的notify()； Condition中的signalAll()对应Object的notifyAll() <h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2></li>
 </ul>
-<p><img src="/upload/pasted-323.png" alt="upload successful"><br><a href="https://www.cnblogs.com/jay36/p/7527039.html" target="_blank" rel="noopener">https://www.cnblogs.com/jay36/p/7527039.html</a></p>
+<p><img src="/upload/pasted-324.png" alt="upload successful"><br>servlet是运行在服务器端的小应用程序，是接收网络服务的请求和产生响应的一种方式。<br>servlet的功能：接受http请求，产生动态http响应。<br>HttpServlet是GenericServlet的子类。<br>GenericServlet是个抽象类，必须给出子类才能实例化。它给 出了设计servlet的一些骨架，定义了servlet生命周期，还有一些得到名字、配置、初始化参数的方法，其设计的是和应用层协议无关的，也就是说 你有可能用非http协议实现它。<br>HttpServlet是子类，当然就具有GenericServlet的一切特性，还添加了doGet, doPost, doDelete, doPut, doTrace等方法对应处理http协议里的命令的请求响应过程。<br>一般没有特殊需要，自己写的Servlet都扩展HttpServlet 。 </p>
+<h2 id="Spring-mvc执行流程"><a href="#Spring-mvc执行流程" class="headerlink" title="Spring mvc执行流程"></a>Spring mvc执行流程</h2><p><img src="/upload/pasted-323.png" alt="upload successful"><br><a href="https://www.cnblogs.com/jay36/p/7527039.html" target="_blank" rel="noopener">https://www.cnblogs.com/jay36/p/7527039.html</a></p>
 <h2 id="AOP-IOC"><a href="#AOP-IOC" class="headerlink" title="AOP IOC"></a>AOP IOC</h2><p>AOP和IOC是Spring精华部分, AOP可以看做是对OOP的补充,对代码进行横向的扩展,通过代理模式实现,代理模式有静态代理,动态代理, Spring利用的是动态代理,在程序运行过程中将增强代码织入原代码中。IOC是 控制反转,将对象的控制权交给Spring框架,用户需要使用对象无需创建,直接使用即呵。AOP和IOC最可贵的是它们的思想。</p>
+<h2 id="Hibernate-POJO"><a href="#Hibernate-POJO" class="headerlink" title="Hibernate POJO"></a>Hibernate POJO</h2><p>Hibernate Pojo的三态分别为transient（瞬时态）,persistent（持久态）,detached（游离态）</p>
+<p>1、官方给出的三态与Session的关系如下：</p>
+<p>transient: never persistent, not associated with any Session<br>persistent: associated with a unique Session<br>detached: previously persistent, not associated with any Session</p>
+<p>2、三种状态间相互转换关系，及他们在数据库、session中的状态如下：<br>a.当我们new一个pojo时，它处于瞬时态，此时与session、数据库均无任何关联。<br>b.此后，我们获得session并开启hibernate事务，调用save(),persist(),saveOrUpdate()方法，将pojo转变为持久态，此时session中存有这个pojo，但直到transaction.commit()被调用时，sql语句才会执行，此后数据库中也才有此条数据。<br>c.但当commit()并且session.close()执行过后，pojo就变为了游离态，也就是说，数据库中有该记录，但session中不再有。<br>d.持久化状态的实例，也可以重新变成瞬时态，那就是调用delete()方法。<br>e.通过get()或load()方法得到的pojo是持久态的。<br>f.游离态的pojo可以通过update(),saveOrUpdate(),lock()和replicate()方法重新成为持久态。<br>g.调用merge()方法后，pojo维持原态，但内容会被更新到数据库</p>
 
       
     </div>
@@ -502,8 +515,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/20/专题/" rel="prev" title="查找专题">
-                查找专题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/20/常识（各种杂七杂八的东西）/" rel="prev" title="编程常识（各种杂七杂八的东西）">
+                编程常识（各种杂七杂八的东西） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -713,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和Linkedlist区别"><span class="nav-number">1.</span> <span class="nav-text">ArrayList和Linkedlist区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java方法“值传递”的理解"><span class="nav-number">2.</span> <span class="nav-text">java方法“值传递”的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile"><span class="nav-number">3.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组复制"><span class="nav-number">4.</span> <span class="nav-text">数组复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载顺序"><span class="nav-number">5.</span> <span class="nav-text">类的加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">6.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#registerNatives"><span class="nav-number">7.1.</span> <span class="nav-text">registerNatives()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getClass"><span class="nav-number">7.2.</span> <span class="nav-text">getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode"><span class="nav-number">7.3.</span> <span class="nav-text">hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals"><span class="nav-number">7.4.</span> <span class="nav-text">equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">7.5.</span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">7.6.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-相关方法"><span class="nav-number">7.7.</span> <span class="nav-text">wait()相关方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">7.8.</span> <span class="nav-text">notify()/notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">7.9.</span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals"><span class="nav-number">9.</span> <span class="nav-text">==和equals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量，局部变量，类变量，final变量"><span class="nav-number">10.</span> <span class="nav-text">实例变量，局部变量，类变量，final变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的赋值问题"><span class="nav-number">11.</span> <span class="nav-text">Integer的赋值问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws和throw"><span class="nav-number">12.</span> <span class="nav-text">throws和throw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">13.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS和CAS"><span class="nav-number">14.</span> <span class="nav-text">AQS和CAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">15.</span> <span class="nav-text">Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-mvc执行流程"><span class="nav-number">16.</span> <span class="nav-text">Spring mvc执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-IOC"><span class="nav-number">17.</span> <span class="nav-text">AOP IOC</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和Linkedlist区别"><span class="nav-number">1.</span> <span class="nav-text">ArrayList和Linkedlist区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java方法“值传递”的理解"><span class="nav-number">2.</span> <span class="nav-text">java方法“值传递”的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile"><span class="nav-number">3.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组复制"><span class="nav-number">4.</span> <span class="nav-text">数组复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载顺序"><span class="nav-number">5.</span> <span class="nav-text">类的加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">6.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#registerNatives"><span class="nav-number">7.1.</span> <span class="nav-text">registerNatives()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getClass"><span class="nav-number">7.2.</span> <span class="nav-text">getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode"><span class="nav-number">7.3.</span> <span class="nav-text">hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals"><span class="nav-number">7.4.</span> <span class="nav-text">equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">7.5.</span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">7.6.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-相关方法"><span class="nav-number">7.7.</span> <span class="nav-text">wait()相关方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">7.8.</span> <span class="nav-text">notify()/notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">7.9.</span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals"><span class="nav-number">9.</span> <span class="nav-text">==和equals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量，局部变量，类变量，final变量"><span class="nav-number">10.</span> <span class="nav-text">实例变量，局部变量，类变量，final变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的赋值问题"><span class="nav-number">11.</span> <span class="nav-text">Integer的赋值问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws和throw"><span class="nav-number">12.</span> <span class="nav-text">throws和throw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（Interface）"><span class="nav-number">13.</span> <span class="nav-text">接口（Interface）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">14.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS和CAS"><span class="nav-number">15.</span> <span class="nav-text">AQS和CAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">16.</span> <span class="nav-text">Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet"><span class="nav-number">17.</span> <span class="nav-text">Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-mvc执行流程"><span class="nav-number">18.</span> <span class="nav-text">Spring mvc执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-IOC"><span class="nav-number">19.</span> <span class="nav-text">AOP IOC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate-POJO"><span class="nav-number">20.</span> <span class="nav-text">Hibernate POJO</span></a></li></ol></div>
             
 
           </div>
