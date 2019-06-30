@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,树结构,">
+  <meta name="keywords" content="数据结构,树,">
 
 
 
@@ -82,15 +82,16 @@
 
 
 <meta name="description" content="基本结构（实现）123456class TreeNode &amp;#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &amp;#123; val = x; &amp;#125;&amp;#125; 遍历前序遍历是一种先访问根结点，再访问左子节点，再访问右子结点的访问方式，用递归方式很容易实现 12345678public stat">
-<meta name="keywords" content="数据结构,树结构">
+<meta name="keywords" content="数据结构,树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树（二叉树）专题">
-<meta property="og:url" content="https://www.junglezero.top/2019/06/17/题/index.html">
+<meta property="og:url" content="https://www.junglezero.top/2019/06/30/题/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="基本结构（实现）123456class TreeNode &amp;#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &amp;#123; val = x; &amp;#125;&amp;#125; 遍历前序遍历是一种先访问根结点，再访问左子节点，再访问右子结点的访问方式，用递归方式很容易实现 12345678public stat">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-317.png">
-<meta property="og:updated_time" content="2019-06-26T06:13:32.598Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-335.png">
+<meta property="og:updated_time" content="2019-06-30T12:45:09.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树（二叉树）专题">
 <meta name="twitter:description" content="基本结构（实现）123456class TreeNode &amp;#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &amp;#123; val = x; &amp;#125;&amp;#125; 遍历前序遍历是一种先访问根结点，再访问左子节点，再访问右子结点的访问方式，用递归方式很容易实现 12345678public stat">
@@ -124,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/06/17/题/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/06/30/题/">
 
 
 
@@ -269,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/06/17/题/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/06/30/题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -298,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-17T17:25:00+08:00">
-                2019-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T20:42:06+08:00">
+                2019-06-30
               </time>
             
 
@@ -321,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/刷算法题/" itemprop="url" rel="index">
-                    <span itemprop="name">刷算法题</span>
+                  <a href="/categories/object-Object/" itemprop="url" rel="index">
+                    <span itemprop="name">[object Object]</span>
                   </a>
                 </span>
 
@@ -339,8 +340,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/17/题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/题/" itemprop="commentCount"></span>
+                <a href="/2019/06/30/题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/30/题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  939字
+                  1,278字
                 </span>
               
 
@@ -383,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  6分钟
                 </span>
               
             </div>
@@ -418,6 +419,14 @@
 <h2 id="树的子结构"><a href="#树的子结构" class="headerlink" title="树的子结构"></a>树的子结构</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先在树1中找到树2的根结点，然后在比较左子树和右子树</p>
 <h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//树的子结构</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">hasSubTree</span><span class="params">(TreeNode t1,TreeNode t2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result=<span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (t1!=<span class="keyword">null</span>&amp;&amp;t2!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span> (t1==t2)</span><br><span class="line">            result=checkSubTree(t1,t2);</span><br><span class="line">        <span class="keyword">if</span> (!result)</span><br><span class="line">            hasSubTree(t1.left,t2);</span><br><span class="line">        <span class="keyword">if</span> (!result)</span><br><span class="line">            hasSubTree(t1.right,t2);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkSubTree</span><span class="params">(TreeNode t1, TreeNode t2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (t2==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (t1==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (t1.val!=t2.val)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> checkSubTree(t1.left,t2.left)&amp;&amp;checkSubTree(t1.right,t2.right);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="镜像二叉树"><a href="#镜像二叉树" class="headerlink" title="镜像二叉树"></a>镜像二叉树</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>输入一个二叉树，输出它的镜像</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p><img src="/upload/pasted-335.png" alt="upload successful"><br>通过示例图可以看出，输出镜像结点的方法就是从根结点开始，交换左右孩子…不断递归知道到达叶子结点<br>需要注意的是递归</p>
+<h3 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">mirrorTree</span> <span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root==<span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span>(root.left==<span class="keyword">null</span>&amp;&amp;root.right==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    TreeNode temp = root.left;</span><br><span class="line">    root.left=root.right;</span><br><span class="line">    root.right=temp;</span><br><span class="line"></span><br><span class="line">    mirrorTree(root.left);</span><br><span class="line">    mirrorTree(root.right);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="对称二叉树"><a href="#对称二叉树" class="headerlink" title="对称二叉树"></a>对称二叉树</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>输入一个树，判断是不是对称的，即这棵树是不是和他的镜像树相同</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>注意找到递归的突破口</p>
+<h3 id="实现-3"><a href="#实现-3" class="headerlink" title="实现"></a>实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对称二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetrical</span><span class="params">(TreeNode t1)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isSymmetrical(t1,t1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSymmetrical</span><span class="params">(TreeNode t1, TreeNode t2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (t1==<span class="keyword">null</span>&amp;&amp;t2==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (t1==<span class="keyword">null</span>||t2==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (t1.val!=t2.val)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (t1.left.val==t2.right.val)&amp;&amp;(t1.right.val==t2.left.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非递归方法，用栈实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    stack.push(root.left);</span><br><span class="line">    stack.push(root.right);</span><br><span class="line">    <span class="keyword">while</span> (!stack.empty()) &#123;</span><br><span class="line">        TreeNode n1 = stack.pop(), n2 = stack.pop();</span><br><span class="line">        <span class="keyword">if</span> (n1 == <span class="keyword">null</span> &amp;&amp; n2 == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span> (n1 == <span class="keyword">null</span> || n2 == <span class="keyword">null</span> || n1.val != n2.val) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        stack.push(n1.left);</span><br><span class="line">        stack.push(n2.right);</span><br><span class="line">        stack.push(n1.right);</span><br><span class="line">        stack.push(n2.left);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -436,7 +445,7 @@
           
             <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
-            <a href="/tags/树结构/" rel="tag"># 树结构</a>
+            <a href="/tags/树/" rel="tag"># 树</a>
           
         </div>
       
@@ -449,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/06/法分析》课程整理-1/" rel="next" title="《算法分析》课程整理">
-                <i class="fa fa-chevron-left"></i> 《算法分析》课程整理
+              <a href="/2019/06/28/va多线程学习（Lock，AQS-ReentrantLock）/" rel="next" title="Java多线程学习5（Lock，AQS，ReentrantLock，ReentrantReadWriteLock，Condition）">
+                <i class="fa fa-chevron-left"></i> Java多线程学习5（Lock，AQS，ReentrantLock，ReentrantReadWriteLock，Condition）
               </a>
             
           </div>
@@ -459,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/18/队列专题/" rel="prev" title="栈和队列专题">
-                栈和队列专题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/30/StringProblemsCollection/" rel="prev" title="字符串专题">
+                字符串专题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +600,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -602,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -670,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本结构（实现）"><span class="nav-number">1.</span> <span class="nav-text">基本结构（实现）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历"><span class="nav-number">2.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前序遍历"><span class="nav-number">2.1.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中序遍历"><span class="nav-number">2.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后序遍历"><span class="nav-number">2.3.</span> <span class="nav-text">后序遍历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见题目"><span class="nav-number">3.</span> <span class="nav-text">常见题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据前序和中序遍历构造二叉树（假设不包含重复数字）"><span class="nav-number">3.1.</span> <span class="nav-text">根据前序和中序遍历构造二叉树（假设不包含重复数字）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的子结构"><span class="nav-number">3.3.</span> <span class="nav-text">树的子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">3.3.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.3.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">3.3.3.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本结构（实现）"><span class="nav-number">1.</span> <span class="nav-text">基本结构（实现）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历"><span class="nav-number">2.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前序遍历"><span class="nav-number">2.1.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中序遍历"><span class="nav-number">2.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后序遍历"><span class="nav-number">2.3.</span> <span class="nav-text">后序遍历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见题目"><span class="nav-number">3.</span> <span class="nav-text">常见题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#根据前序和中序遍历构造二叉树（假设不包含重复数字）"><span class="nav-number">3.1.</span> <span class="nav-text">根据前序和中序遍历构造二叉树（假设不包含重复数字）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的子结构"><span class="nav-number">3.3.</span> <span class="nav-text">树的子结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">3.3.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.3.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">3.3.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像二叉树"><span class="nav-number">3.4.</span> <span class="nav-text">镜像二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-2"><span class="nav-number">3.4.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对称二叉树"><span class="nav-number">3.5.</span> <span class="nav-text">对称二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-2"><span class="nav-number">3.5.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-2"><span class="nav-number">3.5.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-3"><span class="nav-number">3.5.3.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
