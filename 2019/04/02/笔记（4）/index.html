@@ -84,15 +84,17 @@
 <meta name="description" content="线程组（Thread Group） public class ThreadGroupextends Objectimplements Thread.UncaughtExceptionHandler  A thread group represents a set of threads. In addition, a thread group can also include other threa">
 <meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多线程学习（线程组，线程池）">
+<meta property="og:title" content="java多线程学习4（线程组，线程池）">
 <meta property="og:url" content="https://www.junglezero.top/2019/04/02/笔记（4）/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="线程组（Thread Group） public class ThreadGroupextends Objectimplements Thread.UncaughtExceptionHandler  A thread group represents a set of threads. In addition, a thread group can also include other threa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-27T08:04:26.994Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-348.png">
+<meta property="og:updated_time" content="2019-07-07T09:50:23.556Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java多线程学习（线程组，线程池）">
+<meta name="twitter:title" content="java多线程学习4（线程组，线程池）">
 <meta name="twitter:description" content="线程组（Thread Group） public class ThreadGroupextends Objectimplements Thread.UncaughtExceptionHandler  A thread group represents a set of threads. In addition, a thread group can also include other threa">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-348.png">
 
 
 
@@ -130,7 +132,7 @@
 
 
 
-  <title>java多线程学习（线程组，线程池） | 淋中之虹</title>
+  <title>java多线程学习4（线程组，线程池） | 淋中之虹</title>
   
 
 
@@ -284,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java多线程学习（线程组，线程池）</h1>
+          <h1 class="post-title" itemprop="name headline">java多线程学习4（线程组，线程池）</h1>
         
 
         <div class="post-meta">
@@ -365,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  235字
+                  285字
                 </span>
               
 
@@ -410,7 +412,8 @@
 </blockquote>
 <p>A thread is allowed to access information about its own thread group, but not to access information about its thread group’s parent thread group or any other thread groups.</p>
 <p>从上面的文档可以得知：<br>线程组也是一个树形<br>ThreadGroup中，也有一系列的生成和销毁方法</p>
-<h1 id="线程池-（ThreadPool）"><a href="#线程池-（ThreadPool）" class="headerlink" title="线程池 （ThreadPool）"></a>线程池 （ThreadPool）</h1><h2 id="自己实现"><a href="#自己实现" class="headerlink" title="自己实现"></a>自己实现</h2><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<h1 id="线程池-（ThreadPool）"><a href="#线程池-（ThreadPool）" class="headerlink" title="线程池 （ThreadPool）"></a>线程池 （ThreadPool）</h1><h2 id="为什么要有线程池"><a href="#为什么要有线程池" class="headerlink" title="为什么要有线程池"></a>为什么要有线程池</h2><p><img src="/upload/pasted-348.png" alt="upload successful"><br>这里的关键就是把线程的数量控制起来，因为频繁的创建和销毁线程是很占用资源的</p>
+<h2 id="自己实现"><a href="#自己实现" class="headerlink" title="自己实现"></a>自己实现</h2><h3 id="几个需要注意的属性"><a href="#几个需要注意的属性" class="headerlink" title="几个需要注意的属性"></a>几个需要注意的属性</h3><ul>
 <li>任务队列：把等待执行的任务储存起来</li>
 <li>拒绝策略：任务队列应该是有大小的，当有过多的任务申请提交时，应当有拒绝策略，方法有：抛出异常，直接丢弃，进入阻塞状态，放入临时队列</li>
 <li>初始化值：初始时线程池大小（最小）</li>
@@ -578,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程组（Thread-Group）"><span class="nav-number">1.</span> <span class="nav-text">线程组（Thread Group）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池-（ThreadPool）"><span class="nav-number">2.</span> <span class="nav-text">线程池 （ThreadPool）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现"><span class="nav-number">2.1.</span> <span class="nav-text">自己实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">2.1.1.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程组（Thread-Group）"><span class="nav-number">1.</span> <span class="nav-text">线程组（Thread Group）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池-（ThreadPool）"><span class="nav-number">2.</span> <span class="nav-text">线程池 （ThreadPool）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要有线程池"><span class="nav-number">2.1.</span> <span class="nav-text">为什么要有线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现"><span class="nav-number">2.2.</span> <span class="nav-text">自己实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个需要注意的属性"><span class="nav-number">2.2.1.</span> <span class="nav-text">几个需要注意的属性</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
