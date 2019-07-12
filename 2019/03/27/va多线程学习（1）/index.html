@@ -81,24 +81,22 @@
 
 
 
-<meta name="description" content="线程相关概念复习（操作系统）并发和并行的区别并行：两个或多个事件，在同一时刻发生并发：两个或者多个事件在同一时间间隔发生比如在一个单处理机系统中，每一时刻只能有一个程序运行，在一秒的时间内，0~15ms运行A,15~30ms运行B.30~45ms运行C,45~60ms运行D，就可以说ABCD是并发的 进程的概念为了多个程序能并发执行，以提高资源利用率和系统吞吐量，操作系统引入了进程的概念进程，是指">
 <meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java多线程学习（线程概念，多线程实现）">
+<meta property="og:title" content="java多线程学习1（线程概念，多线程实现）">
 <meta property="og:url" content="https://www.junglezero.top/2019/03/27/va多线程学习（1）/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="线程相关概念复习（操作系统）并发和并行的区别并行：两个或多个事件，在同一时刻发生并发：两个或者多个事件在同一时间间隔发生比如在一个单处理机系统中，每一时刻只能有一个程序运行，在一秒的时间内，0~15ms运行A,15~30ms运行B.30~45ms运行C,45~60ms运行D，就可以说ABCD是并发的 进程的概念为了多个程序能并发执行，以提高资源利用率和系统吞吐量，操作系统引入了进程的概念进程，是指">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-364.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-259.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-260.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-268.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-261.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-262.png">
-<meta property="og:updated_time" content="2019-06-26T10:41:39.433Z">
+<meta property="og:updated_time" content="2019-07-12T04:44:45.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java多线程学习（线程概念，多线程实现）">
-<meta name="twitter:description" content="线程相关概念复习（操作系统）并发和并行的区别并行：两个或多个事件，在同一时刻发生并发：两个或者多个事件在同一时间间隔发生比如在一个单处理机系统中，每一时刻只能有一个程序运行，在一秒的时间内，0~15ms运行A,15~30ms运行B.30~45ms运行C,45~60ms运行D，就可以说ABCD是并发的 进程的概念为了多个程序能并发执行，以提高资源利用率和系统吞吐量，操作系统引入了进程的概念进程，是指">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-259.png">
+<meta name="twitter:title" content="java多线程学习1（线程概念，多线程实现）">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-364.png">
 
 
 
@@ -136,7 +134,7 @@
 
 
 
-  <title>java多线程学习（线程概念，多线程实现） | 淋中之虹</title>
+  <title>java多线程学习1（线程概念，多线程实现） | 淋中之虹</title>
   
 
 
@@ -322,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java多线程学习（线程概念，多线程实现）</h1>
+          <h1 class="post-title" itemprop="name headline">java多线程学习1（线程概念，多线程实现）</h1>
         
 
         <div class="post-meta">
@@ -440,7 +438,9 @@
       
 
       
-        <h1 id="线程相关概念复习（操作系统）"><a href="#线程相关概念复习（操作系统）" class="headerlink" title="线程相关概念复习（操作系统）"></a>线程相关概念复习（操作系统）</h1><h2 id="并发和并行的区别"><a href="#并发和并行的区别" class="headerlink" title="并发和并行的区别"></a>并发和并行的区别</h2><p>并行：两个或多个事件，在同一时刻发生<br>并发：两个或者多个事件在同一时间间隔发生<br>比如在一个单处理机系统中，每一时刻只能有一个程序运行，在一秒的时间内，0~15ms运行A,15~30ms运行B.30~45ms运行C,45~60ms运行D，就可以说ABCD是并发的</p>
+        <p><img src="/upload/pasted-364.png" width="70%"></p>
+<a id="more"></a>
+<h1 id="线程相关概念复习（操作系统）"><a href="#线程相关概念复习（操作系统）" class="headerlink" title="线程相关概念复习（操作系统）"></a>线程相关概念复习（操作系统）</h1><h2 id="并发和并行的区别"><a href="#并发和并行的区别" class="headerlink" title="并发和并行的区别"></a>并发和并行的区别</h2><p>并行：两个或多个事件，在同一时刻发生<br>并发：两个或者多个事件在同一时间间隔发生<br>比如在一个单处理机系统中，每一时刻只能有一个程序运行，在一秒的时间内，0~15ms运行A,15~30ms运行B.30~45ms运行C,45~60ms运行D，就可以说ABCD是并发的</p>
 <h2 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h2><p>为了多个程序能并发执行，以提高资源利用率和系统吞吐量，操作系统引入了进程的概念<br>进程，是指系统中能独立运行并作为资源分配的基本单位，是由一组机器指令，数据和堆栈组成，是一个能独立运行的实体</p>
 <h2 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h2><p><img src="/upload/pasted-259.png" alt="upload successful"></p>
 <h2 id="线程的概念"><a href="#线程的概念" class="headerlink" title="线程的概念"></a>线程的概念</h2><p>为了减少程序在并发执行时所付出的时空开销，使os具有更好的并发性，引入了线程的概念<br>在引入线程的os中，已经把线程作为调度和分派的基本单位，因而线程是能独立运行的基本单位；不仅进程可以并发执行，一个进程中的多个线程也可以并发执行，不同进程中的线程也能并发执行，线程并不拥有系统资源，而是仅维持一点自身必须的资源</p>
@@ -575,8 +575,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/29/ava多线程学习（2）/" rel="prev" title="java多线程学习（保护线程，终止线程，synchronized）">
-                java多线程学习（保护线程，终止线程，synchronized） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/29/ava多线程学习（2）/" rel="prev" title="java多线程学习3（保护线程，终止线程，synchronized）">
+                java多线程学习3（保护线程，终止线程，synchronized） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

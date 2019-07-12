@@ -81,24 +81,22 @@
 
 
 
-<meta name="description" content="CAS简介CAS通常是指（Compare And Swap或 Compare And Set）是硬件操作系统级别提供的具有原子性的原语指令，利用它可以在多线程中取得和同步一样的效果。 原理基于乐观锁。以i++为例子举例，一般情况下是三步操作，分别是取值，+操作，存值，但是如果是多线程操作，就会存在线程安全的问题，对于CAS，首先获取旧的预期值，在准备保存时，和当前内存中的值进行对比（compare">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程学习6（CAS，原子类，CountDownLatch，CyclicBarrier，Semaphore）">
 <meta property="og:url" content="https://www.junglezero.top/2019/07/02/ithreading-6/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="CAS简介CAS通常是指（Compare And Swap或 Compare And Set）是硬件操作系统级别提供的具有原子性的原语指令，利用它可以在多线程中取得和同步一样的效果。 原理基于乐观锁。以i++为例子举例，一般情况下是三步操作，分别是取值，+操作，存值，但是如果是多线程操作，就会存在线程安全的问题，对于CAS，首先获取旧的预期值，在准备保存时，和当前内存中的值进行对比（compare">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-361.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-339.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-340.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-341.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-342.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-343.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-344.png">
-<meta property="og:updated_time" content="2019-07-05T07:23:46.615Z">
+<meta property="og:updated_time" content="2019-07-12T04:40:25.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习6（CAS，原子类，CountDownLatch，CyclicBarrier，Semaphore）">
-<meta name="twitter:description" content="CAS简介CAS通常是指（Compare And Swap或 Compare And Set）是硬件操作系统级别提供的具有原子性的原语指令，利用它可以在多线程中取得和同步一样的效果。 原理基于乐观锁。以i++为例子举例，一般情况下是三步操作，分别是取值，+操作，存值，但是如果是多线程操作，就会存在线程安全的问题，对于CAS，首先获取旧的预期值，在准备保存时，和当前内存中的值进行对比（compare">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-339.png">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-361.png">
 
 
 
@@ -418,7 +416,9 @@
       
 
       
-        <h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CAS通常是指（Compare And Swap或 Compare And Set）是硬件操作系统级别提供的具有原子性的原语指令，利用它可以在多线程中取得和同步一样的效果。</p>
+        <p><img src="/upload/pasted-361.png" width="70%"></p>
+<a id="more"></a>
+<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CAS通常是指（Compare And Swap或 Compare And Set）是硬件操作系统级别提供的具有原子性的原语指令，利用它可以在多线程中取得和同步一样的效果。</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>基于<a href="https://www.junglezero.top/2019/04/23/%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81-1/#more">乐观锁</a>。以i++为例子举例，一般情况下是三步操作，分别是取值，+操作，存值，但是如果是多线程操作，就会存在线程安全的问题，对于CAS，首先获取旧的预期值，在准备保存时，和当前内存中的值进行对比（compare）,如果两个值相等，说明这个值没有发生改变，此时就存入新值（swap），如果发生改变，说明这个值已经被别的线程修改，此时当前线程不会进行操作，或者循环几个周期</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>因为加锁花销太大了（悲观锁）<br>结合上一个多线程的学习（AQS）,包括下面的原子类型，就可以发现实际上CAS是java并发包主要应用的一个方法</p>
 <h2 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h2><h3 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h3><p>既然是基于乐观锁，那么势必会有ABA问题，所谓ABA问题，就是在当前线程准备存储过程中，如果这个值从A变成了B又变回了A，则对于当前线程，值是没有发生改变的，虽然从结果来看没什么影响，但是这实际上是个潜在的问题，解决的方法在上面的那个链接已经说明，就是添加一个版本号，或者时间戳</p>
