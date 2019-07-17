@@ -81,13 +81,12 @@
 
 
 
-<meta name="description" content="SQL模式（SCHEMA）,数据库（DATABASE）相关MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。也就是说，一个SCHEMA就是一套关系1C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】">
 <meta property="og:url" content="https://www.junglezero.top/2019/07/16/tabaseSQLReview-2/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="SQL模式（SCHEMA）,数据库（DATABASE）相关MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。也就是说，一个SCHEMA就是一套关系1C">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-427.png">
 <meta property="og:image" content="https://upload/pasted-414.png/">
 <meta property="og:image" content="https://upload/pasted-415.png/">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-416.png">
@@ -98,11 +97,10 @@
 <meta property="og:image" content="https://upload/pasted-424.png/">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-425.png">
 <meta property="og:image" content="https://upload/pasted-426.png/">
-<meta property="og:updated_time" content="2019-07-17T11:15:57.576Z">
+<meta property="og:updated_time" content="2019-07-17T14:01:06.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】">
-<meta name="twitter:description" content="SQL模式（SCHEMA）,数据库（DATABASE）相关MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。也就是说，一个SCHEMA就是一套关系1C">
-<meta name="twitter:image" content="https://upload/pasted-414.png/">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-427.png">
 
 
 
@@ -422,7 +420,10 @@
       
 
       
-        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="模式（SCHEMA）-数据库（DATABASE）相关"><a href="#模式（SCHEMA）-数据库（DATABASE）相关" class="headerlink" title="模式（SCHEMA）,数据库（DATABASE）相关"></a>模式（SCHEMA）,数据库（DATABASE）相关</h2><p>MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。<br>也就是说，一个SCHEMA就是一套关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="number">123</span></span><br></pre></td></tr></table></figure></p>
+        <p><img src="/upload/pasted-427.png" width="70%"></p>
+<a id="more"></a>
+<hr>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="模式（SCHEMA）-数据库（DATABASE）相关"><a href="#模式（SCHEMA）-数据库（DATABASE）相关" class="headerlink" title="模式（SCHEMA）,数据库（DATABASE）相关"></a>模式（SCHEMA）,数据库（DATABASE）相关</h2><p>MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。<br>也就是说，一个SCHEMA就是一套关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="number">123</span></span><br></pre></td></tr></table></figure></p>
 <p>就可以创建出一个新的数据库（DATABASE）</p>
 <h2 id="表（TABLE）相关"><a href="#表（TABLE）相关" class="headerlink" title="表（TABLE）相关"></a>表（TABLE）相关</h2><h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><ul>
 <li>主键约束（PRIMARY KEY)<br>主键约束是用来保证表中记录唯一可区分的列。一个表可以通过一列或列组合的数据来唯一标识表中的每一条记录。</li>

@@ -81,13 +81,12 @@
 
 
 
-<meta name="description" content="线程池Executor框架框架简介而具体说来，Executor是一个接口，对于这个接口，API文档是这样描述的。  An object that executes submitted Runnable tasks. This interface provides a way of decoupling task submission from the mechanics of how each t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程学习8（线程池，阻塞队列（BlockingQueue）FutureTask,Callable）">
 <meta property="og:url" content="https://www.junglezero.top/2019/07/12/va-mitple-thread8/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="线程池Executor框架框架简介而具体说来，Executor是一个接口，对于这个接口，API文档是这样描述的。  An object that executes submitted Runnable tasks. This interface provides a way of decoupling task submission from the mechanics of how each t">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-428.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-367.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-368.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-370.png">
@@ -111,11 +110,10 @@
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-389.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-390.png">
 <meta property="og:image" content="https://www.junglezero.top/upload/pasted-391.png">
-<meta property="og:updated_time" content="2019-07-15T14:42:22.648Z">
+<meta property="og:updated_time" content="2019-07-17T13:54:47.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程学习8（线程池，阻塞队列（BlockingQueue）FutureTask,Callable）">
-<meta name="twitter:description" content="线程池Executor框架框架简介而具体说来，Executor是一个接口，对于这个接口，API文档是这样描述的。  An object that executes submitted Runnable tasks. This interface provides a way of decoupling task submission from the mechanics of how each t">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-367.png">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-428.png">
 
 
 
@@ -435,7 +433,10 @@
       
 
       
-        <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="Executor框架"><a href="#Executor框架" class="headerlink" title="Executor框架"></a>Executor框架</h2><h3 id="框架简介"><a href="#框架简介" class="headerlink" title="框架简介"></a>框架简介</h3><p><img src="/upload/pasted-367.png" alt="upload successful"><br>而具体说来，Executor是一个接口，对于这个接口，API文档是这样描述的。</p>
+        <p><img src="/upload/pasted-428.png" width="70%"></p>
+<a id="more"></a>
+<hr>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="Executor框架"><a href="#Executor框架" class="headerlink" title="Executor框架"></a>Executor框架</h2><h3 id="框架简介"><a href="#框架简介" class="headerlink" title="框架简介"></a>框架简介</h3><p><img src="/upload/pasted-367.png" alt="upload successful"><br>而具体说来，Executor是一个接口，对于这个接口，API文档是这样描述的。</p>
 <blockquote>
 <p>An object that executes submitted Runnable tasks. This interface provides a way of decoupling task submission from the mechanics of how each task will be run, including details of thread use, scheduling, etc. An Executor is normally used instead of explicitly creating threads.</p>
 </blockquote>
