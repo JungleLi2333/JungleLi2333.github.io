@@ -86,11 +86,11 @@
 <meta property="og:url" content="https://www.junglezero.top/2019/07/17/tabasereview/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-431.png">
-<meta property="og:updated_time" content="2019-07-18T03:59:20.860Z">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-430.png">
+<meta property="og:updated_time" content="2019-07-18T08:45:46.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库SQL部分复习（3）【数据更新，视图，查询练习】">
-<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-431.png">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-430.png">
 
 
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  587字
+                  1,169字
                 </span>
               
 
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2分钟
+                  5分钟
                 </span>
               
             </div>
@@ -410,7 +410,7 @@
       
 
       
-        <p><img src="/upload/pasted-431.png" width="70%"></p>
+        <p><img src="/upload/pasted-430.png" width="70%"></p>
 <a id="more"></a>
 <h1 id="数据更新"><a href="#数据更新" class="headerlink" title="数据更新"></a>数据更新</h1><h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><p>一般的插入<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> SC (Sno,Cno)</span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">	(<span class="string">' 200215128 '</span> , <span class="string">' 1 '</span>)</span><br></pre></td></tr></table></figure></p>
 <p>插入查询结果<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Deptage (Sdept, Avgage) <span class="keyword">SELECT</span></span><br><span class="line">	Sdept,</span><br><span class="line">	<span class="keyword">AVG</span>(Sage)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	Student</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	Sdept</span><br></pre></td></tr></table></figure></p>
@@ -426,8 +426,45 @@
 <li>视图没有实际的物理记录，不是以数据集的形式存储在数据库中的，它所对应的数据实际上是存储在视图所引用的真实表中的。</li>
 <li>视图是数据的窗口，而表是内容。表是实际数据的存放单位，而视图只是以不同的显示方式展示数据，其数据来源还是实际表。</li>
 <li>视图是查看数据表的一种方法，可以查询数据表中某些字段构成的数据，只是一些 SQL 语句的集合。从安全的角度来看，视图的数据安全性更高，使用视图的用户不接触数据表，不知道表结构。</li>
-<li>视图的建立和删除只影响视图本身，不影响对应的基本表。<h1 id="查询题目练习"><a href="#查询题目练习" class="headerlink" title="查询题目练习"></a>查询题目练习</h1>设有三个关系：<br>S(sno,sname,sex,age)<br>SC(sno,cno,grade)<br>C(cno,cname,teacher)</li>
+<li>视图的建立和删除只影响视图本身，不影响对应的基本表。</li>
 </ul>
+<h1 id="查询题目练习"><a href="#查询题目练习" class="headerlink" title="查询题目练习"></a>查询题目练习</h1><p>设有三个关系：<br>S(sno,sname,sex,age)<br>SC(sno,cno,grade)<br>C(cno,cname,teacher)</p>
+<ol>
+<li><p>查询LIU老师所授课程的课程号和课程名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	cno,</span><br><span class="line">	cname</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	C</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	teacher = <span class="string">'LIU'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询年龄大于23岁的男学生的学号和姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sno,</span><br><span class="line">	sname</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	S</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	age &gt; <span class="number">23</span></span><br><span class="line"><span class="keyword">AND</span> sex = <span class="string">'M'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询学号为S3学生所学课程的课程名与任课教师名<br>连接查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	cname,</span><br><span class="line">	teacher</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	SC,</span><br><span class="line">	C</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	SC.cno = C.cno</span><br><span class="line"><span class="keyword">AND</span> sno = <span class="string">'S3'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	cname,</span><br><span class="line">	teacher</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	C</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	cno <span class="keyword">IN</span> (</span><br><span class="line">		<span class="keyword">SELECT</span></span><br><span class="line">			cno</span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">			SC</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">			sno = <span class="string">'S3'</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>查询至少选修LIU老师所授课程中一门课程的女学生姓名<br>连接查询<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sname</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	S,</span><br><span class="line">	SC,</span><br><span class="line">	C</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	S.sno = SC.sno</span><br><span class="line"><span class="keyword">AND</span> SC.cno = C.cno</span><br><span class="line"><span class="keyword">AND</span> sex = <span class="string">'F'</span></span><br><span class="line"><span class="keyword">AND</span> teacher = <span class="string">'LIU'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>嵌套查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sname</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	S</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	sex = ‘F’</span><br><span class="line"><span class="keyword">AND</span> sno <span class="keyword">IN</span> (</span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		sno</span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		SC</span><br><span class="line">	<span class="keyword">WHERE</span></span><br><span class="line">		cno <span class="keyword">IN</span> (</span><br><span class="line">			<span class="keyword">SELECT</span></span><br><span class="line">				cno</span><br><span class="line">			<span class="keyword">FROM</span></span><br><span class="line">				C</span><br><span class="line">			<span class="keyword">WHERE</span></span><br><span class="line">				teacher = ‘LIU’</span><br><span class="line">		)</span><br></pre></td></tr></table></figure></p>
+<ol start="5">
+<li><p>查询WANG同学不学的课程的课程号<br>NOT EXISTS嵌套查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	cno</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	C</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">		<span class="keyword">SELECT</span></span><br><span class="line">			*</span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">			S,</span><br><span class="line">			SC</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">			S.sno = SC.sno</span><br><span class="line">		<span class="keyword">AND</span> SC.cno = C.cno</span><br><span class="line">		<span class="keyword">AND</span> sname = ‘WANG’</span><br><span class="line">	)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询至少选修两门课的学生学号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sno</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	sno</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">	<span class="keyword">count</span>(*) &gt;= <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>统计每门课程的学生选修人数（超过10人的课程才统计）。要求显示课程号和人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	cno,</span><br><span class="line">	<span class="keyword">count</span>(sno)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	SC</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	cno</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">	<span class="keyword">count</span>(*) &gt; <span class="number">10</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	<span class="keyword">count</span>(sno) <span class="keyword">DESC</span>,</span><br><span class="line">	cno</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>求LIU老师所授课程的每门课程的平均成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> C.cno,<span class="keyword">avg</span>(grade) </span><br><span class="line"><span class="keyword">from</span> SC,C</span><br><span class="line"><span class="keyword">where</span> SC.cno=C.cno </span><br><span class="line">    <span class="keyword">and</span> teacher=‘LIU’ </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> C.cno</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检索姓名以L打头的所有学生的姓名和年龄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sname,</span><br><span class="line">	age</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	S</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	sname <span class="keyword">LIKE</span> <span class="string">'L%'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>求年龄大于所有女同学年龄的男学生姓名和年龄</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sname,</span><br><span class="line">	age</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	S</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	sex = ‘M’</span><br><span class="line"><span class="keyword">AND</span> age &gt; <span class="keyword">ALL</span> (</span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		age</span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		S</span><br><span class="line">	<span class="keyword">WHERE</span></span><br><span class="line">		sex = ‘F’</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -461,6 +498,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/18/tabasereview4/" rel="prev" title="数据库SQL部分复习（4）【触发器，存储过程】">
+                数据库SQL部分复习（4）【触发器，存储过程】 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -579,7 +620,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
