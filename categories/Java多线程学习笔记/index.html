@@ -84,7 +84,7 @@
 <meta name="description" content="Try to be nice and cool">
 <meta property="og:type" content="website">
 <meta property="og:title" content="淋中之虹">
-<meta property="og:url" content="https://www.junglezero.top/categories/Java多线程学习笔记/index.html">
+<meta property="og:url" content="https://www.junglezero.top/categories/java多线程学习笔记/index.html">
 <meta property="og:site_name" content="淋中之虹">
 <meta property="og:description" content="Try to be nice and cool">
 <meta property="og:locale" content="zh-Hans">
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/categories/Java多线程学习笔记/">
+  <link rel="canonical" href="https://www.junglezero.top/categories/java多线程学习笔记/">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>分类: Java多线程学习笔记 | 淋中之虹</title>
+  <title>分类: java多线程学习笔记 | 淋中之虹</title>
   
 
 
@@ -290,7 +290,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Java多线程学习笔记<small>分类</small>
+        <h1>java多线程学习笔记<small>分类</small>
         </h1>
       </div>
 
@@ -302,17 +302,69 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2019/03/27/va多线程学习（1）/" itemprop="url">
+            <a class="post-title-link" href="/2019/04/02/笔记（4）/" itemprop="url">
               
-                <span itemprop="name">java多线程学习1（线程概念，多线程实现）</span>
+                <span itemprop="name">java多线程学习4（线程组，自实现线程池）</span>
               
             </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-27T18:42:00+08:00" content="2019-03-27">
-          03-27
+        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T09:48:00+08:00" content="2019-04-02">
+          04-02
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/03/29/a多线程学习（3）/" itemprop="url">
+              
+                <span itemprop="name">java多线程学习2（死锁，线程通信，生产者/消费者实现）</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T09:13:00+08:00" content="2019-03-29">
+          03-29
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/03/29/ava多线程学习（2）/" itemprop="url">
+              
+                <span itemprop="name">java多线程学习3（保护线程，终止线程，synchronized）</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T09:13:00+08:00" content="2019-03-29">
+          03-29
         </time>
       </div>
 
@@ -375,7 +427,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -964,79 +1016,6 @@
             input.addEventListener('keypress', function (event) {
               if (event.keyCode === 13) {
                 inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
-ventFunction();
               }
             });
           }
