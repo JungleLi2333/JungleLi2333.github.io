@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="各种编码 很多人都把Unicode编码挂在嘴边，其实咱们现实生活中遇到的编码基本都是Unicode的 因为Unicode兼容了大多数老版本的编码规范例如 ASCII Unicode编码定义了这个世界上几乎所有字符（就是你眼睛看到的长那个样子的符号）的数字表示 也就是说Unicode为每个字符发了一张身份证，这张身份证上有一串唯一的数字ID确定了这个字符 在这个纷乱世界上存在的唯一性。Unicode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编程常识（各种杂七杂八的东西）">
-<meta property="og:url" content="https://www.junglezero.top/2019/06/20/常识（各种杂七杂八的东西）/index.html">
+<meta property="og:title" content="MySQL深入研究（2）【查询优化，分区，分表】">
+<meta property="og:url" content="https://www.junglezero.top/2019/07/20/QLDeepLearn/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="各种编码 很多人都把Unicode编码挂在嘴边，其实咱们现实生活中遇到的编码基本都是Unicode的 因为Unicode兼容了大多数老版本的编码规范例如 ASCII Unicode编码定义了这个世界上几乎所有字符（就是你眼睛看到的长那个样子的符号）的数字表示 也就是说Unicode为每个字符发了一张身份证，这张身份证上有一串唯一的数字ID确定了这个字符 在这个纷乱世界上存在的唯一性。Unicode">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-20T12:36:08.685Z">
+<meta property="og:image" content="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-450.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-451.png">
+<meta property="og:updated_time" content="2019-07-22T14:57:13.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编程常识（各种杂七杂八的东西）">
-<meta name="twitter:description" content="各种编码 很多人都把Unicode编码挂在嘴边，其实咱们现实生活中遇到的编码基本都是Unicode的 因为Unicode兼容了大多数老版本的编码规范例如 ASCII Unicode编码定义了这个世界上几乎所有字符（就是你眼睛看到的长那个样子的符号）的数字表示 也就是说Unicode为每个字符发了一张身份证，这张身份证上有一串唯一的数字ID确定了这个字符 在这个纷乱世界上存在的唯一性。Unicode">
+<meta name="twitter:title" content="MySQL深入研究（2）【查询优化，分区，分表】">
+<meta name="twitter:image" content="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg">
 
 
 
@@ -121,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/06/20/常识（各种杂七杂八的东西）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/07/20/QLDeepLearn/">
 
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title>编程常识（各种杂七杂八的东西） | 淋中之虹</title>
+  <title>MySQL深入研究（2）【查询优化，分区，分表】 | 淋中之虹</title>
   
 
 
@@ -298,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/06/20/常识（各种杂七杂八的东西）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/07/20/QLDeepLearn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -315,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">编程常识（各种杂七杂八的东西）</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL深入研究（2）【查询优化，分区，分表】</h1>
         
 
         <div class="post-meta">
@@ -327,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T20:33:33+08:00">
-                2019-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T07:24:42+08:00">
+                2019-07-20
               </time>
             
 
@@ -346,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/20/常识（各种杂七杂八的东西）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/常识（各种杂七杂八的东西）/" itemprop="commentCount"></span>
+                <a href="/2019/07/20/QLDeepLearn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/20/QLDeepLearn/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -374,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,600字
+                  2,193字
                 </span>
               
 
@@ -390,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6分钟
+                  9分钟
                 </span>
               
             </div>
@@ -411,30 +412,34 @@
       
 
       
-        <h1 id="各种编码"><a href="#各种编码" class="headerlink" title="各种编码"></a>各种编码</h1><p> 很多人都把Unicode编码挂在嘴边，其实咱们现实生活中遇到的编码基本都是Unicode的</p>
-<p>因为Unicode兼容了大多数老版本的编码规范例如 ASCII</p>
-<p>Unicode编码定义了这个世界上几乎所有字符（就是你眼睛看到的长那个样子的符号）的数字表示</p>
-<p>也就是说Unicode为每个字符发了一张身份证，这张身份证上有一串唯一的数字ID确定了这个字符</p>
-<p>在这个纷乱世界上存在的唯一性。Unicode给这串数字ID起了个名字叫［码点］（Code Point）</p>
-<p>而很多人说的编码其实是想表达［Unicode转换格式］（即UTF，Unicode Transformation Formats）</p>
-<p>有没有觉得眼前一亮豁然开朗？没错 这就是我们看到的UTF-8/UTF-16/UTF-32的前缀来源</p>
-<p>这个［Unicode转换格式］的存在是为了解决［码点］在计算机中的二进制表现形式而设计的</p>
-<p>毕竟我们的机内表示涉及存储位宽，兼容古老编码格式，码点是数值过大的罕见字符等问题</p>
-<p>［码点］经过映射后得到的二进制串的转换格式单位称之为［码元］（Code Unit）。也就是说如果有一种UTF的码点二进制表示有n字节，其码元为8位（1个byte），那么其拥有码元n个。每种UTF的码元都不同，其宽度被作为区分写在了UTF的后缀——这就是UTF-8/UTF-16/UTF-32的由来。UTF-8的码元是8位的，UTF-16的码元是16位的。大部分的编程语言采用16位的码元作为机内表示。这就是我们在各种语言中调用获取一个字符串中character的数量时会出现这么多混乱的原因。事实上我们调用这些方法时取得的不是字符个数，而是码元个数！一旦我们的字符串中包含了位于基本平面之外的码点，那么就会需要更多的码元来表示，这个时候就会出现测试时常见的困惑——为何return的字符数比实际字符数要多？所以实际写代码时要特别注意这个问题。</p>
-<p>采取不同的映射方式可以得到不同格式的二进制串，但是他们背后所表示的［码点］永远是一致的就好像你换身份证但是身份证号不变一样。由于平时人们误把［转换格式］也称为［编码］，所以造成今天Unicode／UTF傻傻分不清楚且遣词造句运用混乱的悲桑局面。</p>
-<p>Unicode 编码 发展到今天 扩展到了 21 位（从 U+0000 到 U+10FFFF ）。这一点很重要： Unicode 不是 16 位的编码， 它是 21 位的。这 21 位提供了 1,114,112 个码点，其中，只有大概 10% 正在使用，所以还有相当大的扩充空间。</p>
-<p>编码空间被分成 17 个平面（plane），每个平面有 65,536 个字符（正好填充2个字节，16位）。0 号平面叫做「基本多文种平面」（ BMP, Basic Multilingual Plane ），涵盖了几乎所有你能遇到的字符，除了 emoji（emoji位于1号平面 - -）。其它平面叫做补充平面，大多是空的。</p>
-<p>总结一下各种编码格式的特质：</p>
-<p>UTF-32</p>
-<p>最清楚明了的一个 UTF 就是 UTF-32 ：它在每个码点上使用整 32 位。32 大于 21，因此每一个 UTF-32 值都可以直接表示对应的码点。尽管简单，UTF-32却几乎从来不在实际中使用，因为每个字符占用 4 字节太浪费空间了。</p>
-<p>UTF-16 以及「代理对」（ Surrogate Pairs ）的概念</p>
-<p>UTF-16要常见得多，它是根据有 16 位固定长度的码元（ code units ）定义的。UTF-16 本身是一种长度可变的编码。基本多文种平面（BMP）中的每一个码点都直接与一个码元相映射。鉴于 BMP 几乎囊括了所有常见字符，UTF-16 一般只需要 UTF-32 一半的空间。其它平面里很少使用的码点都是用两个 16 位的码元来编码的，这两个合起来表示一个码点的码元就叫做代理对（ surrogate pair ）。</p>
-<p>UTF-8</p>
-<p>UTF-8 使用一到四个字节来编码一个码点。从 0 到 127 的这些码点直接映射成 1 个字节（对于只包含这个范围字符的文本来说，这一点使得 UTF-8 和 ASCII 完全相同）。接下来的 1,920 个码点映射成 2 个字节，在 BMP 里所有剩下的码点需要 3 个字节。Unicode 的其他平面里的码点则需要 4 个字节。UTF-8 是基于 8 位的码元的，因此它并不需要关心字节顺序（不过仍有一些程序会在 UTF-8 文件里加上多余的 BOM）。</p>
-<p>有效率的空间使用（仅就西方语言来讲），以及不需要操心字节顺序问题使得 UTF-8 成为存储和交流 Unicode 文本方面的最佳编码。它也已经是文件格式、网络协议以及 Web API 领域里事实上的标准了。</p>
-<p>我们的JVM中保存码点是UTF16的转换格式，从char的位宽为16位也可以看得出来。由于绝大部分编码的码点位于基本平面，所以使用16位可以几乎表示所有常用字符。这就是许多语言编译器或运行时都使用UTF16的原因。英文在使用UTF16时也是2字节表示的。当我们想要使用其他平面的字符时，码元超过2个字节，就需要使用代理对在语言中的特定表示方式，譬如‘\U112233’之类的。</p>
-<p>使用UTF8时，常用的Alphabet和Numeric都在前127字节，被有效率地用一个字节表示。而我们的中文由于排在1920个码点之后，所以使用3个字节表示，这方面就比UTF16转换格式耗费更多空间。</p>
-<p>最后，不论使用哪种UTF转换格式，都是程序员自己可以选择的一种表达方式而已。我们可以通过Java方便的API进行自如转换。</p>
+        <p><img src="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg" width="70%"><br><a id="more"></a></p>
+<h1 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h1><h2 id="减少请求的数据量"><a href="#减少请求的数据量" class="headerlink" title="减少请求的数据量"></a>减少请求的数据量</h2><p>（一）只返回必要的列<br>最好不要使用 SELECT * 语句。<br>（二）只返回必要的行<br>使用 WHERE 语句进行查询过滤，有时候也需要使用 LIMIT 语句来限制返回的数据。<br>（三）缓存重复查询的数据<br>使用缓存可以避免在数据库中进行查询，特别要查询的数据经常被重复查询，缓存可以带来的查询性能提升将会是非常明显的。<br>若想要应用缓存，首先在my.ini或者my.cnf中配置query_cache_type，1表示默认缓存，需要sql_no_cache提示为不缓存，2表示默认不缓存，需要sql_cache主动缓存，0表示不缓存 。query_cache_size配置缓存大小<br>对于配置为2选项，若要进行缓存<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">SQL_CACHE</span> *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student</span><br></pre></td></tr></table></figure></p>
+<p>调用reset query cache 可以清空缓存<br>当数据表改动时，基于整个表的缓存就会被删除<br>动态数据无法缓存</p>
+<h2 id="重构查询方式"><a href="#重构查询方式" class="headerlink" title="重构查询方式"></a>重构查询方式</h2><h3 id="切分大查询"><a href="#切分大查询" class="headerlink" title="切分大查询"></a>切分大查询</h3><p>一个大查询如果一次性执行的话，可能一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。因此，可以把一个大范围操作切分为一个小范围操作<br>一个全范围的删除操作，可以切分为多个小段删除操作<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	messages</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">CREATE</span> &lt; <span class="keyword">DATE_SUB</span>(<span class="keyword">NOW</span>(), <span class="built_in">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rows_affected = 0</span><br><span class="line"><span class="keyword">DO</span></span><br><span class="line">	&#123; rows_affected = do_query (</span><br><span class="line">		<span class="string">"DELETE FROM messages WHERE create &lt; DATE_SUB(NOW(), INTERVAL 3 M</span></span><br><span class="line"><span class="string">ONTH) LIMIT 10000"</span></span><br><span class="line">	) &#125;</span><br><span class="line"><span class="keyword">WHILE</span> rows_affected &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h3 id="分解大的连接查询"><a href="#分解大的连接查询" class="headerlink" title="分解大的连接查询"></a>分解大的连接查询</h3><ol start="2">
+<li>分解大连接查询<br>将一个大连接查询（JOIN）分解成对每一个表进行一次单表查询，然后将结果在应用程序中<br>进行关联，这样做的好处有：</li>
+</ol>
+<ul>
+<li>让缓存更高效。对于连接查询，如果其中一个表发生变化，那么整个查询缓存就无法使用。而分解后的多个查询，即使其中一个表发生变化，对其它表的查询缓存依然可以使用。</li>
+<li>分解成多个单表查询，这些单表查询的缓存结果更可能被其它查询使用到，从而减少冗余记录的查询。</li>
+<li>减少锁竞争；</li>
+<li>在应用层进行连接，可以更容易对数据库进行拆分，从而更容易做到高性能和可扩展。</li>
+<li>查询本身效率也可能会有所提升。例如下面的例子中，使用 IN() 代替连接查询，可以让MySQL 按照 ID 顺序进行查询，这可能比随机的连接要更高效。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	tab</span><br><span class="line"><span class="keyword">JOIN</span> tag_post <span class="keyword">ON</span> tag_post.tag_id = tag.id</span><br><span class="line"><span class="keyword">JOIN</span> post <span class="keyword">ON</span> tag_post.post_id = post.id</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	tag.tag = <span class="string">'mysql'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>将一个表中的数据和索引，分散到不同的文件中进行存储，称之为分区操作，划分出来到文件就是不同的分区<br>分区的意义是将一个具有大量数据的表，将其分散到不同的数据和索引文件中进行储存<br>对于Innodb来说，相当于一个表对应对个ibd文件<br>分散之后，每个文件对应的数据量显著减少，保证单个文件的执行速度<br>一般情况就是根据id主键字段进行分区，或者为主键，唯一键的一个子集，在创建表时，利用partition进行设定<br>例如下面，就是利用id字段，使用hash算法，将数据分布在10个分区中<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col4 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (col1),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">id</span>)</span><br><span class="line"><span class="keyword">PARTITIONS</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure></p>
+<p>分区完成后，客户端看上去还是一张表。</p>
+<h2 id="分区算法"><a href="#分区算法" class="headerlink" title="分区算法"></a>分区算法</h2><p>range分区：基于一个给定的连续区间范围(区间要求连续并且不能重叠)，把数据分配到不同的分区<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">pubtime <span class="built_in">INT</span> ,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>,pubtime),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>(pubtime)(</span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1509665599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1512355599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1540765599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>条件只能用小于，更小的时间戳要放在前面<br>list分区：类似于range分区，区别在于list分区是居于枚举出的值列表分区，range是基于给定的连续区间范围分区，使用 in(值列表)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">status</span> <span class="built_in">INT</span> ,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>,pubtime),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>(<span class="keyword">status</span>)(</span><br><span class="line"><span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p3 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>hash分区：基于给定的分区个数，把数据分配到不同的分区，采取的是求余方案，所谓hash算法，就是对于输入，得到某个特定的输出，要求如果输入相同的值应当得到相同的输出。这种算法在业务逻辑上表现为均匀分配<br>key分区：类似于hash分区，在hash中，只能对整数进行分区，但是key可以使用非整数类型进行分区（如字符串）</p>
+<h2 id="分区管理"><a href="#分区管理" class="headerlink" title="分区管理"></a>分区管理</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除list或者range分区(同时删除分区对应的数据)</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">drop</span> <span class="keyword">partition</span> &lt;分区名称&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 新增分区</span></span><br><span class="line"><span class="comment">-- range添加新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p4 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- list添加新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p4 <span class="keyword">values</span> <span class="keyword">in</span> (<span class="number">25</span>,<span class="number">26</span>,<span class="number">28</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">-- hash重新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span> <span class="keyword">partitions</span> <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- key重新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span> <span class="keyword">partitions</span> <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 子分区添加新分区，虽然我没有指定子分区，但是系统会给子分区命名的</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p3 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- range重新分区</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> REORGANIZE <span class="keyword">PARTITION</span> p0,p1,p2,p3,p4 <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">LESS</span> <span class="keyword">THAN</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- list重新分区</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &lt;<span class="keyword">table</span>&gt; REORGANIZE <span class="keyword">PARTITION</span> p0,p1,p2,p3,p4 <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在客户端程序不变的情况下，将服务器端的数据分布到不同的物理文件中，进而提供数据表的处理能力<br>当数据量比较大时，分区可以提升效率<br>且只有检索字段为分区字段时，分区效率才会明显提高</p>
+<h1 id="分表"><a href="#分表" class="headerlink" title="分表"></a>分表</h1><p>如果一个表的每条记录的内容很大，那么就需要更多的IO操作，如果字段值比较大，而使用频率相对比较低，可以将大字段移到另一张表中，当查询不查大字段的时候，这样就减少了I/O操作<br>如果一个表的数据量很少，那么查询就很快；如果表的数据量非常非常大，那么查询就变的比较慢；也就是表的数据量影响这查询的性能。<br>表中的数据本来就有独立性，例如分别记录各个地区的数据或者不同时期的数据，特别是有些数据常用，而另外一些数据不常用。</p>
+<p>通过应用程序，把数据划分到不同的表中存储，分表的操作会在客户端出现多张表<br>水平切分：<br><img src="/upload/pasted-450.png" alt="upload successful"><br>水平切分类似于分区，但是它是实实在在的把一个大表分成两个小表，可以根据某个查询值分块来把表水平切分</p>
+<p>垂直切分：<br><img src="/upload/pasted-451.png" alt="upload successful"><br>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。 垂直分割一般用于拆分大字段和访问频率低的字段，分离冷热数据。</p>
+<p>垂直分割适用于记录不是非常多的，但是字段却很多，这样占用空间比较大，检索时需要执行大量的I/O，严重降低了性能，这个时候需要把大的自读那拆分到另一个表中，并且该表与源表时一对一关系。<br>垂直拆分的优点： 可以使得行数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。<br>垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂。</p>
 
       
     </div>
@@ -459,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/18/队列专题/" rel="next" title="栈和队列专题">
-                <i class="fa fa-chevron-left"></i> 栈和队列专题
+              <a href="/2019/07/18/tabasereview4/" rel="next" title="数据库SQL部分复习（4）【自定义函数，存储过程，触发器，依赖和三范式】">
+                <i class="fa fa-chevron-left"></i> 数据库SQL部分复习（4）【自定义函数，存储过程，触发器，依赖和三范式】
               </a>
             
           </div>
@@ -469,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/24/算法题/" rel="prev" title="数值/数组算法题整理">
-                数值/数组算法题整理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/20/MySQLDeepLearn/" rel="prev" title="MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】">
+                MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#各种编码"><span class="nav-number">1.</span> <span class="nav-text">各种编码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查询优化"><span class="nav-number">1.</span> <span class="nav-text">查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少请求的数据量"><span class="nav-number">1.1.</span> <span class="nav-text">减少请求的数据量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构查询方式"><span class="nav-number">1.2.</span> <span class="nav-text">重构查询方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切分大查询"><span class="nav-number">1.2.1.</span> <span class="nav-text">切分大查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分解大的连接查询"><span class="nav-number">1.2.2.</span> <span class="nav-text">分解大的连接查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分区"><span class="nav-number">2.</span> <span class="nav-text">分区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区算法"><span class="nav-number">2.2.</span> <span class="nav-text">分区算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区管理"><span class="nav-number">2.3.</span> <span class="nav-text">分区管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分表"><span class="nav-number">3.</span> <span class="nav-text">分表</span></a></li></ol></div>
             
 
           </div>
