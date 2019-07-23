@@ -81,18 +81,17 @@
 
 
 
+<meta name="description" content="0.了解如果用过spring mvc的话，就能明显的感受到spring boot 的优点和缺点优点：大部分繁琐的配置项使用者是不用管的，不像spring mvc，少一个配置项就爆炸，爆炸了不知道哪个配置出了问题缺点：拦截定位：轻量级 1.入门创建在intelliJ里new-》project-》spring initializr-》（修改项目名和包名）-》next-》web选中web(简易配置)-》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL深入研究（2）【查询优化，分区，分表】">
-<meta property="og:url" content="https://www.junglezero.top/2019/07/20/QLDeepLearn/index.html">
+<meta property="og:title" content="SpringBoot快速上手">
+<meta property="og:url" content="https://www.junglezero.top/2018/07/18/pringBoot快速上手/index.html">
 <meta property="og:site_name" content="淋中之虹">
+<meta property="og:description" content="0.了解如果用过spring mvc的话，就能明显的感受到spring boot 的优点和缺点优点：大部分繁琐的配置项使用者是不用管的，不像spring mvc，少一个配置项就爆炸，爆炸了不知道哪个配置出了问题缺点：拦截定位：轻量级 1.入门创建在intelliJ里new-》project-》spring initializr-》（修改项目名和包名）-》next-》web选中web(简易配置)-》">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-450.png">
-<meta property="og:image" content="https://www.junglezero.top/upload/pasted-451.png">
-<meta property="og:updated_time" content="2019-07-22T14:57:13.428Z">
+<meta property="og:updated_time" content="2019-07-23T07:30:10.298Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL深入研究（2）【查询优化，分区，分表】">
-<meta name="twitter:image" content="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg">
+<meta name="twitter:title" content="SpringBoot快速上手">
+<meta name="twitter:description" content="0.了解如果用过spring mvc的话，就能明显的感受到spring boot 的优点和缺点优点：大部分繁琐的配置项使用者是不用管的，不像spring mvc，少一个配置项就爆炸，爆炸了不知道哪个配置出了问题缺点：拦截定位：轻量级 1.入门创建在intelliJ里new-》project-》spring initializr-》（修改项目名和包名）-》next-》web选中web(简易配置)-》">
 
 
 
@@ -122,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/07/20/QLDeepLearn/">
+  <link rel="canonical" href="https://www.junglezero.top/2018/07/18/pringBoot快速上手/">
 
 
 
@@ -130,7 +129,7 @@
 
 
 
-  <title>MySQL深入研究（2）【查询优化，分区，分表】 | 淋中之虹</title>
+  <title>SpringBoot快速上手 | 淋中之虹</title>
   
 
 
@@ -299,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/07/20/QLDeepLearn/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2018/07/18/pringBoot快速上手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -316,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL深入研究（2）【查询优化，分区，分表】</h1>
+          <h1 class="post-title" itemprop="name headline">SpringBoot快速上手</h1>
         
 
         <div class="post-meta">
@@ -328,8 +327,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-20T07:24:42+08:00">
-                2019-07-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T15:23:00+08:00">
+                2018-07-18
               </time>
             
 
@@ -347,8 +346,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/20/QLDeepLearn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/20/QLDeepLearn/" itemprop="commentCount"></span>
+                <a href="/2018/07/18/pringBoot快速上手/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/18/pringBoot快速上手/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,193字
+                  913字
                 </span>
               
 
@@ -391,7 +390,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9分钟
+                  4分钟
                 </span>
               
             </div>
@@ -412,34 +411,31 @@
       
 
       
-        <p><img src="http://images.ali213.net/picfile/pic/2017/10/27/927_2017102712122202.jpg" width="70%"><br><a id="more"></a></p>
-<h1 id="查询优化"><a href="#查询优化" class="headerlink" title="查询优化"></a>查询优化</h1><h2 id="减少请求的数据量"><a href="#减少请求的数据量" class="headerlink" title="减少请求的数据量"></a>减少请求的数据量</h2><p>（一）只返回必要的列<br>最好不要使用 SELECT * 语句。<br>（二）只返回必要的行<br>使用 WHERE 语句进行查询过滤，有时候也需要使用 LIMIT 语句来限制返回的数据。<br>（三）缓存重复查询的数据<br>使用缓存可以避免在数据库中进行查询，特别要查询的数据经常被重复查询，缓存可以带来的查询性能提升将会是非常明显的。<br>若想要应用缓存，首先在my.ini或者my.cnf中配置query_cache_type，1表示默认缓存，需要sql_no_cache提示为不缓存，2表示默认不缓存，需要sql_cache主动缓存，0表示不缓存 。query_cache_size配置缓存大小<br>对于配置为2选项，若要进行缓存<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">SQL_CACHE</span> *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student</span><br></pre></td></tr></table></figure></p>
-<p>调用reset query cache 可以清空缓存<br>当数据表改动时，基于整个表的缓存就会被删除<br>动态数据无法缓存</p>
-<h2 id="重构查询方式"><a href="#重构查询方式" class="headerlink" title="重构查询方式"></a>重构查询方式</h2><h3 id="切分大查询"><a href="#切分大查询" class="headerlink" title="切分大查询"></a>切分大查询</h3><p>一个大查询如果一次性执行的话，可能一次锁住很多数据、占满整个事务日志、耗尽系统资源、阻塞很多小的但重要的查询。因此，可以把一个大范围操作切分为一个小范围操作<br>一个全范围的删除操作，可以切分为多个小段删除操作<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	messages</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">CREATE</span> &lt; <span class="keyword">DATE_SUB</span>(<span class="keyword">NOW</span>(), <span class="built_in">INTERVAL</span> <span class="number">3</span> <span class="keyword">MONTH</span>);</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rows_affected = 0</span><br><span class="line"><span class="keyword">DO</span></span><br><span class="line">	&#123; rows_affected = do_query (</span><br><span class="line">		<span class="string">"DELETE FROM messages WHERE create &lt; DATE_SUB(NOW(), INTERVAL 3 M</span></span><br><span class="line"><span class="string">ONTH) LIMIT 10000"</span></span><br><span class="line">	) &#125;</span><br><span class="line"><span class="keyword">WHILE</span> rows_affected &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h3 id="分解大的连接查询"><a href="#分解大的连接查询" class="headerlink" title="分解大的连接查询"></a>分解大的连接查询</h3><ol start="2">
-<li>分解大连接查询<br>将一个大连接查询（JOIN）分解成对每一个表进行一次单表查询，然后将结果在应用程序中<br>进行关联，这样做的好处有：</li>
-</ol>
-<ul>
-<li>让缓存更高效。对于连接查询，如果其中一个表发生变化，那么整个查询缓存就无法使用。而分解后的多个查询，即使其中一个表发生变化，对其它表的查询缓存依然可以使用。</li>
-<li>分解成多个单表查询，这些单表查询的缓存结果更可能被其它查询使用到，从而减少冗余记录的查询。</li>
-<li>减少锁竞争；</li>
-<li>在应用层进行连接，可以更容易对数据库进行拆分，从而更容易做到高性能和可扩展。</li>
-<li>查询本身效率也可能会有所提升。例如下面的例子中，使用 IN() 代替连接查询，可以让MySQL 按照 ID 顺序进行查询，这可能比随机的连接要更高效。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	tab</span><br><span class="line"><span class="keyword">JOIN</span> tag_post <span class="keyword">ON</span> tag_post.tag_id = tag.id</span><br><span class="line"><span class="keyword">JOIN</span> post <span class="keyword">ON</span> tag_post.post_id = post.id</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	tag.tag = <span class="string">'mysql'</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag <span class="keyword">WHERE</span> tag=<span class="string">'mysql'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tag_post <span class="keyword">WHERE</span> tag_id=<span class="number">1234</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> post <span class="keyword">WHERE</span> post.id <span class="keyword">IN</span> (<span class="number">123</span>,<span class="number">456</span>,<span class="number">567</span>,<span class="number">9098</span>,<span class="number">8904</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>将一个表中的数据和索引，分散到不同的文件中进行存储，称之为分区操作，划分出来到文件就是不同的分区<br>分区的意义是将一个具有大量数据的表，将其分散到不同的数据和索引文件中进行储存<br>对于Innodb来说，相当于一个表对应对个ibd文件<br>分散之后，每个文件对应的数据量显著减少，保证单个文件的执行速度<br>一般情况就是根据id主键字段进行分区，或者为主键，唯一键的一个子集，在创建表时，利用partition进行设定<br>例如下面，就是利用id字段，使用hash算法，将数据分布在10个分区中<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col4 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (col1),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">HASH</span>(<span class="keyword">id</span>)</span><br><span class="line"><span class="keyword">PARTITIONS</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure></p>
-<p>分区完成后，客户端看上去还是一张表。</p>
-<h2 id="分区算法"><a href="#分区算法" class="headerlink" title="分区算法"></a>分区算法</h2><p>range分区：基于一个给定的连续区间范围(区间要求连续并且不能重叠)，把数据分配到不同的分区<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">pubtime <span class="built_in">INT</span> ,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>,pubtime),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>(pubtime)(</span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1509665599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1512355599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line"><span class="keyword">PARTITION</span> p201907 <span class="keyword">VALUES</span> <span class="keyword">less</span> <span class="keyword">than</span> (<span class="number">1540765599</span>) <span class="comment">-- 某个时间的时间戳</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-<p>条件只能用小于，更小的时间戳要放在前面<br>list分区：类似于range分区，区别在于list分区是居于枚举出的值列表分区，range是基于给定的连续区间范围分区，使用 in(值列表)<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> t2 (</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> auto_increment promary <span class="keyword">key</span>,</span><br><span class="line">col2 <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">col3 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">status</span> <span class="built_in">INT</span> ,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>,pubtime),</span><br><span class="line"><span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (col3)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">PARTITION</span> <span class="keyword">BY</span> <span class="keyword">RANGE</span>(<span class="keyword">status</span>)(</span><br><span class="line"><span class="keyword">PARTITION</span> p1 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p2 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">3</span>,<span class="number">4</span>),</span><br><span class="line"><span class="keyword">PARTITION</span> p3 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p>hash分区：基于给定的分区个数，把数据分配到不同的分区，采取的是求余方案，所谓hash算法，就是对于输入，得到某个特定的输出，要求如果输入相同的值应当得到相同的输出。这种算法在业务逻辑上表现为均匀分配<br>key分区：类似于hash分区，在hash中，只能对整数进行分区，但是key可以使用非整数类型进行分区（如字符串）</p>
-<h2 id="分区管理"><a href="#分区管理" class="headerlink" title="分区管理"></a>分区管理</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除list或者range分区(同时删除分区对应的数据)</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">drop</span> <span class="keyword">partition</span> &lt;分区名称&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 新增分区</span></span><br><span class="line"><span class="comment">-- range添加新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p4 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- list添加新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p4 <span class="keyword">values</span> <span class="keyword">in</span> (<span class="number">25</span>,<span class="number">26</span>,<span class="number">28</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">-- hash重新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span> <span class="keyword">partitions</span> <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- key重新分区</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span> <span class="keyword">partitions</span> <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 子分区添加新分区，虽然我没有指定子分区，但是系统会给子分区命名的</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> &lt;<span class="keyword">table</span>&gt; <span class="keyword">add</span> <span class="keyword">partition</span>(<span class="keyword">partition</span> p3 <span class="keyword">values</span> <span class="keyword">less</span> <span class="keyword">than</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- range重新分区</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> REORGANIZE <span class="keyword">PARTITION</span> p0,p1,p2,p3,p4 <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">LESS</span> <span class="keyword">THAN</span> MAXVALUE);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- list重新分区</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &lt;<span class="keyword">table</span>&gt; REORGANIZE <span class="keyword">PARTITION</span> p0,p1,p2,p3,p4 <span class="keyword">INTO</span> (<span class="keyword">PARTITION</span> p0 <span class="keyword">VALUES</span> <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在客户端程序不变的情况下，将服务器端的数据分布到不同的物理文件中，进而提供数据表的处理能力<br>当数据量比较大时，分区可以提升效率<br>且只有检索字段为分区字段时，分区效率才会明显提高</p>
-<h1 id="分表"><a href="#分表" class="headerlink" title="分表"></a>分表</h1><p>如果一个表的每条记录的内容很大，那么就需要更多的IO操作，如果字段值比较大，而使用频率相对比较低，可以将大字段移到另一张表中，当查询不查大字段的时候，这样就减少了I/O操作<br>如果一个表的数据量很少，那么查询就很快；如果表的数据量非常非常大，那么查询就变的比较慢；也就是表的数据量影响这查询的性能。<br>表中的数据本来就有独立性，例如分别记录各个地区的数据或者不同时期的数据，特别是有些数据常用，而另外一些数据不常用。</p>
-<p>通过应用程序，把数据划分到不同的表中存储，分表的操作会在客户端出现多张表<br>水平切分：<br><img src="/upload/pasted-450.png" alt="upload successful"><br>水平切分类似于分区，但是它是实实在在的把一个大表分成两个小表，可以根据某个查询值分块来把表水平切分</p>
-<p>垂直切分：<br><img src="/upload/pasted-451.png" alt="upload successful"><br>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。 垂直分割一般用于拆分大字段和访问频率低的字段，分离冷热数据。</p>
-<p>垂直分割适用于记录不是非常多的，但是字段却很多，这样占用空间比较大，检索时需要执行大量的I/O，严重降低了性能，这个时候需要把大的自读那拆分到另一个表中，并且该表与源表时一对一关系。<br>垂直拆分的优点： 可以使得行数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。<br>垂直拆分的缺点： 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂。</p>
+        <h1 id="0-了解"><a href="#0-了解" class="headerlink" title="0.了解"></a>0.了解</h1><p>如果用过spring mvc的话，就能明显的感受到spring boot 的优点和缺点<br>优点：大部分繁琐的配置项使用者是不用管的，不像spring mvc，少一个配置项就爆炸，爆炸了不知道哪个配置出了问题<br>缺点：拦截<br>定位：轻量级</p>
+<h1 id="1-入门创建"><a href="#1-入门创建" class="headerlink" title="1.入门创建"></a>1.入门创建</h1><p>在intelliJ里new-》project-》spring initializr-》（修改项目名和包名）-》next-》web选中web(简易配置)-》finish</p>
+<p>也可以访问spring的官网，然后建立模板project，导出    </p>
+<h1 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h1><p>1.创建Controller包<br>2.创建HelloWorldController.java(一个类)<br>3.<br>@Controller<br>public class PersonController {</p>
+<pre><code>@RequestMapping(&quot;/helloworld.do&quot;)
+public String helloWorld() {
+    return &quot;Hello World!&quot;;
+}
+</code></pre><p>}<br>把该引的包引进来，注解（就是@的那些）不要忘，不要忘，而且创建路径一定要在最开始生成的目录下</p>
+<h1 id="3-配置文件？"><a href="#3-配置文件？" class="headerlink" title="3.配置文件？"></a>3.配置文件？</h1><p>spring boot 厉害就厉害在你可以把配置项写在resource-》application.properties里<br>或者是删掉，重新建一个application.yml（写法上有区别）</p>
+<h1 id="4-thymeleaf"><a href="#4-thymeleaf" class="headerlink" title="4.thymeleaf"></a>4.thymeleaf</h1><p>thymeleaf 是spring boot 所推荐使用的页面引擎<br>也是有一套特定的语法和操作（类似jsp的语法）<br>文件后缀依旧是html<br>参考：<br><a href="https://blog.csdn.net/u014042066/article/details/75614906" target="_blank" rel="noopener">https://blog.csdn.net/u014042066/article/details/75614906</a><br><a href="https://blog.csdn.net/chenloveit/article/details/38910803" target="_blank" rel="noopener">https://blog.csdn.net/chenloveit/article/details/38910803</a><br><a href="https://blog.csdn.net/malimingwq/article/details/79329921" target="_blank" rel="noopener">https://blog.csdn.net/malimingwq/article/details/79329921</a><br><a href="https://blog.csdn.net/chenloveit/article/details/38910803" target="_blank" rel="noopener">https://blog.csdn.net/chenloveit/article/details/38910803</a></p>
+<p>pom.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- thymeleaf模板引擎 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>页面使用修改命名空间<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>人员列表<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="5-mysql-jpa操作"><a href="#5-mysql-jpa操作" class="headerlink" title="5.mysql + jpa操作"></a>5.mysql + jpa操作</h1><p>1.在配置项中配置属性<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/test1</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=root</span><br><span class="line">spring.jpa.hibernate.ddl-auto=update</span><br><span class="line">spring.jpa.show-sql=true</span><br></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="https://blog.csdn.net/fanduo12345/article/details/54626802" target="_blank" rel="noopener">https://blog.csdn.net/fanduo12345/article/details/54626802</a><br><a href="https://blog.csdn.net/weixin_40344177/article/details/78469815" target="_blank" rel="noopener">https://blog.csdn.net/weixin_40344177/article/details/78469815</a><br><a href="https://www.cnblogs.com/rulian/p/6557471.html" target="_blank" rel="noopener">https://www.cnblogs.com/rulian/p/6557471.html</a><br><a href="https://www.cnblogs.com/zhaobingqing/p/6864223.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaobingqing/p/6864223.html</a></p>
+<p>2.建立实体类时，要有entity的注解，以及@id等约束注解<br>3.@GeneratedValue(strategy=GenerationType.IDENINY)<br>也要添加上面的注解，以便主键自增</p>
+<p>4.GenericJDBCException错误解决：<br>数据库要设置主键自增，</p>
+<p>5.save函数可以进行更新和插入操作，主要是看主键,作为参数的实体对象，如果其主键在数据库中，则是完成更新操作，但是是根据实体对象得完整更新，实体对象的属性是什么，更新就是什么，要想部分更新请看下面的；；如果主键在数据库中不存在，则完成插入操作，这里有个问题，如果设置了主键策略是自增，那么插入时是不会按照实体对象主键值插入的，</p>
+<p>6.原生sql和一些注解<br>（1）索引参数如下所示，索引值从1开始，查询中”?X”个数需要与方法定义的参数个数相一  致，并且顺序也要一致。<br> @Query(“SELECT p FROM Person p WHERE p.lastName = ?1 AND p.email = ?2”)   List<person> testQueryAnnotationParams1(String lastName, String email);<br>（2） // 为@Query注解传递参数的方式1：命名参数<br> @Query(“SELECT p FROM Person p WHERE p.lastName = :lastName AND p.email = :email”)<br>  List<person> testQueryAnnotationParams2(@Param(“email”) String email, @Param(“lastName”) String lastName);</person></person></p>
+<p>（3）　　　/*<em>      </em> 设置nativeQuery=true 即可以使用原生的SQL进行查询     <em> @return     </em>/    @Query(value = “SELECT count(id) FROM jpa_persons”, nativeQuery = true)    long getTotalCount();</p>
+<h1 id="6-跳转页面"><a href="#6-跳转页面" class="headerlink" title="6.跳转页面"></a>6.跳转页面</h1><p>跳转controller<br> return “redirect:/list”; </p>
+<p>thymeleaf 带参数a标签写法<br><a th:href="@{/details(id=${person.id})}">详情</a></p>
+<h1 id="7-一些工具"><a href="#7-一些工具" class="headerlink" title="7.一些工具"></a>7.一些工具</h1><p><dependency>    <groupid>org.projectlombok</groupid>    <artifactid>lombok</artifactid>    <scope>compile</scope></dependency><br>可以使用注解@Data 编译时自动生成get,set方法,构造函数,toString方法。</p>
+<p>devtool热部署<br><a href="https://jingyan.baidu.com/article/870c6fc367b4d7b03fe4beba.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/870c6fc367b4d7b03fe4beba.html</a></p>
+<h1 id="8-乱七八糟的知识点"><a href="#8-乱七八糟的知识点" class="headerlink" title="8.乱七八糟的知识点"></a>8.乱七八糟的知识点</h1><p>1.@controller 可以返回页面，@RestController 是@ResponseBody 和@Controller的结合</p>
 
       
     </div>
@@ -464,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/18/tabasereview4/" rel="next" title="数据库SQL部分复习（4）【自定义函数，存储过程，触发器，依赖和三范式】">
-                <i class="fa fa-chevron-left"></i> 数据库SQL部分复习（4）【自定义函数，存储过程，触发器，依赖和三范式】
+              <a href="/2018/02/17/（散列表）/" rel="next" title="查找（散列表）">
+                <i class="fa fa-chevron-left"></i> 查找（散列表）
               </a>
             
           </div>
@@ -474,8 +470,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/20/MySQLDeepLearn/" rel="prev" title="MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】">
-                MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/04/卷水浒转-20周年企划-翻译/" rel="prev" title="绘卷水浒传 20周年企划 第一章 翻译">
+                绘卷水浒传 20周年企划 第一章 翻译 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +591,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查询优化"><span class="nav-number">1.</span> <span class="nav-text">查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少请求的数据量"><span class="nav-number">1.1.</span> <span class="nav-text">减少请求的数据量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构查询方式"><span class="nav-number">1.2.</span> <span class="nav-text">重构查询方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#切分大查询"><span class="nav-number">1.2.1.</span> <span class="nav-text">切分大查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分解大的连接查询"><span class="nav-number">1.2.2.</span> <span class="nav-text">分解大的连接查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分区"><span class="nav-number">2.</span> <span class="nav-text">分区</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区算法"><span class="nav-number">2.2.</span> <span class="nav-text">分区算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区管理"><span class="nav-number">2.3.</span> <span class="nav-text">分区管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分表"><span class="nav-number">3.</span> <span class="nav-text">分表</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-了解"><span class="nav-number">1.</span> <span class="nav-text">0.了解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-入门创建"><span class="nav-number">2.</span> <span class="nav-text">1.入门创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Hello-World"><span class="nav-number">3.</span> <span class="nav-text">2.Hello World</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-配置文件？"><span class="nav-number">4.</span> <span class="nav-text">3.配置文件？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-thymeleaf"><span class="nav-number">5.</span> <span class="nav-text">4.thymeleaf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-mysql-jpa操作"><span class="nav-number">6.</span> <span class="nav-text">5.mysql + jpa操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-跳转页面"><span class="nav-number">7.</span> <span class="nav-text">6.跳转页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-一些工具"><span class="nav-number">8.</span> <span class="nav-text">7.一些工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-乱七八糟的知识点"><span class="nav-number">9.</span> <span class="nav-text">8.乱七八糟的知识点</span></a></li></ol></div>
             
 
           </div>

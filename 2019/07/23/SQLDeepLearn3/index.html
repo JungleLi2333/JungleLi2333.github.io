@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="Try to be nice and cool">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL深入学习（3）">
+<meta property="og:title" content="MySQL深入学习（3）【ID策略，横向扩展】">
 <meta property="og:url" content="https://www.junglezero.top/2019/07/23/SQLDeepLearn3/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="Try to be nice and cool">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-23T01:01:03.530Z">
+<meta property="og:image" content="http://img2.ali213.net/picfile/News/2015/05/14/2015051494057329.jpg">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-453.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-452.png">
+<meta property="og:updated_time" content="2019-07-23T07:47:07.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL深入学习（3）">
-<meta name="twitter:description" content="Try to be nice and cool">
+<meta name="twitter:title" content="MySQL深入学习（3）【ID策略，横向扩展】">
+<meta name="twitter:image" content="http://img2.ali213.net/picfile/News/2015/05/14/2015051494057329.jpg">
 
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title>MySQL深入学习（3） | 淋中之虹</title>
+  <title>MySQL深入学习（3）【ID策略，横向扩展】 | 淋中之虹</title>
   
 
 
@@ -315,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL深入学习（3）</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL深入学习（3）【ID策略，横向扩展】</h1>
         
 
         <div class="post-meta">
@@ -374,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0字
+                  488字
                 </span>
               
 
@@ -390,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  2分钟
                 </span>
               
             </div>
@@ -411,7 +412,28 @@
       
 
       
-        
+        <p><img src="http://img2.ali213.net/picfile/News/2015/05/14/2015051494057329.jpg" width="70%"><br><a id="more"></a></p>
+<h1 id="ID策略"><a href="#ID策略" class="headerlink" title="ID策略"></a>ID策略</h1><ol>
+<li><p>利用数据库自增ID<br>优点：最简单。 缺点：单点风险、单机性能瓶颈。</p>
+</li>
+<li><p>利用数据库集群并设置相应的步长（Flickr方案）<br>优点：高可用、ID较简洁。 缺点：需要单独的数据库集群。</p>
+</li>
+<li><p>Twitter Snowflake<br>优点：高性能高可用、易拓展。 缺点：需要独立的集群以及ZK。</p>
+</li>
+<li><p>一大波GUID、Random算法<br>优点：简单。 缺点：生成ID较长，有重复几率。</p>
+</li>
+</ol>
+<h1 id="横向扩展MySQL服务器"><a href="#横向扩展MySQL服务器" class="headerlink" title="横向扩展MySQL服务器"></a>横向扩展MySQL服务器</h1><p>由多台MySQL服务器，提供数据存储服务器。<br>横向扩展是根本提升数据库服务器性能的手段！受限于单台计算机的硬件处理能力，去使用多台计算机完成同一个服务的支持。<br>比较典型的概念：<br>读写分离，负载均衡。<br>需要用到的技术，MySQL复制技术，负载均衡中间件。</p>
+<h2 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h2><p>主要涉及三个线程：binlog 线程、I/O 线程和 SQL 线程。</p>
+<ul>
+<li>binlog 线程 ：负责将主服务器上的数据更改写入二进制文件（binlog）中。</li>
+<li>I/O 线程 ：负责从主服务器上读取二进制日志文件，并写入从服务器的中继日志中。</li>
+<li>SQL 线程 ：负责读取中继日志并重放其中的 SQL 语句。</li>
+</ul>
+<p><img src="/upload/pasted-453.png" alt="upload successful"></p>
+<h2 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h2><p>主服务器用来处理写操作以及实时性要求比较高的读操作，而从服务器用来处理读操作。<br>读写分离常用代理方式来实现，代理服务器接收应用层传来的读写请求，然后决定转发到哪个<br>服务器。<br>MySQL 读写分离能提高性能的原因在于：<br>主从服务器负责各自的读和写，极大程度缓解了锁的争用；<br>从服务器可以配置 MyISAM 引擎，提升查询性能以及节约系统开销；<br>增加冗余，提高可用性。</p>
+<p><img src="/upload/pasted-452.png" alt="upload successful"></p>
+
       
     </div>
     
@@ -435,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/20/MySQLDeepLearn/" rel="next" title="MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】">
-                <i class="fa fa-chevron-left"></i> MySQL深入研究（1）【字段设计，存储引擎介绍，锁机制，索引】
+              <a href="/2019/07/21/QLDeepLearn/" rel="next" title="MySQL深入研究（2）【查询优化，分区，分表】">
+                <i class="fa fa-chevron-left"></i> MySQL深入研究（2）【查询优化，分区，分表】
               </a>
             
           </div>
@@ -535,8 +557,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -553,7 +584,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,6 +664,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ID策略"><span class="nav-number">1.</span> <span class="nav-text">ID策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#横向扩展MySQL服务器"><span class="nav-number">2.</span> <span class="nav-text">横向扩展MySQL服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主从复制"><span class="nav-number">2.1.</span> <span class="nav-text">主从复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读写分离"><span class="nav-number">2.2.</span> <span class="nav-text">读写分离</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
