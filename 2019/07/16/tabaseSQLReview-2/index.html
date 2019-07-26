@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】">
+<meta property="og:url" content="https://www.junglezero.top/2019/07/16/tabaseSQLReview-2/index.html">
+<meta property="og:site_name" content="淋中之虹">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-427.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-414.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-415.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-416.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-417.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-418.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-419.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-420.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-424.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-425.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-426.png">
+<meta property="og:updated_time" content="2019-07-19T06:49:49.922Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-427.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.junglezero.top/2019/07/16/tabaseSQLReview-2/">
+
+
+
+
+
+
+
+  <title>数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】 | 淋中之虹</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">淋中之虹</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">向来不知道该说些什么</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/07/16/tabaseSQLReview-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JungleZero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/ve.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淋中之虹">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T16:22:35+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/16/tabaseSQLReview-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/tabaseSQLReview-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,209字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/upload/pasted-427.png" width="70%"></p>
+<a id="more"></a>
+<hr>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="模式（SCHEMA）-数据库（DATABASE）相关"><a href="#模式（SCHEMA）-数据库（DATABASE）相关" class="headerlink" title="模式（SCHEMA）,数据库（DATABASE）相关"></a>模式（SCHEMA）,数据库（DATABASE）相关</h2><p>MySQL官方文档指出，从概念上讲，模式是一组相互关联的数据库对象，如表，表列，列的数据类型，索引，外键等等。但是从物理层面上来说，模式与数据库是同义的。你可以在MySQL的SQL语法中用关键字SCHEMA替代DATABASE，例如使用CREATE SCHEMA来代替CREATE DATABASE。<br>也就是说，一个SCHEMA就是一套关系<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">SCHEMA</span> <span class="number">123</span></span><br></pre></td></tr></table></figure></p>
+<p>就可以创建出一个新的数据库（DATABASE）</p>
+<h2 id="表（TABLE）相关"><a href="#表（TABLE）相关" class="headerlink" title="表（TABLE）相关"></a>表（TABLE）相关</h2><h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><ul>
+<li>主键约束（PRIMARY KEY)<br>主键约束是用来保证表中记录唯一可区分的列。一个表可以通过一列或列组合的数据来唯一标识表中的每一条记录。</li>
+<li>唯一约束（UNIQUE)<br>规定一条记录的一个字段值或几个字段的组合值不得与其他记录的相同字段或字段组合的值重复，将这种限制成为“唯一约束”。</li>
+<li>外键约束 (FOREIGN KEY)<br>1）外键列可以由是一个列或多个列组成。<br>2）外键列的取值可以为空，可以有重复值，但必须是它所引用列的列值之一。引用列必须是创建了主键约束或唯一约束的列。</li>
+<li><p>检查约束 （CHECK)<br>检查约束是用来检查一个字段或多个字段的输入值是否满足指定的约束条件。</p>
+</li>
+<li><p>默认值约束（DEFAULT)<br>在用户定义数据类型的情况下，如果使用默认值约束，则默认值被插入到使用这个自定义数据的所有字段中。</p>
+</li>
+<li><p>空值约束（NULL)<br>空值约束就是指尚不知道或不确定的数据值，它不等同于0或空格。</p>
+</li>
+</ul>
+<h3 id="数据库的基本数据类型（以MySQL为标准）"><a href="#数据库的基本数据类型（以MySQL为标准）" class="headerlink" title="数据库的基本数据类型（以MySQL为标准）"></a>数据库的基本数据类型（以MySQL为标准）</h3><h4 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h4><p>MySQL中提供了以下几种整数类型，可以设置自增约束</p>
+<p><img src="/upload/pasted-414.png" alt="upload successful"><br>各个整数类型范围如下<br><img src="/upload/pasted-415.png" alt="upload successful"></p>
+<h4 id="小数类型"><a href="#小数类型" class="headerlink" title="小数类型"></a>小数类型</h4><p>MySQL 中使用浮点数和定点数来表示小数。<br>浮点类型有两种，分别是单精度浮点数（FLOAT）和双精度浮点数（DOUBLE）；定点类型只有一种，就是 DECIMAL<br>两种类型都可以用（M,D）表示，其中M称为精度，表示总共的位数；D称为标度，表示小数的位数。<br>浮点数类型的取值范围为 M（1～255）和 D（1～30，且不能大于 M-2）DECIMAL 的默认 D 值为 0、M 值为 10<br> FLOAT 和 DOUBLE 在不指定精度时，默认会按照实际的精度（由计算机硬件和操作系统决定），DECIMAL 如果不指定精度，默认为（10，0）。<br> 不论是定点还是浮点类型，如果用户指定的精度超出精度范围，则会四舍五入进行处理。</p>
+<p><img src="/upload/pasted-416.png" alt="upload successful"><br> 在 MySQL 中，定点数以字符串形式存储，在对精度要求比较高的时候（如货币、科学数据），使用 DECIMAL 的类型比较好，另外两个浮点数进行减法和比较运算时也容易出问题，所以在使用浮点数时需要注意，并尽量避免做浮点数比较。</p>
+<h4 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h4><p>MySQL 中表示日期的数据类型：YEAR、TIME、DATE、DTAETIME、TIMESTAMP。当只记录年信息的时候，可以只使用 YEAR 类型。<br>当指定确定不合法的值时，系统将“零”值插入数据库中</p>
+<p><img src="/upload/pasted-417.png" alt="upload successful"><br>对于YEAR,除了整数外也可以匹配形如YYYY的四位字符串或者两位字符串，对于两位的数字和字符串，0-69回转化为2001-2069，而70-99会转化为1970-1999<br>对于TIME,小时部分之所以会大出一部分的原因是可以用TIME表示某件事发展的时长，除了给定的格式外，可以用HHMMSS表示，但是对于这种输入，MySQL是从秒开始处理的。对于非法的输入，则储存0时间<br>对于DATE基本和上面有相似的规则，可以调用CURRENT_DATE 或者 NOW()，插入当前系统日期</p>
+<p>DATETIME 在存储日期数据时，按实际输入的格式存储，即输入什么就存储什么，与时区无关；<br>TIMESTAMP 值的存储是以 UTC（世界标准时间）格式保存的，存储时对当前时区进行转换，检索时再转换回当前时区。即查询时，根据当前时区的不同，显示的时间值是不同的。</p>
+<h4 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h4><p>MySQL 中的字符串类型有 CHAR、VARCHAR、TINYTEXT、TEXT、MEDIUMTEXT、LONGTEXT、ENUM、SET 等。</p>
+<p><img src="/upload/pasted-418.png" alt="upload successful"><br>char是定长字符串类型，即不管要储存的字符串多长，它只储存规定的长度，不管多短，会用空格补齐剩下的，而varchar是变长的，只能规定最大长度，其实际的储存空间为字符串占的空间+1（字符串结束标识）</p>
+<p><img src="/upload/pasted-419.png" alt="upload successful"><br>ENUM是MySQL内的枚举类型，每个具体字符串对应一个索引值，ENUM 类型的字段在取值时，能在指定的枚举列表中获取，而且一次只能取一个。如果创建的成员中有空格，尾部的空格将自动被删除。ENUM 列总有一个默认值。如果将 ENUM 列声明为 NULL，NULL 值则为该列的一个有效值，并且默认值为 NULL。如果 ENUM 列被声明为 NOT NULL，其默认值为允许的值列表的第 1 个元素。<br>SET是一个加强版的枚举，可以选择多个值加入</p>
+<h4 id="二进制类型"><a href="#二进制类型" class="headerlink" title="二进制类型"></a>二进制类型</h4><p>MySQL 中的二进制字符串有 BIT、BINARY、VARBINARY、TINYBLOB、BLOB、MEDIUMBLOB 和 LONGBLOB。</p>
+<p><img src="/upload/pasted-420.png" alt="upload successful"></p>
+<h3 id="表的创建"><a href="#表的创建" class="headerlink" title="表的创建"></a>表的创建</h3><p>建立一个“学生选课”表SC，它由学号Sno、课程号Cno，修课成绩Grade组成，其中(Sno, Cno)为主码。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> SC</span><br><span class="line">(    Sno <span class="built_in">CHAR</span>(<span class="number">5</span>) ,</span><br><span class="line">     Cno <span class="built_in">CHAR</span>(<span class="number">3</span>) , </span><br><span class="line">     Grade   <span class="built_in">int</span>,</span><br><span class="line">     Primary <span class="keyword">key</span> (Sno, Cno),</span><br><span class="line">     <span class="keyword">Foreign</span> <span class="keyword">key</span> (sno) <span class="keyword">References</span> student (sno),</span><br><span class="line">     <span class="keyword">Foreign</span> <span class="keyword">key</span> (cno) <span class="keyword">References</span> course (cno)  );</span><br></pre></td></tr></table></figure>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="查询全部"><a href="#查询全部" class="headerlink" title="查询全部"></a>查询全部</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> STUDENT</span><br></pre></td></tr></table></figure>
+<h3 id="查询某一列"><a href="#查询某一列" class="headerlink" title="查询某一列"></a>查询某一列</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> sno <span class="keyword">FROM</span> STUDENT</span><br></pre></td></tr></table></figure>
+<h3 id="查询经过计算结果"><a href="#查询经过计算结果" class="headerlink" title="查询经过计算结果"></a>查询经过计算结果</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title,</span><br><span class="line">	price * <span class="number">50</span> <span class="keyword">AS</span> <span class="number">50</span>price</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film_list</span><br></pre></td></tr></table></figure>
+<h3 id="利用case-when替换查询结果"><a href="#利用case-when替换查询结果" class="headerlink" title="利用case when替换查询结果"></a>利用case when替换查询结果</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title,</span><br><span class="line">	<span class="keyword">CASE</span></span><br><span class="line"><span class="keyword">WHEN</span> price &gt; <span class="number">0.99</span> <span class="keyword">THEN</span></span><br><span class="line">	<span class="string">'ex'</span></span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line">	<span class="string">'chep'</span></span><br><span class="line"><span class="keyword">END</span> <span class="keyword">AS</span> price</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film_list</span><br></pre></td></tr></table></figure>
+<h3 id="利用CONCAT连接查询结果，利用cast转化结果"><a href="#利用CONCAT连接查询结果，利用cast转化结果" class="headerlink" title="利用CONCAT连接查询结果，利用cast转化结果"></a>利用CONCAT连接查询结果，利用cast转化结果</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">CONCAT</span>(title,<span class="string">'的票价是'</span>,<span class="keyword">CAST</span>(price <span class="keyword">AS</span> <span class="built_in">char</span>)) <span class="keyword">as</span> 价格说明</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film_list</span><br></pre></td></tr></table></figure>
+<h3 id="查询结果返回大小写，字符串长度"><a href="#查询结果返回大小写，字符串长度" class="headerlink" title="查询结果返回大小写，字符串长度"></a>查询结果返回大小写，字符串长度</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">LOWER</span>(title),</span><br><span class="line">	<span class="keyword">UPPER</span>(title),</span><br><span class="line">	<span class="keyword">LENGTH</span>(title)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film_list</span><br></pre></td></tr></table></figure>
+<h3 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h3><p>1、left(str,length) 从左边截取length<br>2、right(str,length)从右边截取length<br>3、substring(str,index)当index&gt;0从左边开始截取直到结束  当index&lt;0从右边开始截取直到结束  当index=0返回空<br>4、substring(str,index,len) 截取str,从index开始，截取len长度<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="keyword">left</span>(title,<span class="number">3</span>)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film_list</span><br></pre></td></tr></table></figure></p>
+<h3 id="日期相关函数"><a href="#日期相关函数" class="headerlink" title="日期相关函数"></a>日期相关函数</h3><p>now()获取当前的日期和时间<br>current_timestamp() 获取当前时间戳<br>date_format(date,format), time_format(time,format) 转换时间形式<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">DATE_FORMAT</span>(last_update, <span class="string">'%y%m%d%h%i%s'</span>) <span class="keyword">AS</span> <span class="string">'时间序列'</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br></pre></td></tr></table></figure></p>
+<p>（日期、天数）转换函数：to_days(date), from_days(days)<br>（时间、秒）转换函数：time_to_sec(time), sec_to_time(seconds)<br>拼凑日期、时间函数：makdedate(year,dayofyear), maketime(hour,minute,second)<br>（Unix 时间戳、日期）转换函数</p>
+<h3 id="集合，范围查询"><a href="#集合，范围查询" class="headerlink" title="集合，范围查询"></a>集合，范围查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> rating <span class="keyword">in</span> (<span class="string">'PG'</span>,<span class="string">'R'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	customer_id </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	payment</span><br><span class="line"><span class="keyword">where</span> payment_date <span class="keyword">BETWEEN</span> <span class="string">'2005-06-17 09:19:45'</span> <span class="keyword">and</span> <span class="string">'2005-08-02 18:55:15'</span></span><br></pre></td></tr></table></figure>
+<p>注意 between是左闭右开的</p>
+<h3 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h3><h4 id="Like-匹配"><a href="#Like-匹配" class="headerlink" title="Like 匹配"></a>Like 匹配</h4><p>1.%：表示任意0个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请使用两个百分号（%%）表示<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title <span class="keyword">LIKE</span> <span class="string">'%W%'</span></span><br></pre></td></tr></table></figure></p>
+<p>若是要搜索包含某两个字的<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title <span class="keyword">LIKE</span> <span class="string">'%W%'</span> <span class="keyword">and</span> title <span class="keyword">LIKE</span> <span class="string">'%O%'</span></span><br></pre></td></tr></table></figure></p>
+<p>2._： 表示任意单个字符。匹配单个任意字符<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title <span class="keyword">LIKE</span> <span class="string">'_O%'</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h4><p>^ 匹配字符开始的部分<br>查询以W开头的<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP <span class="string">'^W'</span></span><br></pre></td></tr></table></figure></p>
+<p>$ 匹配字符结束的部分<br>查询以S为结尾的部分<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP <span class="string">'S$'</span></span><br></pre></td></tr></table></figure></p>
+<p>. 匹配字符串中的任意一个字符，包括回车和换行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP <span class="string">'^W................S$'</span></span><br></pre></td></tr></table></figure></p>
+<p>[字符集合]匹配字符集合中的任意字符<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP <span class="string">'^W[OE]'</span></span><br></pre></td></tr></table></figure></p>
+<p>[^字符集合]匹配除了字符集合外的任意字符<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP <span class="string">'^W[^B-Z]'</span></span><br></pre></td></tr></table></figure></p>
+<p>s1|s2|s3 匹配s1s2s3中的任意一个<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	title</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">where</span> title REGEXP  <span class="string">'^WA|^WE|^WH'</span></span><br></pre></td></tr></table></figure></p>
+<p>*代表多个该字符前的字符，包括0个或1个<br>+代表多个该字符前的字符，包括1个<br>字符串{N} 字符串出现N次<br>字符串{M，N}字符串最少出现M次，最多出现N次<br>若是查找的就是转义字符本身，最后要加上ESCAPE</p>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p>使用GROUP BY 进行分组<br>将查询的结果按某一列或多列的值分组，值相等的<br>为一组<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	rating,<span class="keyword">COUNT</span>(rating)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> rating</span><br></pre></td></tr></table></figure></p>
+<p>使用GROUP BY子句后，SELECT子句的列名列表中只能出现分组属性和集函数<br>若要想要对分完的组做条件筛选，则需要用Having而不是where<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	rating,<span class="keyword">COUNT</span>(rating)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	film</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> rating</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(rating)&gt;<span class="number">195</span><span class="string">`sql</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><p>可以基于关系运算的连接来理解连接查询</p>
+<ul>
+<li><p>广义笛卡尔积（交叉连接）<br>又称非限制连接，它将两个表不加任何约束地组合在一起，也就是将第一个表中的所有记录分别与第二个表的所有记录组成新的记录。（进行广义笛卡尔乘积）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="string">`language`</span>.*,staff.*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	<span class="string">`language`</span>,staff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>等值连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  student.Sno,Sname,sex,Cno,Grade</span><br><span class="line"><span class="keyword">FROM</span>     student,sc</span><br><span class="line"><span class="keyword">WHERE</span>  student.sno = sc.sno</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>任何子句中引用表1和表2中同名属性时，都必须加表名前缀。引用唯一属性名时可以加也可以省略表名前缀<br>也可以用内连接表示等值连接<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	student.Sno,</span><br><span class="line">	Sname,</span><br><span class="line">	sex,</span><br><span class="line">	Cno,</span><br><span class="line">	Grade</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> sc <span class="keyword">ON</span> student.sno = sc.sno</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>自然连接<br>是一种特殊的等值链接，在等值连接的基础上，去掉相同的属性</p>
+</li>
+<li><p>自然连接<br>自表的某个属性进行对比<br>例：查一门课的先修课</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  FIRST.Cno，SECOND.Cpno</span><br><span class="line"><span class="keyword">FROM</span>  Course  <span class="keyword">FIRST</span>，Course  <span class="keyword">SECOND</span></span><br><span class="line"><span class="keyword">WHERE</span> FIRST.Cpno = SECOND.Cno；</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/upload/pasted-424.png" alt="upload successful"></p>
+<ul>
+<li><p>外连接<br>外连接就是一种不等值连接，相比于等值连接只输出相等部分的连接情况，这种方式会输出所有的情况两边的所有情况，没有的值则用空替代<br>MySQL并不支持</p>
+</li>
+<li><p>左外连接<br>以左边的为基础，除了相等的部分，还会输出左边不符合条件的，空的地方用null装</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	student.Sno,</span><br><span class="line">	Sname,</span><br><span class="line">	sex,</span><br><span class="line">	Cno,</span><br><span class="line">	Grade</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student</span><br><span class="line"><span class="keyword">LEFT</span>  <span class="keyword">JOIN</span> sc <span class="keyword">ON</span> student.sno=sc.sno</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/upload/pasted-425.png" alt="upload successful"></p>
+<ul>
+<li>右外连接<br>则是以右边的为基础<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	student.Sno,</span><br><span class="line">	Sname,</span><br><span class="line">	sex,</span><br><span class="line">	Cno,</span><br><span class="line">	Grade</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student</span><br><span class="line"><span class="keyword">RIGHT</span>  <span class="keyword">JOIN</span> sc <span class="keyword">ON</span> student.sno=sc.sno</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/upload/pasted-426.png" alt="upload successful"></p>
+<h3 id="嵌套查询"><a href="#嵌套查询" class="headerlink" title="嵌套查询"></a>嵌套查询</h3><p>嵌套查询就是把一些“出处”变成查询结果<br>对于MySQL，嵌套的查询结果要有别名<br>例如 查询与刘晨在一个系学习的学生<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	sno,</span><br><span class="line">	sname,</span><br><span class="line">	sdept</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	s</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	sdept <span class="keyword">IN</span> (</span><br><span class="line">		<span class="keyword">SELECT</span></span><br><span class="line">			sdept</span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">			s</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">			sname = <span class="string">'刘晨'</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	s1.sno,</span><br><span class="line">	s1.sname,</span><br><span class="line">	s1.sdept</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	s s1,</span><br><span class="line">	s s2</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	s1.sdept = s2.sdept</span><br><span class="line"><span class="keyword">AND</span> s2.sname = <span class="string">' 刘晨 '</span></span><br></pre></td></tr></table></figure>
+<p>ANY和ALL<br>any是某一个值，all是所有值，可以大于小于不等于<br>例选择编号01同学的成绩中大于04同学所有科目的成绩的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	sname,</span><br><span class="line">	cno,</span><br><span class="line">	grade</span><br><span class="line">FROM</span><br><span class="line">	(</span><br><span class="line">		SELECT</span><br><span class="line">			student.Sno,</span><br><span class="line">			Sname,</span><br><span class="line">			sex,</span><br><span class="line">			Cno,</span><br><span class="line">			Grade</span><br><span class="line">		FROM</span><br><span class="line">			student</span><br><span class="line">		INNER JOIN sc ON student.sno = sc.sno</span><br><span class="line">	) AS a</span><br><span class="line">WHERE</span><br><span class="line">	grade &gt; ALL (</span><br><span class="line">		SELECT</span><br><span class="line">			grade</span><br><span class="line">		FROM</span><br><span class="line">			sc</span><br><span class="line">		WHERE</span><br><span class="line">			sno = &apos;01&apos;</span><br><span class="line">	) </span><br><span class="line">AND sno = &apos;04&apos;</span><br></pre></td></tr></table></figure></p>
+<p>EXISTS<br>首先要理解这个关键词的运行机制<br>例子：选出选了课程1001的人<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	student <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">EXISTS</span> (</span><br><span class="line">		<span class="keyword">SELECT</span></span><br><span class="line">			*</span><br><span class="line">		<span class="keyword">FROM</span></span><br><span class="line">			sc</span><br><span class="line">		<span class="keyword">WHERE</span></span><br><span class="line">			sno = a.sno</span><br><span class="line">		<span class="keyword">AND</span> cno = <span class="string">'1001'</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure></p>
+<p>使用exist，会对where前面的主查询语句进行逐一校验，对于前面的某一条记录，如果能使exist后的查询语句有返回值（不是空），那么此时exist判定就是true，对于主查询，当前这一条就会作为结果，如果不符合，就不会被作为结果</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/库SQL部分复习/" rel="next" title="数据库SQL部分复习（1）【关系模型，关系运算】">
+                <i class="fa fa-chevron-left"></i> 数据库SQL部分复习（1）【关系模型，关系运算】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/17/tabasereview/" rel="prev" title="数据库SQL部分复习（3）【数据更新，视图，查询练习】">
+                数据库SQL部分复习（3）【数据更新，视图，查询练习】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/ve.png" alt="JungleZero">
+            
+              <p class="site-author-name" itemprop="name">JungleZero</p>
+              <p class="site-description motion-element" itemprop="description">Try to be nice and cool</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lihonglin3012@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhongzimao.com/" title="无所不有" target="_blank">无所不有</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.5isjyx.com/1234/" title="Brave New World" target="_blank">Brave New World</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL"><span class="nav-number">1.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式（SCHEMA）-数据库（DATABASE）相关"><span class="nav-number">1.1.</span> <span class="nav-text">模式（SCHEMA）,数据库（DATABASE）相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表（TABLE）相关"><span class="nav-number">1.2.</span> <span class="nav-text">表（TABLE）相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束"><span class="nav-number">1.2.1.</span> <span class="nav-text">完整性约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的基本数据类型（以MySQL为标准）"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据库的基本数据类型（以MySQL为标准）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整数类型"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">整数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小数类型"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">小数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期和时间类型"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">日期和时间类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串类型"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二进制类型"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">二进制类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表的创建"><span class="nav-number">1.2.3.</span> <span class="nav-text">表的创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询"><span class="nav-number">1.3.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询全部"><span class="nav-number">1.3.1.</span> <span class="nav-text">查询全部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询某一列"><span class="nav-number">1.3.2.</span> <span class="nav-text">查询某一列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询经过计算结果"><span class="nav-number">1.3.3.</span> <span class="nav-text">查询经过计算结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用case-when替换查询结果"><span class="nav-number">1.3.4.</span> <span class="nav-text">利用case when替换查询结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用CONCAT连接查询结果，利用cast转化结果"><span class="nav-number">1.3.5.</span> <span class="nav-text">利用CONCAT连接查询结果，利用cast转化结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询结果返回大小写，字符串长度"><span class="nav-number">1.3.6.</span> <span class="nav-text">查询结果返回大小写，字符串长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串截取"><span class="nav-number">1.3.7.</span> <span class="nav-text">字符串截取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期相关函数"><span class="nav-number">1.3.8.</span> <span class="nav-text">日期相关函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合，范围查询"><span class="nav-number">1.3.9.</span> <span class="nav-text">集合，范围查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串匹配"><span class="nav-number">1.3.10.</span> <span class="nav-text">字符串匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Like-匹配"><span class="nav-number">1.3.10.1.</span> <span class="nav-text">Like 匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则匹配"><span class="nav-number">1.3.10.2.</span> <span class="nav-text">正则匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组"><span class="nav-number">1.3.11.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接查询"><span class="nav-number">1.3.12.</span> <span class="nav-text">连接查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套查询"><span class="nav-number">1.3.13.</span> <span class="nav-text">嵌套查询</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JungleZero</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '0t9n1KTa7IvShYCKvwDzcqCm-gzGzoHsz',
+        appKey: 'SEfKH5WvqSEJtDdOGOt0XVtv',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

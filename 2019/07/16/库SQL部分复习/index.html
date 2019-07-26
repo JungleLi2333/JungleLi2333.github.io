@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库SQL部分复习（1）【关系模型，关系运算】">
+<meta property="og:url" content="https://www.junglezero.top/2019/07/16/库SQL部分复习/index.html">
+<meta property="og:site_name" content="淋中之虹">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-429.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-393.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-392.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-394.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-395.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-396.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-397.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-398.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-399.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-400.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-406.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-407.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-408.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-402.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-403.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-404.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-405.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-409.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-410.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-411.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-412.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-413.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-401.png">
+<meta property="og:updated_time" content="2019-07-17T13:56:27.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库SQL部分复习（1）【关系模型，关系运算】">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-429.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.junglezero.top/2019/07/16/库SQL部分复习/">
+
+
+
+
+
+
+
+  <title>数据库SQL部分复习（1）【关系模型，关系运算】 | 淋中之虹</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">淋中之虹</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">向来不知道该说些什么</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/07/16/库SQL部分复习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JungleZero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/ve.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淋中之虹">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库SQL部分复习（1）【关系模型，关系运算】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T09:47:14+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/16/库SQL部分复习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/库SQL部分复习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,614字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/upload/pasted-429.png" width="70%"></p>
+<a id="more"></a>
+<hr>
+<h1 id="实体联系模型（E-R）"><a href="#实体联系模型（E-R）" class="headerlink" title="实体联系模型（E-R）"></a>实体联系模型（E-R）</h1><p>实体型之间的联系：一对一联系（１：１）、一对多联系（１：N）、   多对多联系（Ｍ：Ｎ）<br>  例： 假设一个学生可选多门课程，而一门课程又有多个学生选修，每个学生每选一门课只有一个成绩， 一个教师只能讲一门课程，一门课程也可有多个教师讲授，一门课使用多本参考书。画出E－R图。</p>
+<p><img src="/upload/pasted-393.png" alt="upload successful"></p>
+<h1 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h1><p>在用户观点下，关系模型中数据的逻辑结构是一张二维表，它由行和列组成。</p>
+<p><img src="/upload/pasted-392.png" alt="upload successful"><br>关系数据模型的数据结构</p>
+<ul>
+<li>关系（Relation）<br>通常指的是一张表</li>
+<li>元组（Tuple）<br>表中的一行即为一个元组</li>
+<li>属性(attribute)<br>一列即为一个属性</li>
+<li>主码（key）<br>表中的某一个属性组，可以唯一确定一个元组</li>
+<li>域（Domain）<br>属性的取值范围</li>
+<li>分量<br>元组中的一个属性值<h1 id="数据库的三级模式结构"><a href="#数据库的三级模式结构" class="headerlink" title="数据库的三级模式结构"></a>数据库的三级模式结构</h1><h2 id="模式（Schema）"><a href="#模式（Schema）" class="headerlink" title="模式（Schema）"></a>模式（Schema）</h2></li>
+</ul>
+<p><img src="/upload/pasted-394.png" alt="upload successful"><br>模式（也称逻辑模式）<br>数据库中全体数据的逻辑结构和特征的描述<br>所有用户的公共数据视图，综合了所有用户的需求<br>一个数据库只有一个模式<br>模式的地位：是数据库系统模式结构的中间层<br>与数据的物理存储细节和硬件环境无关<br>与具体的应用程序、开发工具及高级程序设计语言无关<br>模式的定义：<br>数据的逻辑结构（数据项的名字、类型、取值范围等）<br>数据之间的联系<br>数据有关的安全性、完整性要求</p>
+<h3 id="外模式-External-Schema"><a href="#外模式-External-Schema" class="headerlink" title="外模式(External Schema)"></a>外模式(External Schema)</h3><p>外模式（也称子模式或用户模式）<br>数据库用户（包括应用程序员和最终用户）使用的局部数据的逻辑结构和特征的描述<br>数据库用户的数据视图，是与某一应用有关的数据的逻辑表示<br>模式与外模式的关系：一对多<br>通常是模式的子集；一个数据库可以有多个外模式<br>外模式与应用的关系：一对多<br>同一外模式可以为某一用户的多个应用系统所使用，<br>但一个应用程序只能使用一个外模式<br>外模式是保证数据库安全性的一个有力措施<br>每个用户只能看见和访问所对应的外模式中的数据</p>
+<h3 id="内模式（Internal-Schema）"><a href="#内模式（Internal-Schema）" class="headerlink" title="内模式（Internal Schema）"></a>内模式（Internal Schema）</h3><p>是数据物理结构和存储方式的描述<br>是数据在数据库内部的表示方式<br>记录的存储方式（顺序存储，按照B树结构存储，按hash方法存储）/ 索引的组织方式 / 数据是否压缩存储 / 数据是否加密 / 数据存储记录结构的规定<br>一个数据库只有一个内模式</p>
+<h1 id="关系模型和关系"><a href="#关系模型和关系" class="headerlink" title="关系模型和关系"></a>关系模型和关系</h1><p>关系模型的数据结构非常简单，只包含单一的数据结构—-关系。在关系模型中，实体和实体间的各种联系都用关系表示。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>域（Domain）<br>一组具有相同数据类型的值的集合</li>
+<li>笛卡尔积（Cartesian Product）<br><img src="/upload/pasted-395.png" alt="upload successful"></li>
+</ul>
+<p><img src="/upload/pasted-396.png" alt="upload successful"><br>笛卡尔积的每一个结果(d1,d2,d3,d4)被称为元组（Tuple）;<br>笛卡尔积的每一个结果中的具体的值di叫做一个分量（Component）<br>笛卡尔积做出的结果的元组数是基数（Cardinal number）</p>
+<ul>
+<li>关系<br><img src="/upload/pasted-397.png" alt="upload successful"></li>
+<li>属性<br>每列的名字</li>
+<li>码<ul>
+<li>候选码（Candidate key）<br>若关系中的某一属性组的值能唯一地标识一个元组，则称该属性组为候选码<br>在最简单的情况下，候选码只包含一个属性。<br>在最极端的情况下，关系模式的所有属性组是这个关系模式的候选码，称为全码（All-key）</li>
+<li>主码<br>若一个关系有多个候选码，则选定其中一个为主码（Primary key）<br>侯选码的诸属性称为主属性（Prime attribute）。<br>不包含在任何侯选码中的属性称为非码属性（Non-key attribute） </li>
+</ul>
+</li>
+</ul>
+<h2 id="三类关系"><a href="#三类关系" class="headerlink" title="三类关系"></a>三类关系</h2><p><img src="/upload/pasted-398.png" alt="upload successful"></p>
+<h2 id="关系模式"><a href="#关系模式" class="headerlink" title="关系模式"></a>关系模式</h2><p><img src="/upload/pasted-399.png" alt="upload successful"></p>
+<p><img src="/upload/pasted-400.png" alt="upload successful"></p>
+<h2 id="关系的基本运算"><a href="#关系的基本运算" class="headerlink" title="关系的基本运算"></a>关系的基本运算</h2><p>设两个关系R,S：有相同的目n，相应的属性取自同一个域</p>
+<ul>
+<li>选择</li>
+</ul>
+<p><img src="/upload/pasted-406.png" alt="upload successful"></p>
+<p><img src="/upload/pasted-407.png" alt="upload successful"></p>
+<ul>
+<li>投影</li>
+</ul>
+<p><img src="/upload/pasted-408.png" alt="upload successful"></p>
+<ul>
+<li>并<br>R∪S = { t|t Î R∨t ÎS }</li>
+</ul>
+<p><img src="/upload/pasted-402.png" alt="upload successful"></p>
+<ul>
+<li>差<br>R -S = { t|tÎR∧tÏS }<br><img src="/upload/pasted-403.png" alt="upload successful"></li>
+<li>笛卡尔积</li>
+</ul>
+<p><img src="/upload/pasted-404.png" alt="upload successful"></p>
+<p><img src="/upload/pasted-405.png" alt="upload successful"></p>
+<ul>
+<li>交<br>R∩S = { t|t Î R∧t ÎS }<br>R∩S = R –(R-S）</li>
+<li>连接<br><img src="/upload/pasted-409.png" alt="upload successful"><br><img src="/upload/pasted-410.png" alt="upload successful"><br>有两类连接，包括等值连接和自然连接<br>等值连接<br><img src="/upload/pasted-411.png" alt="upload successful"><br>自然连接<br><img src="/upload/pasted-412.png" alt="upload successful"><br>相当于是一种合并<br><img src="/upload/pasted-413.png" alt="upload successful"></li>
+</ul>
+<h2 id="实体完整性（Entity-Integrity）"><a href="#实体完整性（Entity-Integrity）" class="headerlink" title="实体完整性（Entity Integrity）"></a>实体完整性（Entity Integrity）</h2><p>若属性A是基本关系R的主属性，则属性A不能取空值</p>
+<h2 id="参照完整性"><a href="#参照完整性" class="headerlink" title="参照完整性"></a>参照完整性</h2><p>设F是基本关系R的一个或一组属性，但不是关系R的码。如果F与基本关系S的主码Ks相对应，则称F是基本关系R的外码，基本关系R称为参照关系（Referencing Relation）<br>基本关系S称为被参照关系（Reference Relation）或目标关系（Target  Relation）<br>若属性（或属性组）F是基本关系R的外码<br>它与基本关系S的主码Ks相对应（基本关<br>系R和S不一定是不同的关系），则对<br>于R中每个元组在F上的值必须为：<br>· 或者取空值（F的每个属性值均为空值）<br>· 或者等于S中某个元组的主码值。</p>
+<p><img src="/upload/pasted-401.png" alt="upload successful"><br>用人话来说，就是外键不能是自己造出来的</p>
+<h2 id="关系代数运算题目实例"><a href="#关系代数运算题目实例" class="headerlink" title="关系代数运算题目实例"></a>关系代数运算题目实例</h2><p>设教学数据库有3个关系<br>学生关系 S（Sno，Sname，age，sex）<br>成绩关系 SC（Sno，Cno，grade）<br>课程关系 C（Cno，Cname，teacher）</p>
+<ol>
+<li>LIU老师所教授课程的课程号，课程名<br>∏CNO,CNAME(σTNAME=‘LIU’ （C））</li>
+<li>检索年龄大于23岁的男学生的学号和姓名<br>∏SNO,SNAME（ σ AGE&gt;23 ∧ SEX=‘M’（S））</li>
+<li>检索学号为S3学生所学课程的课程名与任课老师名<br> ∏CNAME,TNAME（ σ SNO=‘S3’（SC）∞(C)）</li>
+<li>检索至少选修LIU老师所教授课程中一门课的女学生姓名<br>  ∏SNAME(σSEX=‘F’(S)∞SC∞σTNAME=‘LIU’(C))</li>
+<li>检索wang同学不学课程的课程号<br> ∏CNO(C)-∏CNO(σSNAME=‘WANG’(S)∞SC)</li>
+<li>检索至少选修两门课的学生学号<br>∏1(σ1=4 ∧ 2!=5(SC × SC))</li>
+<li>检索全部学生都选修的课程的课程号和课程名<br> ∏CNO,CNAME,SNO(C ∞SC) ÷ ∏SNO(S)</li>
+<li>检索选修课程包含LIU老师所教授课程的学生学号<br>∏CNO,SNO(SC) ÷ ∏CNO(σTNAME=‘LIU’(C))</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/12/va-mitple-thread8/" rel="next" title="java多线程学习8（线程池，阻塞队列（BlockingQueue）FutureTask,Callable）">
+                <i class="fa fa-chevron-left"></i> java多线程学习8（线程池，阻塞队列（BlockingQueue）FutureTask,Callable）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/tabaseSQLReview-2/" rel="prev" title="数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】">
+                数据库SQL部分复习(2)【约束，数据类型，查询，连接查询，嵌套查询】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/ve.png" alt="JungleZero">
+            
+              <p class="site-author-name" itemprop="name">JungleZero</p>
+              <p class="site-description motion-element" itemprop="description">Try to be nice and cool</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lihonglin3012@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhongzimao.com/" title="无所不有" target="_blank">无所不有</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.5isjyx.com/1234/" title="Brave New World" target="_blank">Brave New World</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实体联系模型（E-R）"><span class="nav-number">1.</span> <span class="nav-text">实体联系模型（E-R）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系模型"><span class="nav-number">2.</span> <span class="nav-text">关系模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库的三级模式结构"><span class="nav-number">3.</span> <span class="nav-text">数据库的三级模式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模式（Schema）"><span class="nav-number">3.1.</span> <span class="nav-text">模式（Schema）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外模式-External-Schema"><span class="nav-number">3.1.1.</span> <span class="nav-text">外模式(External Schema)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内模式（Internal-Schema）"><span class="nav-number">3.1.2.</span> <span class="nav-text">内模式（Internal Schema）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系模型和关系"><span class="nav-number">4.</span> <span class="nav-text">关系模型和关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">4.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三类关系"><span class="nav-number">4.2.</span> <span class="nav-text">三类关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系模式"><span class="nav-number">4.3.</span> <span class="nav-text">关系模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系的基本运算"><span class="nav-number">4.4.</span> <span class="nav-text">关系的基本运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体完整性（Entity-Integrity）"><span class="nav-number">4.5.</span> <span class="nav-text">实体完整性（Entity Integrity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参照完整性"><span class="nav-number">4.6.</span> <span class="nav-text">参照完整性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系代数运算题目实例"><span class="nav-number">4.7.</span> <span class="nav-text">关系代数运算题目实例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JungleZero</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '0t9n1KTa7IvShYCKvwDzcqCm-gzGzoHsz',
+        appKey: 'SEfKH5WvqSEJtDdOGOt0XVtv',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
