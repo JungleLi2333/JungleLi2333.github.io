@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java多线程,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,18 +81,16 @@
 
 
 
-<meta name="description" content="基本含义Guarded Suspension意为保护暂停，其核心思想是仅当服务进程准备好时，才提供服务。设想一种场景，服务器可能会在很短时间内承受大量的客户端请求，客户端请求的数量可能超过服务器本身的即时处理能力，而服务端程序又不能丢弃任何一个客户请求。此时，最佳的处理方案莫过于让客户端要求进行排队，由服务端程序一个接一个处理。这样，既保证了所有的客户端请求均不丢失，同时也避免了服务器由于同时处理">
-<meta name="keywords" content="java多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="确保挂起设计模式（Guarded Suspension）">
-<meta property="og:url" content="https://www.junglezero.top/2019/04/18/挂起设计模式（Guarded-Suspension-）/index.html">
+<meta property="og:title" content=" 春牛">
+<meta property="og:url" content="https://www.junglezero.top/2019/08/07/春牛/index.html">
 <meta property="og:site_name" content="淋中之虹">
-<meta property="og:description" content="基本含义Guarded Suspension意为保护暂停，其核心思想是仅当服务进程准备好时，才提供服务。设想一种场景，服务器可能会在很短时间内承受大量的客户端请求，客户端请求的数量可能超过服务器本身的即时处理能力，而服务端程序又不能丢弃任何一个客户请求。此时，最佳的处理方案莫过于让客户端要求进行排队，由服务端程序一个接一个处理。这样，既保证了所有的客户端请求均不丢失，同时也避免了服务器由于同时处理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-18T02:24:22.470Z">
+<meta property="og:image" content="http://suikoden.com/graphies/images/grp_gai2_p01.jpg">
+<meta property="og:updated_time" content="2019-08-07T14:09:52.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="确保挂起设计模式（Guarded Suspension）">
-<meta name="twitter:description" content="基本含义Guarded Suspension意为保护暂停，其核心思想是仅当服务进程准备好时，才提供服务。设想一种场景，服务器可能会在很短时间内承受大量的客户端请求，客户端请求的数量可能超过服务器本身的即时处理能力，而服务端程序又不能丢弃任何一个客户请求。此时，最佳的处理方案莫过于让客户端要求进行排队，由服务端程序一个接一个处理。这样，既保证了所有的客户端请求均不丢失，同时也避免了服务器由于同时处理">
+<meta name="twitter:title" content=" 春牛">
+<meta name="twitter:image" content="http://suikoden.com/graphies/images/grp_gai2_p01.jpg">
 
 
 
@@ -122,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://www.junglezero.top/2019/04/18/挂起设计模式（Guarded-Suspension-）/">
+  <link rel="canonical" href="https://www.junglezero.top/2019/08/07/春牛/">
 
 
 
@@ -130,7 +128,7 @@
 
 
 
-  <title>确保挂起设计模式（Guarded Suspension） | 淋中之虹</title>
+  <title> 春牛 | 淋中之虹</title>
   
 
 
@@ -299,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/04/18/挂起设计模式（Guarded-Suspension-）/">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/08/07/春牛/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JungleZero">
@@ -316,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">确保挂起设计模式（Guarded Suspension）</h1>
+          <h1 class="post-title" itemprop="name headline"> 春牛</h1>
         
 
         <div class="post-meta">
@@ -328,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T09:41:00+08:00">
-                2019-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T21:51:53+08:00">
+                2019-08-07
               </time>
             
 
@@ -339,28 +337,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java多线程学习/" itemprop="url" rel="index">
-                    <span itemprop="name">java多线程学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -369,8 +345,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/18/挂起设计模式（Guarded-Suspension-）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/18/挂起设计模式（Guarded-Suspension-）/" itemprop="commentCount"></span>
+                <a href="/2019/08/07/春牛/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/春牛/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  749字
+                  5,505字
                 </span>
               
 
@@ -413,7 +389,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4分钟
+                  18分钟
                 </span>
               
             </div>
@@ -434,13 +410,17 @@
       
 
       
-        <h1 id="基本含义"><a href="#基本含义" class="headerlink" title="基本含义"></a>基本含义</h1><p>Guarded Suspension意为保护暂停，其核心思想是仅当服务进程准备好时，才提供服务。设想一种场景，服务器可能会在很短时间内承受大量的客户端请求，客户端请求的数量可能超过服务器本身的即时处理能力，而服务端程序又不能丢弃任何一个客户请求。此时，最佳的处理方案莫过于让客户端要求进行排队，由服务端程序一个接一个处理。这样，既保证了所有的客户端请求均不丢失，同时也避免了服务器由于同时处理太多的请求而崩溃</p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>request类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代表可能会有很多的请求类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Request</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">private</span> String value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Request</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>请求队列：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求等待队列</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> LinkedList&lt;Request&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获得等待队列的一个request，当没有request时，线程进行等待</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Request <span class="title">getRequest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (queue) &#123;</span><br><span class="line">            <span class="keyword">while</span> (queue.size() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    queue.wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Request request = queue.removeFirst();</span><br><span class="line">            <span class="keyword">return</span> request;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在队列中加入新的请求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putRequest</span><span class="params">(Request request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (queue) &#123;</span><br><span class="line">            queue.addLast(request);</span><br><span class="line">            <span class="comment">//唤醒等待线程</span></span><br><span class="line">            queue.notifyAll();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>客户端线程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//客户端线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//请求队列</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RequestQueue queue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Random random;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String sendValue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ClientThread</span><span class="params">(RequestQueue queue, String sendValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">        <span class="keyword">this</span>.sendValue = sendValue;</span><br><span class="line">        random = <span class="keyword">new</span> Random(System.currentTimeMillis());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//假设是10条请求</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"Client -&gt; request "</span> + sendValue);</span><br><span class="line">            queue.putRequest(<span class="keyword">new</span> Request(sendValue));</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//模拟花费时间</span></span><br><span class="line">                Thread.sleep(random.nextInt(<span class="number">1000</span>));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>服务端线程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//服务端线程</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RequestQueue queue;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Random random;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> closed = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServerThread</span><span class="params">(RequestQueue queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">        random = <span class="keyword">new</span> Random(System.currentTimeMillis());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (!closed) &#123;</span><br><span class="line">            Request request = queue.getRequest();</span><br><span class="line">            <span class="comment">//当请求为空时，跳出本次循环</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> == request) &#123;</span><br><span class="line">                System.out.println(<span class="string">"Received the empty request."</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"Server -&gt;"</span> + request.getValue());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(random.nextInt(<span class="number">1000</span>));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="comment">//中断时，跳出run方法</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.closed = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>测试线程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuspensionClient</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> RequestQueue queue = <span class="keyword">new</span> RequestQueue();</span><br><span class="line">        <span class="keyword">new</span> ClientThread(queue, <span class="string">"Alex"</span>).start();</span><br><span class="line">        ServerThread serverThread = <span class="keyword">new</span> ServerThread(queue);</span><br><span class="line">        serverThread.start();</span><br><span class="line">        <span class="comment">//serverThread.join();</span></span><br><span class="line"></span><br><span class="line">        Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        serverThread.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br><span class="line">Client -&gt; request Alex</span><br><span class="line">Server -&gt;Alex</span><br></pre></td></tr></table></figure></p>
+        <p><img src="http://suikoden.com/graphies/images/grp_gai2_p01.jpg" width="70%"></p>
+<a id="more"></a>
+<hr>
+<p>搬运自水浒吧的“出云流泉月花”的帖子，原贴找不到了。。。</p>
+<hr>
+<h1 id="水浒外传-春牛"><a href="#水浒外传-春牛" class="headerlink" title="水浒外传 春牛"></a>水浒外传 春牛</h1><p>男人撒播了种子<br>时值春天。阳光明朗，照耀着干燥的田间小路。萌发的新绿之色刺痛眼睛。但是，男人低着头，在落在地面的自己的黑影之中默默地播下种子<br>没有比他更喜欢春天的男人了。犁开冬日的干硬土地，细细研碎土块，种下种子。一本正经的男人。比起常人喜爱的酒和戏剧，农作能带给他更大的喜悦<br>但是，只有今年，这工作给男人带来了痛苦<br>他被卷入了兄长的官司里。正确的说，是他的哥哥，被卷入了某个案件里。在城里工作的哥哥，满怀侠义之心——他很讨厌听到这样的流言——被卷入了诉讼案，被关进牢房拘留了一个多月。为了救人出来，必须要筹钱。金额很是不少<br>“把田卖掉一半，那之后的生活，怎么办？”<br>男人询问自己的老父亲。父亲十分溺爱兄长。至少，在男人眼中看来，是这样的<br>“三郎总会有办法的”<br>“总惹麻烦的，不就是那个哥哥”<br>“没事的。如果是三郎的话——喂，四郎，你去哪里”<br>去田里。男人一边这样回答着，离开了家<br>向着干燥的土地上，深深地挥下锄头<br>他家里，除了种植麦子和杂粮的田地以外，还有种着蔬菜和果树的菜园。有几个佃户交租，在这个村子里也算富裕。收入供父子两人生活，也能给街上的哥哥提供足够的生活费<br>但是，那也结束了<br>男人思考着兄长的事情。越想越气<br>没有一个人憎恨哥哥。从孩提时分就开始做学问，不仅是在家里，全村的期待都集于他一身。到今天也仍然没有改变<br>另一方面，一直很认真的弟弟，却没有人爱慕，也没有人憎恨。也没有学问。一开始是兄弟二人一起去私塾念书，但学会千字文以后就退学了。开始种田<br>他喜欢田地——可以说是超越喜欢的感情。从记事开始就和曾祖父一起在田里劳作，玩耍的伙伴们也都是农家子弟。另一方面，哥哥完成学业，到了城里。交往的从书生到官员到黑道人员都游刃有余。哥哥在城里也集中了众人的好意和期待<br>但是，没有人知道，在背后支撑那个哥哥的美名的，是弟弟的田地。哥哥的工作，有权力，却没有收入。使用官僚特权的话可以赚钱，但是，人们的好哥哥从不那样做。帮助人们，是要花钱的。人们都叫他“及时雨”<br>播下最后一粒种子，男人停住铁锹，站起身<br>看见了田间小道上的三个人影<br>买地的是隔壁村的老柳三。男人转过了头。合同是父亲签字的吧。他不想亲手卖掉自己的土地<br>老柳三挖地为池养鸭子，赚了不少钱。这块地也要被挖成池塘吗。光是这样想想，胸中就疼痛不已<br>男人再次握紧了锄头。举起，再挥下的锄头，慢慢地停在了地上。被卖掉的是他的土地，他花了五年的岁月亲手开垦的土地。还是要自己亲眼看一下才好。这样想着的男人，赶紧跑回了家<br>但是，回到家里，字已经签过，合同也拿走了，买主老柳三早已不见踪影。父亲也不在。房子里只剩下空空荡荡</p>
+<p>男人又往田里去了<br>在想这损失该怎么办<br>土地出卖，收入减少是一回事。在思考今后的生活，还有阿梨的事情<br>阿梨的父亲很贪婪。前两个女儿早早就订了娃娃亲，但成人后个个出落的很漂亮，感觉本来可以攀高枝的，很是后悔。因此，小女儿出生时就没有和任何人定亲。和父亲的预测一样，阿梨比姐姐们更美丽<br>父亲开出了天价的彩礼。阿梨自己虽然是小鸟一样活泼的眼睛，但是本质还是老实听话。每天，她都到男人家后院的井去打水。他总是帮她把水桶提上来。也不说话，只是默默地帮她拎起水桶。阿梨也一样，什么也不说，只是微微点点头，拎着水回去。就这样，过了五年<br>最近，老柳三的外甥托人说媒了，听说聘金的数量还没有谈好。村里人议论着“莫非要像哪里的老爷一样拿轿子来接不成”，都惊讶地笑了。但是，男人笑不出来<br>哪里的鞭炮响了<br>抬起头。天空的碧蓝之色刺痛了眼睛<br>鞭炮声再一次炸响<br>不久，看到田间小路上有几个人跑过来。其中一人站住了，向着男人挥手<br>“斗羊啊。去看不？”<br>大声喊着的，是青梅竹马的蒋七郎<br>人是个好人。明明知道顽固的朋友不可能去，每年有活动时还是招呼他去。因为是自己比什么都喜欢的斗羊，不邀请朋友就过意不去吧<br>“我不去”<br>男人的目光移回了田地上。春天举行斗羊，是这一带的风俗。经过特别训练的粗野雄羊互相争斗，为其胜败赌上金钱。有人因此破产，也有人因此一夜暴富<br>“没有理由去”<br>男人向等在路上的蒋七郎说。但是，对方早已不见踪影了</p>
+<p>斗羊在河边的平原上剧情<br>一个简单的栅栏，人们一个接一个地牵着引以为豪的羊们过来。男人们聚集在栅栏周围，专心致力于品评羊的等级。巨大的角，筋骨发达的身躯，皮毛像钢丝一样支棱，每一头都是不一般的羊。半月形的羊眼似乎也被会场的气氛感染，耀眼地充血发红<br>第一场是王武的“朱指天王”和丘三叔的“满身肝”。初战一般是年轻力壮缺少经验的羊，会场的声势一般。但是，第二场，是去年的人气选手“黑雷霆”，数回合就败给了初次出场的年轻种子选手“黄金天香”，会场轰然沸腾<br>“切”<br>在“黑雷霆”上押了大钱的蒋七郎咂了咂嘴<br>一年来，省吃俭用攒下来的闲钱不过五六贯，就期待着在这一天大赚。光是这一场，就输了一半。下一场是本命的“蹂泰山”和“双珠铁汉子”，被拉上场的两头大羊喷着鼻息，频繁地用蹄子刨土。蒋七郎咽了口唾沫。“蹂泰山”身躯庞大，“双珠铁汉子”气魄非凡<br>（该下哪边的注）<br>蒋七郎冥思苦想，纠结得浑身颤抖。这时，有人从背后敲了敲他肩膀<br>蒋七郎回头看去，不禁瞪大了眼睛。是刚才说了“不去”，不对，是说了十年以上“不去”的幼驯染。是自己的邀请终于奏效了吗，蒋七郎大吃一惊<br>“怎么了”<br>“我来赌了”<br>男人像是平常一样答道。但是，蒋七郎听到的是更加意外的话<br>“刚才那一场，我赢了”<br>“什么”<br>男人一脸轻蔑地从怀里拿出了钱<br>“你，赌钱了？”<br>男人轻轻点了点头。他的视线，已经转向了下面场上的胜负。羊角的撞击声震动了空气。男人又赢了<br>那一天，男人出乎意料地大胜，赢了不少钱。平时不怎么赌博，却想当然地赢了。朋友的壮举让蒋七郎兴高采烈，眉飞色舞<br>“果然，你很有才啊”<br>蒋七郎也不介意自己空空如也的钱包，兴奋地拍着朋友的背。但是，男人一脸不高兴<br>“回去了”<br>“等等，明天还有啊”<br>蒋七郎嚷着“让我来教你明天押注的诀窍”，硬是把男人拉到了路边的小酒馆。店里已经客满，济济一堂，都是来看斗羊的男人们。倒酒，祝酒，热气腾腾，到处是煽动的空气，不过，每张脸都是通红，仿佛轻飘飘地脱离尘世。蒋七郎穿过拥挤的人群，抢了张桌子坐下。男人还是第一次出入这种店，但蒋七郎一副熟练的样子点了酒菜<br>蒋七郎一边喝酒，一边滔滔不绝的评论明天将要出场的羊。阴天时“疾风四蹄”就发挥差，“玉阎魔”持久力强，“赛蚩尤”空负盛名……<br>男人小口喝着酒，有一搭没一搭地听着<br>在思考<br>斗羊要持续三天。如果一直赢下去，能买回多少亩地？<br>（还是不够）<br>男人往喉咙深处灌入了苦涩的液体。然后，像是不想让人听到一样低声说道<br>“明天，把这些钱全部赌上。还不够的话，就把田抵押了做本钱”<br>“你说啥”<br>“有钱”<br>“喂”<br>蒋七郎放下了酒碗<br>“你说什么”<br>“还有钱”<br>“不行哟，你这样可不行”<br>蒋七郎惊慌失措<br>“有什么不行”<br>“要说为什么”<br>蒋七郎不知怎么回答。男人的眼睛深处闪着光，斜视着惊恐的蒋七郎。蒋七郎缩起了背<br>“要说为什么，我也不知道啊”<br>无言以对的蒋七郎喝起了酒。男人也继续畅饮。喧嚣之中，两个人默默地饮酒。这期间，似乎有什么人路过了<br>“没见过的脸啊”<br>沉重嘶哑的声音。蒋七郎像蝗虫一样惊跳起来<br>“孟老板”<br>是组织斗羊的幕后老大。蒋七郎谄媚地低下了头，而对方并不看他，只是把手放在男人的肩膀上。男人正一点点地舔着酒<br>“年轻人，赢了不少钱嘛”<br>男人的眼神焦急，甩开了对方的手。蒋七郎慌忙说道<br>“老板，这个男人虽然不爱说话，但也不容小看。毕竟是那个‘及时雨’的弟弟”<br>“哦”<br>“如假包换，唯一的弟弟”<br>“那就好。那是个仁义的人物，值得结交。”<br>被太阳晒得很黑，像是狒狒一样的面孔上，露出了奇妙的笑容<br>“今天的酒钱，我请了。大家随便喝”<br>孟老板喊了一声，酒馆欢声雷动<br>男人皱了皱眉<br>（说得大气。这么多酒菜得多少钱，是我看到都会头痛的数额吧）<br>不管男人的困惑，老板坐在了男人对面的座位上。一边和周围的人寒暄，一边自己也吃喝了一阵。屡次跟男人搭话，但男人沉默着一言不发<br>“这家伙平时就很无口”<br>和他大哥完全不一样。听到这句，男人越发不高兴了。仿佛注意到了男人的不满，老板露出了山犬一样的微笑<br>“新手入局，手气大多都不错。你就属于运气不错的那类。但是，明天的赌局，就会有些难了。对了，告诉你一件事。明天，会有一头新羊上场，名字叫做‘五花八门’。又瘦又小，脏兮兮的家伙。但是，有了这家伙的乱入，人生也会变成一件很有趣的事情”<br>男人眼睛也不抬一下。听到老板的低声之语，只微微动了一下肩膀<br>不久，老板起身走了，男人也松了一口气。喝多了不习惯的酒，醉意涌上来了。头很烫，但是，意识还很清醒。猛地头脑运动的感觉。感觉现在自己的想法，非常幼稚和婆婆妈妈<br>“什么破田。这个时代，我们只要赚钱，就能过好日子。总不能一直像鼹鼠一样，整天和泥巴黄土打交道”<br>是酒劲的原因。身后，喝醉的女人过来又倒了酒。醉意烧的全身发热。男人又倒了一杯。想喝的更醉一些<br>“一群土老帽”<br>耳边传来了酒馆角落中爆发的声音。回头看去，两个冷笑的男人正在一脸怪相地对着男人挤眉弄眼。是城里人<br>“听说有斗羊就来瞧个热闹，搞了半天是乡下佬的胡闹游戏。几毛钱的穷人可是永远不懂有钱人的世界”<br>那些是城里来的流氓。手里有几个钱，所以仗势欺人。蒋七郎向着男人耳边悄声道<br>“还带着杆棒和弩箭来的。别惹他们”<br>仿佛被那句话激怒一样，男人站了起来。两腿摇摇晃晃，用力地踩过泥地。在四周客人的注视下，男人走近了两人<br>“斗羊是没意思。那么，来玩玩‘斗人’如何”<br>“你说啥”<br>问话的同时，流氓的脸上挨了一拳。看到鼻血喷出来，村民们轩然起哄。另一个流氓踢开椅子，店里的男人们全都站了起来<br>“这头蠢牛”<br>城里的流氓扛起昏倒的同伴，逃出了酒店。男人好像什么事也没发生一样回到了座位上<br>“刚才那一拳好帅啊”<br>蒋七郎拍拍男人的肩膀。但是，没有听到回答。男人枕在潮湿的桌面上，就那样睡熟了</p>
+<p>醒来的时候，趴在桌子上。胸口憋闷，胃里难受，头痛得要命。蒋七郎在隔壁打鼾<br>酒馆里很安静，很多人都在横七竖八地睡着。所有人都喝的酩酊大醉。有人睡在几张椅子搭起来的临时铺上，桌子下面的地板上，角落里也有人蜷缩着。陪酒的歌女在抱着胡琴打盹<br>空气污浊，弥漫着馊味<br>到处都是酒迹和剩菜和人制造的污物<br>他睡着的大桌上，米饭、肉块、鸡蛋、堆得山一样高的蔬菜从盘子里溢出，像垃圾一样散落得到处都是<br>这样的骚动还要持续三天<br>像是被垃圾的味道刺激，男人在房间的角落里呕吐起来<br>天就快要亮了<br>沉淀的空气从口中抹去<br>男人摇摇晃晃地走出了酒馆。想着要不要丢下酒钱，想了想又没扔<br>感觉自己从内心深处变得稀薄。羊骚味，酒精味，统统黏在口中，喉咙非常渴。记忆模糊，但是发生的每件事情都很鲜明<br>男人感到耻辱。露出这样的丑态还是第一次。这次和蒋七郎相会后发生的一系列的事情，想把所有的目击者都掐死灭口，男人一时有了这种凶暴的狂想<br>在空无一人的道路上，男人摇摇晃晃地走下去<br>突然，发现前方出现了几个站着的人影。男人停住了脚步。黑暗之中，有什么东西隐约在闪闪发光<br>很明显，是来打劫的。大概有四五人。但是，借着星光，看到对方的脸，男人明白了。是城里那两个流氓。带着同伙回来报仇的。想要杀人的凶暴感再次涌上心头<br>肮脏的家伙们<br>男人恶狠狠地瞪着对方，挺立在路正中<br>下定决心，如果要来的话，就把所有人都杀光<br>那种气魄，一瞬间让男人们畏缩了一下。但是，有个人怒吼着，一跃向男人扑来，所有人一哄而上<br>男人猛地出拳揍向扑上来的人，但是事与愿违，打了个空。力量和气魄十足，但是，男人从出生时起，就没有打过架<br>就这样，群殴持续了很长时间<br>也许，并没有那么长时间。天空中还有两三颗星星，夜晚还没有过去。或许是上天的慈悲也说不定<br>在黑暗中，男人像虫子一样撑起身体。身上这里那里都很疼。口中混合了血和土的味道。想吐出去，一瞬间想起了什么，停住了<br>（爷爷）<br>孩提时分，大概五六岁的时候、他和曾祖父一起种地。午饭是馒头。坐在田边小路上啃的时候，手上一个没拿牢，馒头掉到了田里。急忙捡了起来，馒头已经被潮湿的泥巴弄脏了。正在发呆时，曾祖父说<br>“吃吧。土是不脏的”<br>他孩子的心灵对自己的踌躇感到了耻辱，猛地一口咬住了馒头<br>现在，男人吞下了混合了自己的血和土的唾沫。然后，仰面向天，大声笑了起来。笑声回荡在四面的群山之中，在黎明前的天空中反复回响<br>男人笑着站起了身。低头看去，脚边的泥土上还掉着一点钱。是强盗们没抢走的零钱吧。男人捡起铜钱，挥手扔进了路边的河里。扑通一声，轻快畅然的声音。男人这次不出声地笑了。脱下被泥巴染污的靴子，脱掉被血和酒和汗，还有自己的呕吐物弄脏的外衣。男人只穿着内衣，在黎明前的道路上大步流星地走向前去</p>
+<p>那一天，男人也扛着锄头向田地走去<br>途中，碰到了扛着色彩鲜艳的牛塑像游行的队伍。人们不断追逐着，热闹的铜锣声在春日的天空中回响<br>今天是立春。男人终于想起来了<br>这头牛被称作春牛。庆祝春天到来，祈愿农作丰收的仪式。竟然忘了这么重要的一天，男人很吃惊。带着全新的心情，凝视着每年都见到的这头牛<br>男人扛着锄头，跟在春牛队伍的最后面<br>村民们扛着列队游行的牛，最后被安置在广场上。然后，仪式开始了。牛被很多人猛烈地鞭打，形态渐渐崩溃，彩色涂料下面的泥土显露出来。这是土做的牛。不久，牛被打成了一堆土块。人们争先恐后地抢夺，想要抓一把土。只要抓住这土，今年就能有丰富的收成，多少年来，人们一直这样毫无疑义地相信着<br>这个时候，男人明白了，外行的自己，为什么会了解斗羊的胜败了。农民们为祈祷丰年，抓夺一把土，心如止水地在田地里耕种。而羊们也一样，无心地、拼命地争斗。所以，他才会知道，究竟哪一头羊，是真正在拼命地战斗<br>至于那些押上钱来赌博胜负的人们，跟他们又有什么关系呢<br>这样思考着，想起了失去的土地<br>那块地被挖成了池塘吧。但是，池子早晚也会干涸的，会恢复成田地。养过家鸭的土地，会比之前更加肥沃。还有很长的时间可以等，不必那么着急<br>男人回到田里，向着大地挥下锄头<br>潮湿，柔软的味道。怀念的味道<br>（养蚕怎么样呢）<br>闻着泥土的味道，想到了这一茬。听说不容易。这一代本来就盛产丝绸，很多人懂养蚕的知识。雇些有经验的人，指导下佃户的老婆们就好了。一定，过几年就能产出丝线。有了现金收入，买回田地的希望也就增加了<br>刚刚挖出来的泥土，深厚丰腴，仿佛闪耀着光辉</p>
+<p>几天后，男人久违地到了县城，去买桑树苗<br>那个时候，看到县衙前面被很多人簇拥的哥哥。父亲用卖地筹措的钱，保释了哥哥。哥哥被很多人包围着，笑眯眯地接受群众的祝福<br>男人没有发出声音，但是用平静的面容目送着哥哥<br>采购了桑树苗回来，看到阿梨在后院的井里汲水。男人默默地走过她身边<br>就这样扛着锄头，到了田地里<br>认真谨慎地耕作，即将种上桑树的土地<br>田地里有几座旧坟墓。母亲、祖父、祖母——新的墓也很快被田地同化了。曾祖父的墓因为地势高半分，还能辨认出来<br>等他有孩子的时候，这里就会是一片桑树林了吧。饲养很多的蚕，产出很多蚕茧，制造出上等的丝线的话，孙子辈就能把失去的田地买回来。那个时候，估计他的身体也被土埋没，重新化为泥土了吧<br>所有人都将归于尘土<br>为此，男人郑重地耕种土地<br>思考着<br>也许，他并不是在为这片大地播种、耕耘，绽放花朵。是这片大地，在为他完成这一切也说不定<br>为了他，他的儿子，他的孙子，还有所有的生物<br>路过的男人们，纷纷议论着蒋七郎把全部财产押在“五花八门”上，赚了大钱，离开村子的事情<br>汗水从男人的下巴上滴落，啪嗒一声，滴入大地。汗水转眼间就被吸入，消失在黄土的颜色之中<br>大地和天空接壤的地平线上，映出了一个孤零零的小影子。男人不断地耕种，直到傍晚</p>
 
       
     </div>
@@ -456,12 +436,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/java多线程/" rel="tag"># java多线程</a>
-          
-        </div>
-      
 
       
       
@@ -471,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/程future设计模式/" rel="next" title="多线程future设计模式">
-                <i class="fa fa-chevron-left"></i> 多线程future设计模式
+              <a href="/2019/08/02/算机网络总结（5）-1/" rel="next" title="计算机网络总结（5）">
+                <i class="fa fa-chevron-left"></i> 计算机网络总结（5）
               </a>
             
           </div>
@@ -480,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/18/readLocal的理解与使用/" rel="prev" title="ThreadLocal的理解与使用">
-                ThreadLocal的理解与使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -692,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本含义"><span class="nav-number">1.</span> <span class="nav-text">基本含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#水浒外传-春牛"><span class="nav-number">1.</span> <span class="nav-text">水浒外传 春牛</span></a></li></ol></div>
             
 
           </div>
