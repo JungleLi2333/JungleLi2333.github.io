@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="淋中之虹" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="#  ArrayList和Linkedlist区别1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。4．对ArrayList和Lin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java语言基础知识和其他应该知道的东西">
+<meta property="og:url" content="https://www.junglezero.top/2019/07/06/Java语言基础知识/index.html">
+<meta property="og:site_name" content="淋中之虹">
+<meta property="og:description" content="#  ArrayList和Linkedlist区别1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。4．对ArrayList和Lin">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-320.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-321.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-380.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-323.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-324.png">
+<meta property="og:image" content="https://www.junglezero.top/upload/pasted-347.png">
+<meta property="og:updated_time" content="2019-08-09T03:04:00.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java语言基础知识和其他应该知道的东西">
+<meta name="twitter:description" content="#  ArrayList和Linkedlist区别1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。4．对ArrayList和Lin">
+<meta name="twitter:image" content="https://www.junglezero.top/upload/pasted-320.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.junglezero.top/2019/07/06/Java语言基础知识/">
+
+
+
+
+
+
+
+  <title>java语言基础知识和其他应该知道的东西 | 淋中之虹</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">淋中之虹</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">向来不知道该说些什么</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.junglezero.top/2019/07/06/Java语言基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JungleZero">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/ve.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="淋中之虹">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java语言基础知识和其他应该知道的东西</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-06T10:53:05+08:00">
+                2019-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/06/Java语言基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/06/Java语言基础知识/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,211字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p># </p>
+<h2 id="ArrayList和Linkedlist区别"><a href="#ArrayList和Linkedlist区别" class="headerlink" title="ArrayList和Linkedlist区别"></a>ArrayList和Linkedlist区别</h2><p>1.ArrayList是实现了基于动态数组的数据结构，LinkedList基于链表的数据结构。<br>2.对于随机访问get和set，ArrayList觉得优于LinkedList，因为LinkedList要移动指针。<br>3.对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据。<br>4．对ArrayList和LinkedList而言，在列表末尾增加一个元素所花的开销都是固定的。对ArrayList而言，主要是在内部数组中增加一项，指向所添加的元素，偶尔可能会导致对数组重新进行分配；而对LinkedList而言，这个开销是统一的，分配一个内部Entry对象。<br>5．在ArrayList的中间插入或删除一个元素意味着这个列表中剩余的元素都会被移动；而在LinkedList的中间插入或删除一个元素的开销是固定的。<br>6．LinkedList不支持高效的随机元素访问。<br>7．ArrayList的空间浪费主要体现在在list列表的结尾预留一定的容量空间，而LinkedList的空间花费则体现在它的每一个元素都需要消耗相当的空间 </p>
+<h2 id="java方法“值传递”的理解"><a href="#java方法“值传递”的理解" class="headerlink" title="java方法“值传递”的理解"></a>java方法“值传递”的理解</h2><p>java中的数据类型有基本类型和引用类型，他们都是值传递方式。基本类型传递的是它的值，因此方法中的改变参数的值，不会影响方法外。引用类型传递的是一个地址，因为引用类型在生成对象实例时，里面的值是一个地址，指向了对象实例。在传值的时候实际上传的是一个地址，他们指向了同一块地址，所以在方法内的改变会影响方法外的参数。 这里比较乱人心的是包装类型，因为包装类型也是引用类型，这里应该就是和包装类型的实现有关了，在包装类型中，比如Integer a=1，有一个自动装箱的操作。其实a=1，如果现在令a=2，不会令2覆盖1（即1本身是不会变的），真正改变的是a被赋给了一个新地址，这个地址指向了2。因此方法内的改变包装类型的值就相当于改变了形参里面的地址，相当于重新new了一遍。而方法外面的实参仍旧指向含1的那个地址，一次方法内的改变不会影响方法外的实参。 </p>
+<p><img src="/upload/pasted-320.png" alt="upload successful"></p>
+<h2 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h2><p>Volatile：与锁相比，Volatile 变量是一种非常简单但同时又非常脆弱的同步机制，它在某些情况下将提供优于锁的性能和伸缩性。如果严格遵循 volatile 的使用条件 —— 即变量真正独立于其他变量和自己以前的值 —— 在某些情况下可以使用 volatile 代替 synchronized 来简化代码。然而，使用 volatile 的代码往往比使用锁的代码更加容易出错。<br>只能在有限的一些情形下使用 volatile 变量替代锁。要使 volatile 变量提供理想的线程安全，必须同时满足下面两个条件：</p>
+<ul>
+<li>（1）对变量的写操作不依赖于当前值。</li>
+<li>（2）该变量没有包含在具有其他变量的不变式中。<br>实际上，这些条件表明，可以被写入 volatile 变量的这些有效值独立于任何程序的状态，包括变量的当前状态。<br>第一个条件的限制使 volatile 变量不能用作线程安全计数器。虽然增量操作（x++）看上去类似一个单独操作，实际上它是一个由读取－修改－写入操作序列组成的组合操作，必须以原子方式执行，而 volatile 不能提供必须的原子特性。实现正确的操作需要使 x 的值在操作期间保持不变，而 volatile 变量无法实现这点。 </li>
+</ul>
+<h2 id="数组复制"><a href="#数组复制" class="headerlink" title="数组复制"></a>数组复制</h2><p>1.for循环<br>2.System.arraycopy<br>3.Arrays.copyOf<br>4.clone</p>
+<h2 id="类的加载顺序"><a href="#类的加载顺序" class="headerlink" title="类的加载顺序"></a>类的加载顺序</h2><p>(1) 父类静态代码块(包括静态初始化块，静态属性，但不包括静态方法)<br>(2) 子类静态代码块(包括静态初始化块，静态属性，但不包括静态方法 )<br>(3) 父类非静态代码块( 包括非静态初始化块，非静态属性 )<br>(4) 父类构造函数<br>(5) 子类非静态代码块 ( 包括非静态初始化块，非静态属性 )<br>(6) 子类构造函数</p>
+<h2 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h2><p>1、不管有没有出现异常，finally块中代码都会执行；<br>2、当try和catch中有return时，finally仍然会执行；<br>3、finally是在return后面的表达式运算后执行的（此时并没有返回运算后的值，而是先把要返回的值保存起来，不管finally中的代码怎么样，返回的值都不会改变，仍然是之前保存的值），所以函数返回值是在finally执行前确定的；<br>4、finally中最好不要包含return，否则程序会提前退出，返回值不是try或catch中保存的返回值。</p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><h3 id="registerNatives"><a href="#registerNatives" class="headerlink" title="registerNatives()"></a>registerNatives()</h3><p>向JVM注册native方法<br>在类初始化的时候，会依次从父类到本类的类变量及类初始化块中的类变量及方法按照定义顺序放到 &lt; clinit&gt;方法中，这样可以保证父类的类变量及方法的初始化一定先于子类。所以当子类调用相应 native方法，比如计算 hashCode时，一定可以保证能够调用到 JVM的 native方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">registerNatives</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="keyword">static</span> &#123;</span><br><span class="line">       registerNatives();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="getClass"><a href="#getClass" class="headerlink" title="getClass()"></a>getClass()</h3><p>类加载的第一阶段类的加载就是将 .class文件加载到内存，并生成一个 java.lang.Class对象的过程。 getClass()方法就是获取这个对象，这是当前类的对象在运行时类的所有信息的集合。这个方法是反射三种方式之一。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class&lt;?&gt; getClass();</span><br></pre></td></tr></table></figure></p>
+<h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h3><p>这个方法返回一个int类型的hash值<br>在 Java应用程序执行期间，在对同一对象多次调用 hashCode 方法时，必须一致地返回相同的整数，前提是将对象进行 equals 比较时所用的信息没有被修改；<br>如果两个对象 x.equals(y) 方法返回 true，则 x、 y这两个对象的 hashCode必须相等。<br>如果两个对象 x.equals(y) 方法返回 false，则 x、 y这两个对象的 hashCode可以相等也可以不等。但是，为不相等的对象生成不同整数结果可以提高哈希表的性能。<br>默认的 hashCode是将内存地址转换为的 hash值，重写过后就是自定义的计算方式；也可以通过 System.identityHashCode(Object)来返回原本的 hashCode。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>计算 hashCode使用了31作为基础乘数，为什么使用31呢？result *31=(result&lt;&lt;5)-result。 JVM底层可以自动做优化为位运算，效率很高；还有因为 31计算的 hashCode冲突较少，利于 hash桶位的分布。</p>
+<h3 id="equals"><a href="#equals" class="headerlink" title="equals()"></a>equals()</h3><p>用于比较当前对象与目标对象是否相等，默认是比较引用是否指向同一对象。为 public方法，子类可重写。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>重写equals的意义：<br>因为如果不重写equals方法，当将自定义对象放到 map或者 set中时；如果这时两个对象的 hashCode相同，就会调用 equals方法进行比较，这个时候会调用 Object中默认的 equals方法，而默认的 equals方法只是比较了两个对象的引用是否指向了同一个对象，显然大多数时候都不会指向，这样就会将重复对象存入 map或者 set中。这就破坏了 map与 set不能存储重复对象的特性，会造成内存溢出。</p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3><p>这是一个 protected方法，提供给子类重写。但需要实现 Cloneable接口，这是一个标记接口，如果没有实现，当调用 object.clone()方法，会抛出 CloneNotSupportedException<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">native</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>;</span><br></pre></td></tr></table></figure></p>
+<p>两个概念——<br>浅拷贝：创建一个新对象，然后将当前对象的非静态字段复制到该对象，如果字段类型是值类型（基本类型）的，那么对该字段进行复制；如果字段是引用类型的，则只复制该字段的引用而不复制引用指向的对象。此时新对象里面的引用类型字段相当于是原始对象里面引用类型字段的一个副本，原始对象与新对象里面的引用字段指向的是同一个对象。<br>说白了就是clone一个对象，将会创建一个新的对象，而对于其内部属性，比如一个String的引用类型，克隆对象和被克隆对象指向的是一个引用。换言之，如果克隆对象的属性发生了改变，则原对象也会发生改变<br>而深拷贝则是一个完全不同的拷贝的方式<br>深拷贝通过序列化(Serializable)实现</p>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getClass().getName() + <span class="string">"@"</span> + Integer.toHexString(hashCode());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="wait-相关方法"><a href="#wait-相关方法" class="headerlink" title="wait()相关方法"></a>wait()相关方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeout, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeout &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (nanos &lt; <span class="number">0</span> || nanos &gt; <span class="number">999999</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (nanos &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        timeout++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wait(timeout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>多线程情况下使用作用是阻塞进程</p>
+<ul>
+<li>此方法只能在当前线程获取到对象的锁监视器之后才能调用，否则会抛出 IllegalMonitorStateException异常。</li>
+<li>调用 wait方法，线程会将锁监视器进行释放；而 Thread.sleep，Thread.yield()并不会释放锁。</li>
+<li>wait方法会一直阻塞，直到其他线程调用当前对象的 notify()/notifyAll()方法将其唤醒；而 wait(long)是等待给定超时时间内（单位毫秒），如果还没有调用 notify()/nofiyAll()会自动唤醒； wait(long,int)如果第二个参数大于 0并且小于 999999，则第一个参数 +1作为超时时间；</li>
+</ul>
+<h3 id="notify-notifyAll"><a href="#notify-notifyAll" class="headerlink" title="notify()/notifyAll()"></a>notify()/notifyAll()</h3><p>如果当前线程获得了当前对象锁，调用 wait方法，将锁释放并阻塞；这时另一个线程获取到了此对象锁，并调用此对象的 notify()/notifyAll()方法将之前的线程唤醒。这些方法都是 publicfinal的，不可被重写。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">notify</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>要点：<br>调用 notify()后，阻塞线程被唤醒，可以参与锁的竞争，但可能调用 notify()方法的线程还要继续做其他事，锁并未释放，所以我们看到的结果是，无论 notify()是在方法一开始调用，还是最后调用，阻塞线程都要等待当前线程结束才能开始。</p>
+<h3 id="finalize"><a href="#finalize" class="headerlink" title="finalize()"></a>finalize()</h3><p>jvm垃圾回收时进行调用</p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><img src="/upload/pasted-321.png" alt="upload successful"></p>
+<p><img src="/upload/pasted-380.png" alt="upload successful"></p>
+<h2 id="和equals"><a href="#和equals" class="headerlink" title="==和equals"></a>==和equals</h2><p>==用来判断两个变量是否相等时，如果两个变量是基本类型变量，且都是数值类型(不要求数据类型严格相同)，则只要两个变量的值相等，就返回true；对于两个引用类型变量，必须指向同一个对象，==才会返回true。<br>equals方法用于比较两个独立对象的内容是否相同</p>
+<h2 id="实例变量，局部变量，类变量，final变量"><a href="#实例变量，局部变量，类变量，final变量" class="headerlink" title="实例变量，局部变量，类变量，final变量"></a>实例变量，局部变量，类变量，final变量</h2><ul>
+<li>实例变量：是定义在是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。分配了内存空间后会给所有的成员变量一次初始化，没有赋值的会给成员变量对应类型的值，数据类型不同则默认值不同。</li>
+<li>局部变量：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。用的时候是直接入栈的，如果没有赋值，这个变量就没有初始值，也就无法操作，所以局部变量要初始化。</li>
+<li>类变量：类变量也声明在类中，方法体之外，但必须声明为static类型。</li>
+<li>final变量，final 修饰的变量。如果是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象。</li>
+</ul>
+<h2 id="Integer的赋值问题"><a href="#Integer的赋值问题" class="headerlink" title="Integer的赋值问题"></a>Integer的赋值问题</h2><p>在为Integer赋值的时候，java编译器会将其翻译成调用valueOf()方法。比如Integer i=127翻译为Integer i=Integer.valueOf(127)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//high为127</span></span><br><span class="line">        <span class="keyword">if</span>(i &gt;= -<span class="number">128</span> &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            <span class="keyword">return</span> IntegerCache.cache[i + <span class="number">128</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看出，对于-128到127之间的数，Java会对其进行缓存。而超出这个范围则新建一个对象。</p>
+<h2 id="throws和throw"><a href="#throws和throw" class="headerlink" title="throws和throw"></a>throws和throw</h2><p>1、throws出现在方法头，throw出现在方法体 2、throws表示出现异常的一种可能性，并不一定会发生异常；throw则是抛出了异常，执行throw则一定抛出了某种异常。 3、两者都是消极的异常处理方式，只是抛出或者可能抛出异常，是不会由函数处理，真正的处理异常由它的上层调用处理</p>
+<h2 id="接口（Interface）"><a href="#接口（Interface）" class="headerlink" title="接口（Interface）"></a>接口（Interface）</h2><p>接口，比抽象类还要抽象的类。</p>
+<ul>
+<li>接口中每一个方法也是隐式抽象的,接口中的方法会被隐式的指定为 public abstract （只能是 public abstract，其他修饰符都会报错）。</li>
+<li>接口中可以含有变量，但是接口中的变量会被隐式的指定为  public static final   变量（并且只能是 public，用 private 修饰会报编译错误。）</li>
+<li>接口中的方法是不能在接口中实现的，只能由实现接口的类来实现接口中的方法。 </li>
+</ul>
+<p>注：<br>接口是隐式抽象的，当声明一个接口的时候，不必使用abstract关键字。<br>接口中每一个方法也是隐式抽象的，声明时同样不需要abstract关键字。<br>接口中的方法都是公有的。public</p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>Reflection（反射）是Java被视为动态语言的关键，反射机制允许程序在执行期借助于Reflection API取得任何类的內部信息，并能直接操作任意对象的内部属性及方法。</p>
+<p>Java反射机制主要提供了以下功能：</p>
+<ul>
+<li>在运行时构造任意一个类的对象</li>
+<li>在运行时获取任意一个类所具有的成员变量和方法</li>
+<li>在运行时调用任意一个对象的方法（属性）</li>
+<li>生成动态代理</li>
+</ul>
+<ol>
+<li><p>Class: 是一个类; 一个描述类的类.<br>　　封装了描述方法的 Method,描述字段的 Filed,描述构造器的 Constructor 等属性.</p>
+<ol start="2">
+<li><p>如何得到 Class 对象:<br>　　2.1 Person.class<br>　　2.2 person.getClass()<br>　　2.3 Class.forName(“com.atguigu.javase.Person”)</p>
+</li>
+<li><p>关于 Method:<br>　　3.1 如何获取 Method:<br>　　　　1). getDeclaredMethods: 得到 Method 的数组.<br>　　　　2). getDeclaredMethod(String methondName, Class … parameterTypes)</p>
+</li>
+</ol>
+<p>　　3.2 如何调用 Method<br>　　　　1). 如果方法时 private 修饰的, 需要先调用 Method 的　setAccessible(true), 使其变为可访问<br>　　　　2). method.invoke(obj, Object … args);</p>
+<ol start="4">
+<li><p>关于 Field:<br>　　4.1 如何获取 Field: getField(String fieldName)<br>　　4.2 如何获取 Field 的值:<br>　　　　1). setAccessible(true)<br>　　　　2). field.get(Object obj)<br>　　4.3 如何设置 Field 的值:<br>　　　　field.set(Obejct obj, Object val)</p>
+</li>
+<li><p>了解 Constructor 和 Annotation </p>
+</li>
+<li><p>反射和泛型.<br>　　6.1 getGenericSuperClass: 获取带泛型参数的父类, 返回值为: BaseDao&lt;Employee, String&gt;<br>　　6.2 Type 的子接口: ParameterizedType<br>　　6.3 可以调用 ParameterizedType 的 Type[] getActualTypeArguments() 获取泛型参数的数组.<br><a href="https://www.cnblogs.com/tech-bird/p/3525336.html" target="_blank" rel="noopener">https://www.cnblogs.com/tech-bird/p/3525336.html</a></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="AQS和CAS"><a href="#AQS和CAS" class="headerlink" title="AQS和CAS"></a>AQS和CAS</h2><p>抽象队列同步器AQS ( AbstractQueuedSychronizer ) , 如果说java.util.concurrent的基础是CAS的话,那么AQS就是整个Java并发包的核心了, ReentrantLock、CountDownLatch、Semaphore等都用到了它。AQS实际上以双向队列的形式连接所有的Entry ,比方说ReentrantLock ,所有等待的线程都被放在一个Entry中并连成双向队列,前面一个线程使用 ReentrantLock好了, 则双向队列实际上的第一个Entry开始运行。 AQS定 义了对双向队列所有的操作,而只开放了tryLock和tryRelease方法给开发者使用,开发者可以根据自己的实现重写tryLock和tryRelease方法,以实现自己的并发功能。</p>
+<p>比较并替换CAS(Compare and Swap) ,假设有三个操作数:内存值V、旧的预期值A、要修改的值B ,当且仅当预期值A和内存值V相同时,才桧将内存值修改为B并返回true ,否则什么都不做并返回false ,整个比较并替换的操作是一个原子操作。CAS一定要volatile变量配合,这样才能保证每次拿到的变量是主内中最新的相应值,否则旧的预期值A对某条线程来说,永远是一个不会变的值A,只要某次CAS操作失败，下面永远都不可能成功。</p>
+<p>CAS虽然比较高效的解决了原子操作问题,但仍存在三大问题。</p>
+<ul>
+<li>循环时间开销大</li>
+<li>只能保证一个共享变量的原子操作</li>
+<li>ABA问题</li>
+</ul>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p> Condition是在java 1.5中才出现的，它用来替代传统的Object的wait()、notify()实现线程间的协作，相比使用Object的wait()、notify()，使用Condition1的await()、signal()这种方式实现线程间协作更加安全和高效。因此通常来说比较推荐使用Condition，在阻塞队列那一篇博文中就讲述到了，阻塞队列实际上是使用了Condition来模拟线程间协作。</p>
+<ul>
+<li>Condition是个接口，基本的方法就是await()和signal()方法；</li>
+<li>Condition依赖于Lock接口，生成一个Condition的基本代码是lock.newCondition()</li>
+<li>调用Condition的await()和signal()方法，都必须在lock保护之内，就是说必须在lock.lock()和lock.unlock之间才可以使用Conditon中的await()对应Object的wait()； Condition中的signal()对应Object的notify()； Condition中的signalAll()对应Object的notifyAll()</li>
+</ul>
+<h2 id="序列化Serializable"><a href="#序列化Serializable" class="headerlink" title="序列化Serializable"></a>序列化Serializable</h2><p>**什么是序列化和反序列化</p>
+<p>java序列化是指把java对象转换为字节序列的过程，而java反序列化是指把字节序列恢复为java对象的过程<br>序列化：对象序列化的最主要的用处就是在传递和保存对象的时候，保证对象的完整性和可传递性。序列化是把对象转换成有序字节流，以便在网络上传输或者保存在本地文件中。序列化后的字节流保存的java对象的状态以及相关的描述信息。序列化机制的核心作用就是对象状态的保存与重建。</p>
+<p>反序列化：客户端从文件中或网络上获得序列化后的对象字节流后，根据字节流中所保存的对象状态及描述信息，通过反序列化重建对象。</p>
+<p>序列化就是把实体对象状态按照一定的格式写入到有序字节流，反序列化就是从有序字节流重建对象，恢复对象状态</p>
+<p>**为什么需要序列化与反序列化</p>
+<p>当两个进程进行远程通信时，可以相互发送各种类型的数据，包括文本，图片，音频，视频等，而这些数据都会以二进制的形式在网络上传送。</p>
+<p>当两个java进行进行通信时，要传送对象，怎么传对象，通过序列化与反序列化。</p>
+<p>也就是说，发送方需要把对象转换为字节序列，然后在网络上传送，另一方面，接收方需要从字节序列中恢复出java对象</p>
+<p>**在java中怎么实现序列化</p>
+<p>1.在需要序列化的对象的类实现Serializable接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySerClass</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure></p>
+<p>2.利用ObjectOutStream实现实体序列化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FlyPig flyPig = <span class="keyword">new</span> FlyPig();</span><br><span class="line">flyPig.setColor(<span class="string">"black"</span>);</span><br><span class="line">flyPig.setName(<span class="string">"naruto"</span>);</span><br><span class="line">flyPig.setCar(<span class="string">"0000"</span>);</span><br><span class="line"><span class="comment">// ObjectOutputStream 对象输出流，将 flyPig 对象存储到E盘的 flyPig.txt 文件中，完成对 flyPig 对象的序列化操作</span></span><br><span class="line">ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"d:/flyPig.txt"</span>)));</span><br><span class="line">oos.writeObject(flyPig);</span><br></pre></td></tr></table></figure></p>
+<p>**序列化时的一些细节</p>
+<p>1、利用transient关键字修饰的属性，不会被序列化<br>2、对于static变量，其值只和当前类中的定义有关，而和是否序列化无关<br>3、具体使用时，应对serialVersionUID 进行赋值</p>
+<h2 id="Spring-mvc执行流程"><a href="#Spring-mvc执行流程" class="headerlink" title="Spring mvc执行流程"></a>Spring mvc执行流程</h2><p><img src="/upload/pasted-323.png" alt="upload successful"><br><a href="https://www.cnblogs.com/jay36/p/7527039.html" target="_blank" rel="noopener">https://www.cnblogs.com/jay36/p/7527039.html</a></p>
+<h2 id="AOP-IOC"><a href="#AOP-IOC" class="headerlink" title="AOP IOC"></a>AOP IOC</h2><p>AOP和IOC是Spring精华部分, AOP可以看做是对OOP的补充,对代码进行横向的扩展,通过代理模式实现,代理模式有静态代理,动态代理, Spring利用的是动态代理,在程序运行过程中将增强代码织入原代码中。IOC是 控制反转,将对象的控制权交给Spring框架,用户需要使用对象无需创建,直接使用即呵。AOP和IOC最可贵的是它们的思想。</p>
+<h2 id="Hibernate-POJO"><a href="#Hibernate-POJO" class="headerlink" title="Hibernate POJO"></a>Hibernate POJO</h2><p>Hibernate Pojo的三态分别为transient（瞬时态）,persistent（持久态）,detached（游离态）</p>
+<p>1、官方给出的三态与Session的关系如下：</p>
+<p>transient: never persistent, not associated with any Session<br>persistent: associated with a unique Session<br>detached: previously persistent, not associated with any Session</p>
+<p>2、三种状态间相互转换关系，及他们在数据库、session中的状态如下：<br>a.当我们new一个pojo时，它处于瞬时态，此时与session、数据库均无任何关联。<br>b.此后，我们获得session并开启hibernate事务，调用save(),persist(),saveOrUpdate()方法，将pojo转变为持久态，此时session中存有这个pojo，但直到transaction.commit()被调用时，sql语句才会执行，此后数据库中也才有此条数据。<br>c.但当commit()并且session.close()执行过后，pojo就变为了游离态，也就是说，数据库中有该记录，但session中不再有。<br>d.持久化状态的实例，也可以重新变成瞬时态，那就是调用delete()方法。<br>e.通过get()或load()方法得到的pojo是持久态的。<br>f.游离态的pojo可以通过update(),saveOrUpdate(),lock()和replicate()方法重新成为持久态。<br>g.调用merge()方法后，pojo维持原态，但内容会被更新到数据库</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>Java通过Executors提供四个静态方法创建四种线程池，分别为：</p>
+<p>newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p>
+<p>newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</p>
+<p>newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。</p>
+<p>newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行</p>
+<p>作用：<br>限定线程的个数，不会导致由于线程过多导致系统运行缓慢或崩溃</p>
+<p>线程池不需要每次都去创建或销毁，节约了资源、</p>
+<p>线程池不需要每次都去创建，响应时间更快。</p>
+<h2 id="javaWeb"><a href="#javaWeb" class="headerlink" title="javaWeb"></a>javaWeb</h2><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><h4 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h4><p><img src="/upload/pasted-324.png" alt="upload successful"><br>servlet是运行在服务器端的小应用程序，是接收网络服务的请求和产生响应的一种方式。<br>servlet的功能：接受http请求，产生动态http响应。<br>HttpServlet是GenericServlet的子类。<br>GenericServlet是个抽象类，必须给出子类才能实例化。它给 出了设计servlet的一些骨架，定义了servlet生命周期，还有一些得到名字、配置、初始化参数的方法，其设计的是和应用层协议无关的，也就是说 你有可能用非http协议实现它。<br>HttpServlet是子类，当然就具有GenericServlet的一切特性，还添加了doGet, doPost, doDelete, doPut, doTrace等方法对应处理http协议里的命令的请求响应过程。</p>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>servlet有良好的生存期的定义，包括加载和实例化、初始化、处理请求以及服务结束。这个生存期由javax.servlet.Servlet接口的init,service和destroy方法表达。<br>加载Servlet的class—-&gt;实例化Servlet—–&gt;调用Servlet的init完成初始化—-&gt;响应请求（Servlet的service方法）—–&gt;Servlet容器关闭时(Servlet的destory方法)<br>Servlet启动时，开始加载servlet生命周期开始。Servlet被服务器实例化后，容器运行其init方法，请求到达时运行其service方法，service方法自动派遣运行与请求对应的doXXX方法（doGet，doPost）等，当服务器决定将实例销毁的时候(服务器关闭)调用其destroy方法。</p>
+<h4 id="forward-与redirect-的区别"><a href="#forward-与redirect-的区别" class="headerlink" title="forward() 与redirect()的区别"></a>forward() 与redirect()的区别</h4><p>forward是服务器端的转向而redirect是客户端的跳转。</p>
+<p>使用forward浏览器的地址不会发生改变。而redirect会发生改变。</p>
+<p>Forward是一次请求中完成。而redirect是重新发起请求。</p>
+<p>Forward是在服务器端完成，而不用客户端重新发起请求，效率较高<br>一般没有特殊需要，自己写的Servlet都扩展HttpServlet 。</p>
+<h4 id="JSP和Servlet有哪些相同点和不同点"><a href="#JSP和Servlet有哪些相同点和不同点" class="headerlink" title="JSP和Servlet有哪些相同点和不同点"></a>JSP和Servlet有哪些相同点和不同点</h4><p>JSP是Servlet技术的扩展，所有的jsp文件都会被翻译为一个继承HttpServlet的类。也就是jsp最终也是一个Servlet.这个Servlet对外提供服务。</p>
+<p><img src="/upload/pasted-347.png" alt="upload successful"><br>Servlet和JSP最主要的不同点在于JSP侧重于视图，Servlet主要用于控制逻辑。<br>Servlet如果要实现html的功能，必须使用Writer输出对应的html,比较麻烦。而JSP的情况是Java和HTML可以组合成一个扩展名为.jsp的文件,做界面展示比较方便而嵌入逻辑比较复杂</p>
+<h4 id="jsp内置对象"><a href="#jsp内置对象" class="headerlink" title="jsp内置对象"></a>jsp内置对象</h4><p>request 用户端请求，此请求会包含来自GET/POST请求的参数</p>
+<p>response 网页传回用户端的回应</p>
+<p>pageContext 网页的属性是在这里管理</p>
+<p>session 与请求有关的会话期</p>
+<p>application servlet正在执行的内容</p>
+<p>out 用来传送回应的输出</p>
+<p>config servlet的构架部件</p>
+<p>page JSP网页本身</p>
+<p>exception 针对错误网页，未捕捉的例外</p>
+<p>四大作用域：pageContext request session application 可以通过jstl从四大作用域中取值.</p>
+<p>Jsp传递值request session application cookie也能传值</p>
+<h3 id="http-get和post请求的区别"><a href="#http-get和post请求的区别" class="headerlink" title="http get和post请求的区别"></a>http get和post请求的区别</h3><p>GET和POST请求都是http的请求方式，用户通过不同的http的请求方式完成对资源（url）的不同操作。GET，POST，PUT，DELETE就对应着对这个资源的查 ，改 ，增 ，删 4个操作,具体点来讲GET一般用于获取/查询资源信息，而POST一般用于更新资源信息<br>1、Get请求提交的数据会在地址栏显示出来，而post请求不会再地址栏显示出来.</p>
+<p>GET提交，请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，多个参数用&amp;连接；POST提交：把提交的数据放置在是HTTP包的包体中。因此，GET提交的数据会在地址栏中显示出来，而POST提交，地址栏不会改变</p>
+<p>2、传输数据的大小</p>
+<p>http Get请求由于浏览器对地址长度的限制而导致传输的数据有限制。而POST请求不会因为地址长度限制而导致传输数据限制。</p>
+<p>3、安全性,POST的安全性要比GET的安全性高。由于数据是会在地址中呈现，所以可以通过历史记录找到密码等关键信息。</p>
+<h3 id="Session-和-Cookie"><a href="#Session-和-Cookie" class="headerlink" title="Session 和 Cookie"></a>Session 和 Cookie</h3><p>Session和cookie都是会话(Seesion)跟踪技术。Cookie通过在客户端记录信息确定用户身份，Session通过在服务器端记录信息确定用户身份。但是Session的实现依赖于Cookie,sessionId(session的唯一标识需要存放在客户端).</p>
+<p>cookie 和session 的区别：</p>
+<p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
+<p>   考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<p>5、所以个人建议：</p>
+<p>   将登陆信息等重要信息存放为SESSION</p>
+<p>   其他信息如果需要保留，可以放在COOKIE中，比如购物车</p>
+<p>购物车最好使用cookie，但是cookie是可以在客户端禁用的，这时候我们要使用cookie+数据库的方式实现，当从cookie中不能取出数据时，就从数据库获取。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/05/mething-Ends-Something-Begins-translate-cn/" rel="next" title="结束是另一个开始">
+                <i class="fa fa-chevron-left"></i> 结束是另一个开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/09/java-mutiple-threading-7/" rel="prev" title="java多线程学习7（Exchanger,StampedLock,Fork/join,Phaser）">
+                java多线程学习7（Exchanger,StampedLock,Fork/join,Phaser） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/ve.png" alt="JungleZero">
+            
+              <p class="site-author-name" itemprop="name">JungleZero</p>
+              <p class="site-description motion-element" itemprop="description">Try to be nice and cool</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:lihonglin3012@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhongzimao.com/" title="无所不有" target="_blank">无所不有</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.5isjyx.com/1234/" title="Brave New World" target="_blank">Brave New World</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList和Linkedlist区别"><span class="nav-number">1.</span> <span class="nav-text">ArrayList和Linkedlist区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java方法“值传递”的理解"><span class="nav-number">2.</span> <span class="nav-text">java方法“值传递”的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Volatile"><span class="nav-number">3.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组复制"><span class="nav-number">4.</span> <span class="nav-text">数组复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载顺序"><span class="nav-number">5.</span> <span class="nav-text">类的加载顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">6.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#registerNatives"><span class="nav-number">7.1.</span> <span class="nav-text">registerNatives()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getClass"><span class="nav-number">7.2.</span> <span class="nav-text">getClass()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode"><span class="nav-number">7.3.</span> <span class="nav-text">hashCode()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equals"><span class="nav-number">7.4.</span> <span class="nav-text">equals()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">7.5.</span> <span class="nav-text">clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-NaN"><span class="nav-number">7.6.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wait-相关方法"><span class="nav-number">7.7.</span> <span class="nav-text">wait()相关方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify-notifyAll"><span class="nav-number">7.8.</span> <span class="nav-text">notify()/notifyAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalize"><span class="nav-number">7.9.</span> <span class="nav-text">finalize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">8.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和equals"><span class="nav-number">9.</span> <span class="nav-text">==和equals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例变量，局部变量，类变量，final变量"><span class="nav-number">10.</span> <span class="nav-text">实例变量，局部变量，类变量，final变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer的赋值问题"><span class="nav-number">11.</span> <span class="nav-text">Integer的赋值问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#throws和throw"><span class="nav-number">12.</span> <span class="nav-text">throws和throw</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（Interface）"><span class="nav-number">13.</span> <span class="nav-text">接口（Interface）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">14.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS和CAS"><span class="nav-number">15.</span> <span class="nav-text">AQS和CAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">16.</span> <span class="nav-text">Condition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化Serializable"><span class="nav-number">17.</span> <span class="nav-text">序列化Serializable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-mvc执行流程"><span class="nav-number">18.</span> <span class="nav-text">Spring mvc执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-IOC"><span class="nav-number">19.</span> <span class="nav-text">AOP IOC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hibernate-POJO"><span class="nav-number">20.</span> <span class="nav-text">Hibernate POJO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">21.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javaWeb"><span class="nav-number">22.</span> <span class="nav-text">javaWeb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet"><span class="nav-number">22.1.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#是什么"><span class="nav-number">22.1.1.</span> <span class="nav-text">是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生命周期"><span class="nav-number">22.1.2.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forward-与redirect-的区别"><span class="nav-number">22.1.3.</span> <span class="nav-text">forward() 与redirect()的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSP和Servlet有哪些相同点和不同点"><span class="nav-number">22.1.4.</span> <span class="nav-text">JSP和Servlet有哪些相同点和不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jsp内置对象"><span class="nav-number">22.1.5.</span> <span class="nav-text">jsp内置对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-get和post请求的区别"><span class="nav-number">22.2.</span> <span class="nav-text">http get和post请求的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session-和-Cookie"><span class="nav-number">22.3.</span> <span class="nav-text">Session 和 Cookie</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JungleZero</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '0t9n1KTa7IvShYCKvwDzcqCm-gzGzoHsz',
+        appKey: 'SEfKH5WvqSEJtDdOGOt0XVtv',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "./public/search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
